@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Landview</string>
+    <string name="welcome">Welcome to LandView</string>
+    <string name="Text_intro">Traveling helps one to understand,they are not actually lost.</string>
+    <string name="btn_Login">Login</string>
+    <string name="btn_signup">Sign up</string>
+    <string name="CreateAccount">Create Account</string>
+    <string name="userName">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="type_Password">Type Password Again</string>
+    <string name="policy">I agree all Terms and Conditions</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="login_yourAccount">Login to your account</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="dont_account">Do not have an account yet?</string>
+    <string name="sigup_now">Sign up now</string>
+    <string name="login_with">Or login with</string>
+    <string name="FragmentHome">Home</string>
+    <string name="fragmentTravel">Travel</string>
+    <string name="fragmentFavorite">Favorite</string>
+    <string name="fragmentUser">User</string>
+    <string name="hintSearch">Search Destination</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
