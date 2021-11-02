@@ -9,11 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Landview">
-        <activity android:name=".LaucherActivity" android:exported="true" ></activity>
-        <activity android:name=".SignUpActivity" android:exported="true" android:parentActivityName=".LaucherActivity"></activity>
-        <activity android:name=".LoginActivity" android:exported="true" android:parentActivityName=".LaucherActivity"></activity>
-        <activity android:name=".ForgotPassActivity" android:exported="true" android:parentActivityName=".LoginActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".LaucherActivity" android:exported="true" >
+
+        </activity>
+        <activity android:name=".SignUpActivity" android:exported="true" android:parentActivityName=".LaucherActivity">
+
+        </activity>
+        <activity android:name=".LoginActivity" android:exported="true" android:parentActivityName=".LaucherActivity">
+
+        </activity>
+        <activity android:name=".ForgotPassActivity" android:exported="true" android:parentActivityName=".LoginActivity">
+
+        </activity>
+        <activity android:name=".Trips" android:exported="true" android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".Review" android:exported="true" android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".Weather" android:parentActivityName=".MainActivity" android:exported="true">
+
+        </activity>
+        <activity android:name=".Promotion" android:exported="true" android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity
             android:name=".SplashScreen"
             android:exported="true">

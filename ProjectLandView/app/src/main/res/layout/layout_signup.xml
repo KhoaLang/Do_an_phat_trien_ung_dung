@@ -21,11 +21,11 @@
         android:text="@string/userName"
         android:fontFamily="@font/scheherazader"
         android:textColor="@color/text_desColor"
-        android:textSize="27sp"
+        android:textSize="20sp"
         android:layout_marginTop="20dp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:paddingStart="10dp"
         android:id="@+id/EdtUser"
         android:background="@drawable/custom_editext"
@@ -37,11 +37,11 @@
         android:text="@string/email"
         android:fontFamily="@font/scheherazader"
         android:textColor="@color/text_desColor"
-        android:textSize="27sp"
+        android:textSize="20sp"
         />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:id="@+id/Edtemail"
         android:paddingStart="10dp"
         android:background="@drawable/custom_editext"
@@ -53,11 +53,11 @@
         android:text="@string/password"
         android:fontFamily="@font/scheherazader"
         android:textColor="@color/text_desColor"
-        android:textSize="27sp"
+        android:textSize="20sp"
         />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:id="@+id/EdtPassword"
         android:paddingStart="10dp"
         android:background="@drawable/custom_editext"
@@ -70,11 +70,11 @@
         android:text="@string/type_Password"
         android:fontFamily="@font/scheherazader"
         android:textColor="@color/text_desColor"
-        android:textSize="27sp"
+        android:textSize="20sp"
         />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:paddingStart="10dp"
         android:id="@+id/EdtTypePass"
         android:background="@drawable/custom_editext"
@@ -87,7 +87,7 @@
         android:text="@string/policy"
         android:fontFamily="@font/scheherazader"
         android:textColor="@color/black"
-        android:textSize="27sp"/>
+        android:textSize="20sp"/>
     <android.widget.Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         android:id="@+id/btnCreateAccount"
         android:fontFamily="@font/scheherazade_bold"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="23sp"
         android:textAllCaps="false"
         />
 </LinearLayout>

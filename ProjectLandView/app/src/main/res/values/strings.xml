@@ -23,6 +23,9 @@
     <string name="fragmentFavorite">Favorite</string>
     <string name="fragmentUser">User</string>
     <string name="hintSearch">Search Destination</string>
+    <string name="What_want">What do you want</string>
+    <string name="news">News</string>
+    <string name="Plan">Plan for trip</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

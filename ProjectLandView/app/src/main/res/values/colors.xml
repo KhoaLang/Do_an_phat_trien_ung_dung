@@ -14,4 +14,9 @@
     <color name="container">#F9F9F9</color>
     <color name="iconBottom">#BDC3C9</color>
     <color name="indicator">#666666</color>
+    <color name="tripColor">#62C6FF</color>
+    <color name="reviewColor">#FF7F4F</color>
+    <color name="weatherColor">#F8B62D</color>
+    <color name="promotionColor">#F34055</color>
+    <color name="item_News">#F5EDE9</color>
 </resources>

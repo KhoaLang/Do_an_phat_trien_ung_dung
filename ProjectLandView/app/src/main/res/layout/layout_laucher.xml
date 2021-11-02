@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/img_Title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/tittle_app" />
 
@@ -22,10 +22,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/scheherazade_bold"
-        android:lineHeight="40dp"
         android:text="@string/Text_intro"
         android:textColor="@color/text_desColor"
-        android:textSize="40sp" />
+        android:textSize="25sp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,7 +51,7 @@
                 android:background="@drawable/custom_bottom"
                 android:backgroundTint="@color/primary_color"
                 android:text="@string/btn_Login"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:textAllCaps="false"
@@ -68,7 +67,7 @@
                 android:background="@drawable/custom_bottom"
                 android:backgroundTint="@color/white"
                 android:text="@string/btn_signup"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textAllCaps="false"
                 android:fontFamily="@font/scheherazader"
                 android:textColor="@color/primary_color"/>

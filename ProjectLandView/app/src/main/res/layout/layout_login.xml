@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_yourAccount"
                 android:fontFamily="@font/scheherazade_bold"
-                android:textSize="27sp"
+                android:textSize="23sp"
                 android:textColor="@color/login_withColor"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="-15dp"
@@ -36,7 +36,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:contentDescription="@string/userName"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:src="@drawable/user"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
@@ -49,7 +49,7 @@
     </LinearLayout>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:id="@+id/edtEmail_login"
         android:layout_marginTop="25dp"
         android:background="@drawable/custom_editext"
@@ -59,7 +59,7 @@
         android:paddingStart="20dp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:id="@+id/edtPass_login"
         android:layout_marginTop="25dp"
         android:background="@drawable/custom_editext"
@@ -75,7 +75,7 @@
         android:fontFamily="@font/scheherazade_bold"
         android:text="@string/forgot_pass"
         android:textColor="@color/primary_color"
-        android:textSize="27sp"
+        android:textSize="23sp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"/>
     <android.widget.Button
@@ -87,7 +87,7 @@
         android:id="@+id/btn_Login"
         android:fontFamily="@font/scheherazade_bold"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_marginTop="15dp"
         android:textAllCaps="false"/>
     <LinearLayout
