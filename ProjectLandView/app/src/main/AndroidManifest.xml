@@ -33,11 +33,14 @@
         <activity android:name=".Promotion" android:exported="true" android:parentActivityName=".MainActivity">
 
         </activity>
+<!--        <activity android:name=".DetailHoguom" android:exported="true" android:parentActivityName=".Review">-->
+
+<!--        </activity>-->
         <activity android:name=".MainActivity">
 
         </activity>
         <activity
-            android:name=".SplashScreen"
+            android:name=".DetailHoguom"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

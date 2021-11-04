@@ -4,12 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_bottom.xml" value="0.26979166666666665" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_comments.xml" value="0.26666666666666666" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_editext.xml" value="0.26979166666666665" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_indicator.xml" value="0.26666666666666666" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_linearlayout.xml" value="0.26666666666666666" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/font/font.xml" value="0.2838541666666667" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/activity_main.xml" value="0.23796296296296296" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_favorite.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_image.xml" value="0.25052083333333336" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_overview.xml" value="0.25052083333333336" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_review.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_travel.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_user.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_forgot_password.xml" value="0.25052083333333336" />
@@ -19,6 +24,9 @@
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_news_item.xml" value="0.23645833333333333" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_promotion.xml" value="0.23645833333333333" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_review.xml" value="0.23645833333333333" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_review_detail_hoguom.xml" value="0.23645833333333333" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_review_image_hoguom.xml" value="0.23645833333333333" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_review_item.xml" value="0.25" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_service_home_fragment.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_service_item_home_fragment.xml" value="0.24666666666666667" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_signup.xml" value="0.23958333333333334" />

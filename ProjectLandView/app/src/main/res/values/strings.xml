@@ -26,6 +26,14 @@
     <string name="What_want">What do you want</string>
     <string name="news">News</string>
     <string name="Plan">Plan for trip</string>
+    <string name="search">Search</string>
+    <string name="recent">Recent Search</string>
+    <string name="hoguom">Hồ Gươm - Hà Nội</string>
+    <string name="hoguom_address">Phường Hoàng Trống,Quận Hoàn Kiếm,Hà Nội</string>
+    <string name="hoguom_address_detail">Địa chỉ: phường Hoàng Trống,quận Hoàng Kiếm,Hà Nội</string>
+    <string name="bienbaitrac">Biển Bãi Trước</string>
+    <string name="textDes">Hồ Hoàn Kiếm là hồ nước ngọt nhân tạo nằm giữa thủ đô Hà Nội. Hồ rộng tới 12ha với chiều dài 700m, rộng 200m và sâu hơn 1m. Giữa hồ có tháp rùa, trên hồ có đền Ngọc Sơn,
+        xung quanh là cầu Thê Húc, tháp Bút và đền Bà Kiệu.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
