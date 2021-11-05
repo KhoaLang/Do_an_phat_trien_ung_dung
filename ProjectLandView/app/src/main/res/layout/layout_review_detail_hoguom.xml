@@ -7,23 +7,34 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/hoguom"
+        android:id="@+id/imgView"
         android:scaleType="centerCrop"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameAdd"
+        android:visibility="gone"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameDes"
+        android:visibility="gone"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp">
+
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tablayout"/>
+            android:layout_height="wrap_content" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:layout_marginTop="15dp"
             android:id="@+id/viewPager2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tablayout" />
+            android:layout_below="@+id/tablayout"
+            android:layout_marginTop="15dp" />
     </RelativeLayout>
 </LinearLayout>

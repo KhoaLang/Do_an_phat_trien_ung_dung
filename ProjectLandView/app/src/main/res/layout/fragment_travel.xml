@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TravelFragment">
+    android:orientation="vertical"
+    tools:context=".TravelFragment"
+    android:background="@color/container"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello travel" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/title"
+                            android:layout_gravity="start"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/imgNotifycations"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10dp"
+                                android:src="@drawable/icon_notify"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/imgSetting"
+                                android:src="@drawable/icon_setting"/>
+                        </LinearLayout>
 
-</FrameLayout>
+                    </LinearLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@drawable/custom_editext"
+                            android:hint="@string/hintSearch"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/scheherazader"
+                            android:paddingStart="50dp"
+                            />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/inconSearch"
+                            android:src="@drawable/icon_search"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"/>
+                    </FrameLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
+                
+            </ScrollView>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

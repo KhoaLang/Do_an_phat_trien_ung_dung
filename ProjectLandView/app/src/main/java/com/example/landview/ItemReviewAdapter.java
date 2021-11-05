@@ -1,10 +1,13 @@
 package com.example.landview;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +42,21 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
         holder.name.setText(itemReview.getName());
         holder.imgRate.setImageResource(itemReview.getRateImg());
         holder.nameAddress.setText(itemReview.getAddress());
+        //sự kiện chuyển sang màn hình điện thoại
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onGotoDetail(itemReview);
+            }
+        });
+    }
+
+    private void onGotoDetail(ItemReview itemReview) {
+        Intent intent = new Intent(mcontext,DetailHoguom.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_ItemReview",itemReview);
+        intent.putExtras(bundle);
+        mcontext.startActivity(intent);
     }
 
     @Override
@@ -53,8 +71,10 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
     public class ReviewViewholder extends RecyclerView.ViewHolder{
         ImageView imgName,imgRate;
         TextView name,nameAddress;
+        RelativeLayout relativeLayout;
         public ReviewViewholder(@NonNull View itemView) {
             super(itemView);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout);
             imgName = itemView.findViewById(R.id.imgItemReview);
             name = itemView.findViewById(R.id.txtName);
             imgRate = itemView.findViewById(R.id.imgrate);

@@ -1,6 +1,8 @@
 package com.example.landview;
 
-public class ItemReview {
+import java.io.Serializable;
+
+public class ItemReview implements Serializable {
     private int Img;
     private String name;
     private int rateImg;
