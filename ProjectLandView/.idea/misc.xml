@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_bottom.xml" value="0.26979166666666665" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_btn_find.xml" value="0.26666666666666666" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_comments.xml" value="0.26666666666666666" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_editext.xml" value="0.26979166666666665" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/drawable/custom_indicator.xml" value="0.26666666666666666" />
@@ -18,7 +19,11 @@
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_travel.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/fragment_user.xml" value="0.25052083333333336" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_forgot_password.xml" value="0.25052083333333336" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_ha_noi_detail.xml" value="0.25052083333333336" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_hotel_hanoi.xml" value="0.23645833333333333" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_item_slider.xml" value="0.25052083333333336" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_item_suggest_place.xml" value="0.25052083333333336" />
+        <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_item_topreview.xml" value="0.23645833333333333" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_laucher.xml" value="0.2358974358974359" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_login.xml" value="0.23958333333333334" />
         <entry key="..\:/FILE_PROJECT__ADR/ProjectLandView/app/src/main/res/layout/layout_news_item.xml" value="0.23645833333333333" />

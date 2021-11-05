@@ -3,62 +3,79 @@ package com.example.landview;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TravelFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.landview.Topreview.TopItem;
+import com.example.landview.Topreview.TopItemAdapter;
+import com.example.landview.suggestPlace.ItemSuggest;
+import com.example.landview.suggestPlace.ItemSuggestAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TravelFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TravelFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TravelFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TravelFragment newInstance(String param1, String param2) {
-        TravelFragment fragment = new TravelFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    ImageView iconNotify,iconsetting,iconSearch;
+    EditText edtSerch;
+    RecyclerView recTopReview,recSuggest;
+    TopItemAdapter topItemAdapter;
+    ItemSuggestAdapter itemSuggestAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_travel, container, false);
+        View view = inflater.inflate(R.layout.fragment_travel,container,false);
+        //ánh xạ view
+        iconNotify = view.findViewById(R.id.imgNotifycations);
+        iconsetting = view.findViewById(R.id.imgSetting);
+        iconSearch = view.findViewById(R.id.inconSearch);
+        edtSerch = view.findViewById(R.id.edtSearch);
+        recTopReview = view.findViewById(R.id.recvTopreview);
+        recSuggest = view.findViewById(R.id.recvSuggets);
+        ///sét dữ liệu vào recycleview Top review
+        setDataRecyTopReview();
+        //sét dữ liệu vào recycleview Suggest Place
+        setDataRecySuggestPlace();
+        return view;
     }
+
+    private void setDataRecySuggestPlace() {
+        itemSuggestAdapter = new ItemSuggestAdapter(this.getContext(),getListSuggest());
+        recSuggest.setAdapter(itemSuggestAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recSuggest.setLayoutManager(linearLayoutManager);
+    }
+
+    private List<ItemSuggest> getListSuggest() {
+        List<ItemSuggest>listSuggest = new ArrayList<>();
+        listSuggest.add(new ItemSuggest(R.drawable.halong,R.drawable.tym,"Hạ Long"));
+        listSuggest.add(new ItemSuggest(R.drawable.phuquoc,R.drawable.tym,"Phú Quốc"));
+        listSuggest.add(new ItemSuggest(R.drawable.bienlonghai,R.drawable.tym,"Biển Long Hải"));
+        listSuggest.add(new ItemSuggest(R.drawable.nuibaden,R.drawable.tym,"Núi Bà Đen"));
+        listSuggest.add(new ItemSuggest(R.drawable.longan,R.drawable.tym,"Long An"));
+        return listSuggest;
+    }
+
+    private void setDataRecyTopReview() {
+        topItemAdapter = new TopItemAdapter(this.getContext(),getListTop());
+        recTopReview.setAdapter(topItemAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recTopReview.setLayoutManager(linearLayoutManager);
+    }
+
+    private List<TopItem> getListTop() {
+        List<TopItem>list = new ArrayList<>();
+        list.add(new TopItem(R.drawable.hanoi,R.drawable.tym,"Hà Nội"));
+        list.add(new TopItem(R.drawable.dalat_dulich,R.drawable.tym,"Đà Lạt"));
+        list.add(new TopItem(R.drawable.vungtau,R.drawable.tym,"Vũng Tàu"));
+        list.add(new TopItem(R.drawable.danang,R.drawable.tym,"Đà Nẵng"));
+        return list;
+    }
+
 }

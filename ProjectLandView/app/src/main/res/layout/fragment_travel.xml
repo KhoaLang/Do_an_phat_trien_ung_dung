@@ -64,6 +64,7 @@
                             android:background="@drawable/custom_editext"
                             android:hint="@string/hintSearch"
                             android:textSize="15sp"
+                            android:id="@+id/edtSearch"
                             android:fontFamily="@font/scheherazader"
                             android:paddingStart="50dp"
                             />
@@ -80,8 +81,39 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp">
-                
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/top_review"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/scheherazade_bold"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recvTopreview"
+                        android:layout_marginTop="15dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/suggest_place"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/scheherazade_bold"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recvSuggets"
+                        android:layout_marginTop="15dp"/>
+                </LinearLayout>
             </ScrollView>
         </LinearLayout>
 

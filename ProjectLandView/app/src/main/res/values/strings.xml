@@ -34,6 +34,9 @@
     <string name="bienbaitrac">Biển Bãi Trước</string>
     <string name="textDes">Hồ Hoàn Kiếm là hồ nước ngọt nhân tạo nằm giữa thủ đô Hà Nội. Hồ rộng tới 12ha với chiều dài 700m, rộng 200m và sâu hơn 1m. Giữa hồ có tháp rùa, trên hồ có đền Ngọc Sơn,
         xung quanh là cầu Thê Húc, tháp Bút và đền Bà Kiệu.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_review">Top review</string>
+    <string name="suggest_place">Suggest Place</string>
+   <string name="hotel">Khách sạn</string>
+    <string name="restaurant">Nhà hàng</string>
+    <string name="more"><u>Xem thêm</u></string>
 </resources>

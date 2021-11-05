@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.landview.HomeFragment.DetailReview.ImageFragment.Image;
+import com.example.landview.HomeFragment.DetailReview.OverviewFragment.Overview;
+import com.example.landview.HomeFragment.DetailReview.ReviewFragment.ReviewFragment;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);

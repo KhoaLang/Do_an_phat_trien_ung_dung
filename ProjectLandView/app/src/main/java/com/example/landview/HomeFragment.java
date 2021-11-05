@@ -3,19 +3,26 @@ package com.example.landview;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.example.landview.HomeFragment.News.NewItem;
+import com.example.landview.HomeFragment.News.NewItemAdapter;
+import com.example.landview.HomeFragment.Reviews.Review;
+import com.example.landview.HomeFragment.Services.ItemService;
+import com.example.landview.HomeFragment.Services.ItemServiceAdapter;
+import com.example.landview.HomeFragment.Slider.Slider;
+import com.example.landview.HomeFragment.Slider.SliderAdapter;
+import com.example.landview.HomeFragment.trips.Trips;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +60,11 @@ public class HomeFragment extends Fragment {
                 switch (i)
                 {
                     case 0:
-                        Intent intent = new Intent(getActivity(),Trips.class);
+                        Intent intent = new Intent(getActivity(), Trips.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        Intent intent1 = new Intent(getActivity(),Review.class);
+                        Intent intent1 = new Intent(getActivity(), Review.class);
                         startActivity(intent1);
                         break;
                     case 2:
