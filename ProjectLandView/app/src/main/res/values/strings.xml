@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Landview</string>
+    <string name="welcome">Welcome to LandView</string>
+    <string name="Text_intro">Traveling helps one to understand,they are not actually lost.</string>
+    <string name="btn_Login">Login</string>
+    <string name="btn_signup">Sign up</string>
+    <string name="CreateAccount">Create Account</string>
+    <string name="userName">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="type_Password">Type Password Again</string>
+    <string name="policy">I agree all Terms and Conditions</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="login_yourAccount">Login to your account</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="dont_account">Do not have an account yet?</string>
+    <string name="sigup_now">Sign up now</string>
+    <string name="login_with">Or login with</string>
+    <string name="FragmentHome">Home</string>
+    <string name="fragmentTravel">Travel</string>
+    <string name="fragmentFavorite">Favorite</string>
+    <string name="fragmentUser">User</string>
+    <string name="hintSearch">Search Destination</string>
+    <string name="What_want">What do you want</string>
+    <string name="news">News</string>
+    <string name="Plan">Plan for trip</string>
+    <string name="search">Search</string>
+    <string name="recent">Recent Search</string>
+    <string name="hoguom">Hồ Gươm - Hà Nội</string>
+    <string name="hoguom_address">Phường Hoàng Trống,Quận Hoàn Kiếm,Hà Nội</string>
+    <string name="hoguom_address_detail">Địa chỉ: phường Hoàng Trống,quận Hoàng Kiếm,Hà Nội</string>
+    <string name="bienbaitrac">Biển Bãi Trước</string>
+    <string name="textDes">Hồ Hoàn Kiếm là hồ nước ngọt nhân tạo nằm giữa thủ đô Hà Nội. Hồ rộng tới 12ha với chiều dài 700m, rộng 200m và sâu hơn 1m. Giữa hồ có tháp rùa, trên hồ có đền Ngọc Sơn,
+        xung quanh là cầu Thê Húc, tháp Bút và đền Bà Kiệu.</string>
+    <string name="top_review">Top review</string>
+    <string name="suggest_place">Suggest Place</string>
+   <string name="hotel">Khách sạn</string>
+    <string name="restaurant">Nhà hàng</string>
+    <string name="more"><u>Xem thêm</u></string>
+</resources>
