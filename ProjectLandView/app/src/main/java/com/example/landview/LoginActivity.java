@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean CheckData() {
         //kiểm tra input người dùng nhập vào
-        String textEmail = editTextemailLogin.getText().toString();
+        String textEmail = editTextemailLogin.getText().toString().trim();
         String textPass = editTextpassLogin.getText().toString();
 //        if(textEmail.length()==0 || textPass.length() ==0)
 //        {

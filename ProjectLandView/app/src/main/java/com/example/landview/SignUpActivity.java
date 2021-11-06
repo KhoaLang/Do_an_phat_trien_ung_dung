@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void createUser() {
-        String email = editTextEmail.getText().toString();
+        String email = editTextEmail.getText().toString().trim();
         String pass = editTextPass.getText().toString();
 
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
