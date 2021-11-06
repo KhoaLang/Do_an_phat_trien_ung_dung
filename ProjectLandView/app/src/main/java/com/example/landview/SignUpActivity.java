@@ -42,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //thay đổi label action bar
-        getSupportActionBar().setTitle("Register");
+//        getSupportActionBar().setTitle("Register");
 
         //xử lý sự kiện
         buttonCreate.setOnClickListener(new View.OnClickListener() {

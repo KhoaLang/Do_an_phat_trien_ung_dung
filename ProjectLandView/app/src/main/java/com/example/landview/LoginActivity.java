@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextpassLogin.setText(sharedPreferences.getString("Password",""));
 
         //thay đổi label action bar
-        getSupportActionBar().setTitle("Login");
+//        getSupportActionBar().setTitle("Login");
 
         //sét sự kiện button
 //        btnLogin.setOnClickListener(new View.OnClickListener() {

@@ -19,7 +19,7 @@ public class LauncherActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_Login);
 
         //đổi action bar label
-        getSupportActionBar().setTitle("Welcome to LandView.");
+//        getSupportActionBar().setTitle("Welcome to LandView.");
 
         //sự kiện button
         buttonSignup.setOnClickListener(new View.OnClickListener() {

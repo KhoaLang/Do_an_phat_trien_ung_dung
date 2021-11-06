@@ -18,8 +18,8 @@ public class SplashScreen extends AppCompatActivity {
     protected void onPostCreate( Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         setContentView(R.layout.layout_splash_screen);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
         ShowStartDialog();
     }
 

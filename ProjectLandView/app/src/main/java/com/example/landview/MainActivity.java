@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-    private ActionBar actionBar;
+//    private ActionBar actionBar;
     private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //ánh xạ
         bottomNavigationView = findViewById(R.id.bottomNav);
-        actionBar = getSupportActionBar();
+//        actionBar = getSupportActionBar();
         //đánh dấu mặc định
-        actionBar.setTitle("Home");
+//        actionBar.setTitle("Home");
         loadFragment(new HomeFragment());
+
         //sét sự kiện item bottom
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -33,22 +34,22 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.home:
-                        actionBar.setTitle("Home");
+//                        actionBar.setTitle("Home");
                         fragment = new HomeFragment();
                         loadFragment(fragment);
                         return true;
                     case R.id.travel:
-                        actionBar.setTitle("Travel");
+//                        actionBar.setTitle("Travel");
                         fragment = new TravelFragment();
                         loadFragment(fragment);
                         return true;
                     case R.id.favorite:
-                        actionBar.setTitle("Favorite");
+//                        actionBar.setTitle("Favorite");
                         fragment = new FavoriteFragment();
                         loadFragment(fragment);
                         return true;
                     case R.id.user:
-                        actionBar.setTitle("User");
+//                        actionBar.setTitle("User");
                         fragment = new UserFragment();
                         loadFragment(fragment);
                         return true;

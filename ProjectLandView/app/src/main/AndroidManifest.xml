@@ -17,49 +17,58 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="true"
-            android:parentActivityName=".LauncherActivity">
+            >
+<!--            android:parentActivityName=".LauncherActivity"-->
 
         </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:parentActivityName=".LauncherActivity">
+            >
+<!--            android:parentActivityName=".LauncherActivity"-->
 
         </activity>
         <activity
             android:name=".ForgotPassActivity"
             android:exported="true"
-            android:parentActivityName=".LoginActivity">
+            >
+<!--            android:parentActivityName=".LoginActivity"-->
 
         </activity>
         <activity
             android:name=".HomeFragmentSection.trips.Trips"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
+            >
+<!--            android:parentActivityName=".MainActivity"-->
 
         </activity>
         <activity
             android:name=".HomeFragmentSection.Reviews.Review"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
+            >
+<!--            android:parentActivityName=".MainActivity"-->
 
         </activity>
         <activity
             android:name=".Weather"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
+            >
+<!--            android:parentActivityName=".MainActivity"-->
 
         </activity>
         <activity
             android:name=".Promotion"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
+            >
+<!--            android:parentActivityName=".MainActivity"-->
 
         </activity>
         <activity
             android:name=".HomeFragmentSection.DetailReview.DetailHoguom"
             android:exported="true"
-            android:parentActivityName=".HomeFragmentSection.Reviews.Review">
+
+            >
+<!--            android:parentActivityName=".HomeFragmentSection.Reviews.Review"-->
 
         </activity>
 <!--      <activity android:name=".MainActivity">-->
