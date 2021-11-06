@@ -37,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent intent1 = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        Intent intent = new Intent(SplashScreen.this,LaucherActivity.class);
+                        Intent intent = new Intent(SplashScreen.this, LauncherActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -52,7 +52,7 @@ public class SplashScreen extends AppCompatActivity {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(SplashScreen.this,LaucherActivity.class);
+                        Intent intent = new Intent(SplashScreen.this, LauncherActivity.class);
                         startActivity(intent);
                         finish();
                     }

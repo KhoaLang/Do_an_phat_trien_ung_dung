@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.trips;
+package com.example.landview.HomeFragmentSection.trips;
 
 import android.os.Bundle;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.DetailReview.ImageFragment;
+package com.example.landview.HomeFragmentSection.DetailReview.ImageFragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;

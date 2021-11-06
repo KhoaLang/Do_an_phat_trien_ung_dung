@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.DetailReview.OverviewFragment;
+package com.example.landview.HomeFragmentSection.DetailReview.OverviewFragment;
 
 import android.os.Bundle;
 

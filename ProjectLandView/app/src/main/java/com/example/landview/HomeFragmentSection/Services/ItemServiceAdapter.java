@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.Services;
+package com.example.landview.HomeFragmentSection.Services;
 
 import android.content.Context;
 import android.view.LayoutInflater;

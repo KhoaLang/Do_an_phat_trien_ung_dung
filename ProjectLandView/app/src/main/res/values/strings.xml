@@ -2,7 +2,7 @@
     <string name="app_name">Landview</string>
     <string name="welcome">Welcome to LandView</string>
     <string name="Text_intro">Traveling helps one to understand,they are not actually lost.</string>
-    <string name="btn_Login">Login</string>
+    <string name="btn_Login">Sign In</string>
     <string name="btn_signup">Sign up</string>
     <string name="CreateAccount">Create Account</string>
     <string name="userName">Username</string>

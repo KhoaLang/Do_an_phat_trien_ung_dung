@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.Slider;
+package com.example.landview.HomeFragmentSection.Slider;
 
 public class Slider {
     private int resID;

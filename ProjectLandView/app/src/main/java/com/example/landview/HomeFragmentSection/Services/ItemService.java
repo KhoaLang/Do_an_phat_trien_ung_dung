@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.Services;
+package com.example.landview.HomeFragmentSection.Services;
 
 public class ItemService {
     private int bg_Resource;//background item

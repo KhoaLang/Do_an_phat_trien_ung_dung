@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.Reviews;
+package com.example.landview.HomeFragmentSection.Reviews;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.landview.HomeFragment.DetailReview.DetailHoguom;
+import com.example.landview.HomeFragmentSection.DetailReview.DetailHoguom;
 import com.example.landview.R;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.News;
+package com.example.landview.HomeFragmentSection.News;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.DetailReview.ImageFragment;
+package com.example.landview.HomeFragmentSection.DetailReview.ImageFragment;
 
 public class ItemImage {
     private int Image;

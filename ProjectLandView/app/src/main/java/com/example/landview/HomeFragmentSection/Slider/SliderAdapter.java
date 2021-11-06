@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.Slider;
+package com.example.landview.HomeFragmentSection.Slider;
 
 import android.view.LayoutInflater;
 import android.view.View;

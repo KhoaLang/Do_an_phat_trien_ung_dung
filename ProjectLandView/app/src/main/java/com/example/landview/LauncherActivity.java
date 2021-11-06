@@ -8,15 +8,19 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LaucherActivity extends AppCompatActivity {
+public class LauncherActivity extends AppCompatActivity {
     private Button buttonSignup,buttonLogin;
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        setContentView(R.layout.layout_laucher);
+        setContentView(R.layout.layout_launcher);
         //ánh xạ view
         buttonSignup = findViewById(R.id.btn_signup);
         buttonLogin = findViewById(R.id.btn_Login);
+
+        //đổi action bar label
+        getSupportActionBar().setTitle("Welcome to LandView.");
+
         //sự kiện button
         buttonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,13 +37,13 @@ public class LaucherActivity extends AppCompatActivity {
     }
 
     private void showLoginActivity() {
-        Intent intent = new Intent(LaucherActivity.this,LoginActivity.class);
+        Intent intent = new Intent(LauncherActivity.this,LoginActivity.class);
         startActivity(intent);
 
     }
 
     private void showSignupActivity() {
-        Intent intent = new Intent(LaucherActivity.this,SignUpActivity.class);
+        Intent intent = new Intent(LauncherActivity.this,SignUpActivity.class);
         startActivity(intent);
 
     }

@@ -1,4 +1,4 @@
-package com.example.landview.HomeFragment.Reviews;
+package com.example.landview.HomeFragmentSection.Reviews;
 
 import android.os.Bundle;
 import android.widget.EditText;
