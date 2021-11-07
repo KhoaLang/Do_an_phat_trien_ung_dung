@@ -31,8 +31,9 @@ public class ForgotPassActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.layout_forgot_password);
         resetPasswordBtn = findViewById(R.id.reset_password_btn);
         resetEmailEt = findViewById(R.id.reset_email_et);
@@ -45,7 +46,7 @@ public class ForgotPassActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = resetEmailEt.getText().toString().trim();
-                if(checkData(email)){
+                if (checkData(email)) {
                     resetEmail(email);
                 }
             }

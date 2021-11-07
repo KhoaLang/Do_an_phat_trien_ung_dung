@@ -152,4 +152,5 @@
             android:src="@drawable/gg_logo"
             android:layout_marginTop="1.5dp"/>
     </LinearLayout>
+
 </LinearLayout>
