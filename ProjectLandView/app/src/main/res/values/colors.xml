@@ -19,4 +19,5 @@
     <color name="weatherColor">#F8B62D</color>
     <color name="promotionColor">#F34055</color>
     <color name="item_News">#F5EDE9</color>
+    <color name="sky_blue">#35ADF6</color>
 </resources>

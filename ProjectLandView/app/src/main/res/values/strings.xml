@@ -21,6 +21,7 @@
     <string name="FragmentHome">Home</string>
     <string name="fragmentTravel">Travel</string>
     <string name="fragmentFavorite">Favorite</string>
+    <string name="emptyFavorite">look like you did not add any favourite place yet</string>
     <string name="fragmentUser">User</string>
     <string name="hintSearch">Search Destination</string>
     <string name="What_want">What do you want</string>
