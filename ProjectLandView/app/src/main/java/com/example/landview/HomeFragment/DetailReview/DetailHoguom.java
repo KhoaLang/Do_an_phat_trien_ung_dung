@@ -1,17 +1,14 @@
-package com.example.landview.HomeFragmentSection.DetailReview;
+package com.example.landview.HomeFragment.DetailReview;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.landview.HomeFragmentSection.DetailReview.OverviewFragment.Overview;
 import com.example.landview.R;
-import com.example.landview.HomeFragmentSection.Reviews.ItemReview;
+import com.example.landview.HomeFragment.Reviews.ItemReview;
 import com.example.landview.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -21,8 +18,7 @@ public class DetailHoguom extends AppCompatActivity {
     private ViewPager2 mviewpager;
     private ImageView img;
     ViewPagerAdapter viewPagerAdapter;
-    ItemReview itemReview;
-    String destination = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +29,13 @@ public class DetailHoguom extends AppCompatActivity {
         {
             return;
         }
-        itemReview = (ItemReview) bundle.get("object_ItemReview");
+        ItemReview itemReview = (ItemReview) bundle.get("object_ItemReview");
         //ánh xạ view
         mtablayout = findViewById(R.id.tablayout);
         mviewpager = findViewById(R.id.viewPager2);
         img = findViewById(R.id.imgView);
         img.setImageResource(itemReview.getImg());
-       ///
-        setDataToFragment();
-
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this, false);
+        viewPagerAdapter = new ViewPagerAdapter(this);
         mviewpager.setAdapter(viewPagerAdapter);
         new TabLayoutMediator(mtablayout,mviewpager,(tab, position) ->{
             switch (position)
@@ -59,20 +52,6 @@ public class DetailHoguom extends AppCompatActivity {
                 default:tab.setText("Overview");
             }
         }).attach();
-    }
-
-    private void setDataToFragment() {
-        String textAddress = itemReview.getAddress();
-        destination = textAddress;
-
-        Bundle bundle1 = new Bundle();
-        bundle1.putString("nameAdd",destination);
-        Overview overview = new Overview();
-        overview.setArguments(bundle1);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.viewPager2,overview);
-        fragmentTransaction.commit();
-
     }
 
 

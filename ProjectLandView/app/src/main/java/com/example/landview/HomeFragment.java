@@ -15,14 +15,14 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.example.landview.HomeFragmentSection.News.NewItem;
-import com.example.landview.HomeFragmentSection.News.NewItemAdapter;
-import com.example.landview.HomeFragmentSection.Reviews.Review;
-import com.example.landview.HomeFragmentSection.Services.ItemService;
-import com.example.landview.HomeFragmentSection.Services.ItemServiceAdapter;
-import com.example.landview.HomeFragmentSection.Slider.Slider;
-import com.example.landview.HomeFragmentSection.Slider.SliderAdapter;
-import com.example.landview.HomeFragmentSection.trips.Trips;
+import com.example.landview.HomeFragment.News.NewItem;
+import com.example.landview.HomeFragment.News.NewItemAdapter;
+import com.example.landview.HomeFragment.Reviews.Review;
+import com.example.landview.HomeFragment.Services.ItemService;
+import com.example.landview.HomeFragment.Services.ItemServiceAdapter;
+import com.example.landview.HomeFragment.Slider.Slider;
+import com.example.landview.HomeFragment.Slider.SliderAdapter;
+import com.example.landview.HomeFragment.trips.Trips;
 
 import java.util.ArrayList;
 import java.util.List;
