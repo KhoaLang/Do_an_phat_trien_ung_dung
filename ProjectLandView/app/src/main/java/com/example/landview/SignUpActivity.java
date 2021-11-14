@@ -3,6 +3,7 @@ package com.example.landview;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,17 +15,24 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText editTextUsername,editTextEmail,editTextPass,editTextTypePass;
     private CheckBox checkBoxPolicy;
     private Button buttonCreate;
     private FirebaseAuth mAuth;
-
+    private FirebaseFirestore db;
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -49,20 +57,29 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(checkData()){
-                    createUser();
+                    String email = editTextEmail.getText().toString().trim();
+                    String pass = editTextPass.getText().toString();
+                    String username = editTextUsername.getText().toString();
+
+                    createUser(email, pass, username);
+
+
                 }
             }
         });
     }
 
-    private void createUser() {
-        String email = editTextEmail.getText().toString().trim();
-        String pass = editTextPass.getText().toString();
+    private void createUser(String email, String pass, String username) {
 
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
+                    //bring user datas to firestore
+                    String uid = mAuth.getCurrentUser().getUid();
+                    addingDataToFireStore(username, email, uid);
+
                     Toast.makeText(SignUpActivity.this, "Sign Up completed", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                     startActivity(intent);
@@ -144,5 +161,25 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private void addingDataToFireStore(String username, String email, String userId){
+        db = FirebaseFirestore.getInstance();
+        Map<String, Object> user = new HashMap<>();
+        user.put("email", email);
+        user.put("username", username);
+        user.put("UID", userId);
+
+        db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Toast.makeText(SignUpActivity.this, "Success create user in FireStore", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(SignUpActivity.this, "Fail to create user in FireStore", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
