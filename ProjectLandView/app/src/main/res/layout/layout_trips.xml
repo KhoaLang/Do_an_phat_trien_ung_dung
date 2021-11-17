@@ -14,7 +14,30 @@
         android:gravity="center_horizontal"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="15dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/paper"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/edtPlanName"
+            android:hint="@string/planName"
+            android:fontFamily="@font/scheherazader"
+            android:textSize="20sp"
+            android:paddingStart="10dp"
+            android:background="@drawable/custom_editext"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:orientation="horizontal"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
@@ -22,17 +45,40 @@
         android:layout_marginEnd="15dp">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:src="@drawable/destination"/>
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="match_parent"
             android:id="@+id/edtDes"
             android:hint="@string/hintSearch"
             android:fontFamily="@font/scheherazader"
             android:textSize="20sp"
             android:paddingStart="10dp"
             android:background="@drawable/custom_editext"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/description"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/edtDescription"
+            android:hint="@string/planDescription"
+            android:fontFamily="@font/scheherazader"
+            android:textSize="20sp"
+            android:paddingStart="10dp"
+            android:inputType="text|textMultiLine"
+            android:background="@drawable/custom_edittext_textarea"
             />
     </LinearLayout>
     <LinearLayout
@@ -54,13 +100,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/edtDateGO"
             android:layout_weight="2.25"
-            android:hint="dd/mm/yy"/>
+            android:hint="dd/mm/yy"
+            android:inputType="date"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textSize="40sp"/>
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.25"
             android:id="@+id/edtDateEnd"
-            android:hint="dd/mm/yy"/>
+            android:hint="dd/mm/yy"
+            android:inputType="date"/>
     </LinearLayout>
     <android.widget.Button
         android:layout_width="match_parent"
@@ -71,10 +124,12 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_bottom"
         android:backgroundTint="@color/primary_color"
-        android:text="Create Plane"
+        android:text="Create Plan"
         android:textColor="@color/white"
         android:textSize="23sp"
         android:textAllCaps="false"
         android:fontFamily="@font/scheherazade_bold"
         />
+
+
 </LinearLayout>

@@ -24,9 +24,11 @@
     <string name="emptyFavorite">look like you did not add any favourite place yet</string>
     <string name="fragmentUser">User</string>
     <string name="hintSearch">Search Destination</string>
+    <string name="planName">Name your plan</string>
+    <string name="planDescription">Description (optional)</string>
     <string name="What_want">What do you want</string>
     <string name="news">News</string>
-    <string name="Plan">Plan for trip</string>
+    <string name="Plan">Plan your trip</string>
     <string name="search">Search</string>
     <string name="recent">Recent Search</string>
     <string name="hoguom">Hồ Gươm - Hà Nội</string>
