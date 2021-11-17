@@ -1,6 +1,7 @@
 package com.example.landview;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,12 +61,10 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(checkData()){
                     String email = editTextEmail.getText().toString().trim();
-                    String pass = editTextPass.getText().toString();
-                    String username = editTextUsername.getText().toString();
+                    String pass = editTextPass.getText().toString().trim();
+                    String username = editTextUsername.getText().toString().trim();
 
                     createUser(email, pass, username);
-
-
                 }
             }
         });
@@ -165,10 +166,15 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void addingDataToFireStore(String username, String email, String userId){
         db = FirebaseFirestore.getInstance();
+
+        //empty list contain liked plac
+
         Map<String, Object> user = new HashMap<>();
+        user.put("UID", userId);
+        user.put("avatar", "");
+        user.put("likes", Arrays.asList());
         user.put("email", email);
         user.put("username", username);
-        user.put("UID", userId);
 
         db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
