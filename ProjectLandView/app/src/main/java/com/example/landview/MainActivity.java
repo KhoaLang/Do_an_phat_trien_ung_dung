@@ -1,20 +1,30 @@
 package com.example.landview;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.AttributeSet;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-//    private ActionBar actionBar;
+    //    private ActionBar actionBar;
     private BottomNavigationView bottomNavigationView;
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
 //        actionBar = getSupportActionBar();
         //đánh dấu mặc định
 //        actionBar.setTitle("Home");
+
+
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+               Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.layoutFrame);
+               if(fragment != null){
+                updateIcon(fragment);
+               }
+            }
+        });
+
         loadFragment(new HomeFragment());
 
         //sét sự kiện item bottom
@@ -31,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
-                switch (item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.home:
 //                        actionBar.setTitle("Home");
                         fragment = new HomeFragment();
@@ -57,12 +78,72 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 
+    private void updateIcon(Fragment fragment){
+        String fragClassName = fragment.getClass().getName();
+        if(fragClassName.equals(HomeFragment.class.getName())){
+            bottomNavigationView.getMenu().getItem(0).setChecked(true);
+        }
+        if(fragClassName.equals(TravelFragment.class.getName())){
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+        if(fragClassName.equals(FavoriteFragment.class.getName())){
+            bottomNavigationView.getMenu().getItem(2).setChecked(true);
+        }
+        if(fragClassName.equals(UserFragment.class.getName())){
+            bottomNavigationView.getMenu().getItem(3).setChecked(true);
+        }
+
+    }
+
+
+    // Bấm back 2 lần để thoát
+    boolean doubleBackToExitPressedOnce = false;
+    @Override
+    public void onBackPressed() {
+        // Kiểm tra xem backstack có còn 1 fragment
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+
+            // Ktra đã ấn back 2 lần chưa
+            if (doubleBackToExitPressedOnce) {
+                finish();
+            } else {
+                this.doubleBackToExitPressedOnce = true;
+                Toast.makeText(this, "Click BACK again to exit", Toast.LENGTH_SHORT).show();
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+
+            }
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
     private void loadFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.layoutFrame,fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        String backStateName = fragment.getClass().getName();
+        String fragmentTag = backStateName;
+
+        FragmentManager manager = getSupportFragmentManager();
+        // Nếu fragment có trong backstack, ta tái sử dụng lại fragment đó
+        //
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.layoutFrame, fragment, fragmentTag);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.addToBackStack(backStateName);
+            fragmentTransaction.commit();
+        }
+
     }
 }
