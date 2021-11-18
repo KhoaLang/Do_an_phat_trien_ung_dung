@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="6dp"
     android:orientation="vertical">
     <androidx.cardview.widget.CardView
         android:layout_width="170dp"
@@ -14,13 +15,13 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imgHotel"
+                android:id="@+id/imgRes"
                 android:src="@drawable/khachsan1"
                 android:scaleType="centerCrop"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iconHoteltym"
+                android:id="@+id/iconRestym"
                 android:src="@drawable/tym"
                 android:layout_gravity="right"
                 android:layout_marginEnd="10dp"
@@ -30,20 +31,37 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtNamehotel"
+        android:id="@+id/txtNameRes"
         android:text="abcdxyz"
+        android:fontFamily="@font/lato_regular"
         android:textSize="18dp"
         android:textColor="@color/black"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgrateHotel"
+        android:id="@+id/imgrateRes"
         android:src="@drawable/stars"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtPriceHotel"
+        android:id="@+id/txtPriceRes"
         android:text="10.000.000đ"
+        android:fontFamily="@font/lato_regular"
         android:textColor="@color/black"
         android:textSize="15sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNumberate"
+        android:visibility="gone"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtIntro"
+        android:visibility="gone"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAddress"
+        android:visibility="gone"/>
 </LinearLayout>
