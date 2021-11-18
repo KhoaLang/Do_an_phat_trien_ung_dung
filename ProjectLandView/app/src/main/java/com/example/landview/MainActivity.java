@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         // Nếu fragment có trong backstack, ta tái sử dụng lại fragment đó
         //
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
-
         if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) {
 
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
