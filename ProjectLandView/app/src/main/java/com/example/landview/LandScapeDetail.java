@@ -13,13 +13,13 @@ import com.example.landview.Hotel.Hotel;
 import com.example.landview.Hotel.HotelAdapter;
 import com.example.landview.Restaurant.ResAdapter;
 import com.example.landview.Restaurant.Restaurant;
-import com.example.landview.Topreview.TopItem;
-import com.example.landview.suggestPlace.ItemSuggest;
+import com.example.landview.Area.TopItem;
+import com.example.landview.LandScape.ItemSuggest;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopReviewDetail extends AppCompatActivity {
+public class LandScapeDetail extends AppCompatActivity {
     private ImageView imgDes;
     private TextView name,description;
     private RecyclerView rcvHotel,rcvRestaurant;

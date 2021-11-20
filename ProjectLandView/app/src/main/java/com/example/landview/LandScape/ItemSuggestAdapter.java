@@ -1,4 +1,4 @@
-package com.example.landview.suggestPlace;
+package com.example.landview.LandScape;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.R;
-import com.example.landview.TopReviewDetail;
+import com.example.landview.LandScapeDetail;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class ItemSuggestAdapter extends RecyclerView.Adapter<ItemSuggestAdapter.
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mcontext, TopReviewDetail.class);
+                Intent intent = new Intent(mcontext, LandScapeDetail.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("itemSuggest",itemSuggest);
                 intent.putExtras(bundle);

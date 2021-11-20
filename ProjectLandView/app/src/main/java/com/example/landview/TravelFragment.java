@@ -12,10 +12,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.landview.Topreview.TopItem;
-import com.example.landview.Topreview.TopItemAdapter;
-import com.example.landview.suggestPlace.ItemSuggest;
-import com.example.landview.suggestPlace.ItemSuggestAdapter;
+import com.example.landview.Area.TopItem;
+import com.example.landview.Area.TopItemAdapter;
+import com.example.landview.Hotel.Hotel;
+import com.example.landview.LandScape.ItemSuggest;
+import com.example.landview.LandScape.ItemSuggestAdapter;
+import com.example.landview.Restaurant.Restaurant;
+import com.example.landview.TravelHotel.TravelHotelAdapter;
+import com.example.landview.TravelRestaurant.TravelRestaurantAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +27,11 @@ import java.util.List;
 public class TravelFragment extends Fragment {
     ImageView iconNotify,iconsetting,iconSearch;
     EditText edtSerch;
-    RecyclerView recTopReview,recSuggest;
+    RecyclerView recTopReview,recSuggest,recvHotel,recvRestaurant;
     TopItemAdapter topItemAdapter;
     ItemSuggestAdapter itemSuggestAdapter;
+    private TravelHotelAdapter travelHotelAdapter;
+    private TravelRestaurantAdapter travelRestaurantAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,11 +44,49 @@ public class TravelFragment extends Fragment {
         edtSerch = view.findViewById(R.id.edtSearch);
         recTopReview = view.findViewById(R.id.recvTopreview);
         recSuggest = view.findViewById(R.id.recvSuggets);
+        recvHotel = view.findViewById(R.id.recvTophotel);
+        recvRestaurant = view.findViewById(R.id.recvTopRestaurant);
         ///sét dữ liệu vào recycleview Top review
         setDataRecyTopReview();
         //sét dữ liệu vào recycleview Suggest Place
         setDataRecySuggestPlace();
+        //sét dữ liệu vào recycle view Top Hotel
+        setDataRecyTopHotel();
+        //sét dữ liệu vào recycle view Top Restaurant
+        setDataRecyTopRestaurant();
         return view;
+    }
+
+    private void setDataRecyTopRestaurant() {
+        travelRestaurantAdapter = new TravelRestaurantAdapter(this.getContext(),getListRestaurant());
+        recvRestaurant.setAdapter(travelRestaurantAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recvRestaurant.setLayoutManager(linearLayoutManager);
+    }
+
+    private List<Restaurant> getListRestaurant() {
+        List<Restaurant>list = new ArrayList<>();
+        list.add(new Restaurant(R.drawable.nhahang1,R.drawable.tym,R.drawable.dot,"Pizza Full House","$$-$$$","185 đánh giá","Phù hợp với người ăn chay, Tùy chọn ăn chay","Số 27 trong số 2.417 Nhà hàng tại Hà Nội","https://www.tripadvisor.com.vn/Restaurant_Review-g293924-d17793352-Reviews-Pizza_Full_House-Hanoi.html"));
+        list.add(new Restaurant(R.drawable.nhahang2,R.drawable.tym,R.drawable.dot,"Hemispheres Steak & Seafood Grill","$$$$","210 đánh giá","Tùy chọn đồ ăn không có gluten","Số 35 trong số 2.417 Nhà hàng tại Hà Nội","https://www.tripadvisor.com.vn/Restaurant_Review-g293924-d1537464-Reviews-Hemispheres_Steak_Seafood_Grill-Hanoi.html"));
+        list.add(new Restaurant(R.drawable.nhahang3,R.drawable.tym,R.drawable.dot,"Dalcheeni HANOI","933 lượt đánh giá","Phù hợp với người ăn chay, Tùy chọn ăn chay, Thịt kiểu Hồi giáo, Tùy chọn đồ ăn không có gluten","Số 43 trong số 2.417 Nhà hàng tại Hà Nội","https://www.tripadvisor.com.vn/Restaurant_Review-g293924-d8116368-Reviews-Dalcheeni_HANOI-Hanoi.html"));
+        list.add(new Restaurant(R.drawable.nhahng4,R.drawable.tym,R.drawable.dot,"Hidden Gem Coffee","$","380 lượt đánh giá","Tùy chọn ăn chay, Tùy chọn đồ ăn không có gluten","Số 4 trong số 493 Cà phê & Trà tại Hà Nội","https://www.tripadvisor.com.vn/Restaurant_Review-g293924-d15273821-Reviews-Hidden_Gem_Cafe_Pub-Hanoi.html"));
+        return list;
+    }
+
+    private void setDataRecyTopHotel() {
+        travelHotelAdapter = new TravelHotelAdapter(this.getContext(),getListHotel());
+        recvHotel.setAdapter(travelHotelAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        recvHotel.setLayoutManager(linearLayoutManager);
+    }
+
+    private List<Hotel> getListHotel() {
+        List<Hotel>list = new ArrayList<>();
+        list.add(new Hotel(R.drawable.khachsan1,R.drawable.tym,R.drawable.stars2,"Little Charm Hanoi Hostel - Homestay","300.000đ","3024 lượt đánh giá","Nằm trong bán kính 2 phút đi bộ từ Ô Quan Chưởng ở quận Hoàn Kiếm, Little Charm Hanoi Hostel - Homestay cung cấp chỗ nghỉ trang nhã và nhà hàng kiểu Ý ngay trong khuôn viên.","Quận Hoàng Kiếm,Hà Nội","https://www.booking.com/hotel/vn/little-charm-hanoi-hostel.vi.html?label=gen173nr-1FCAMYAij0ATisA0gqWARo9AGIAQGYASq4ARfIAQzYAQHoAQH4AQKIAgGoAgO4At_p5IwGwAIB0gIkY2U0ZTA2MTgtOWY5Ny00MTA3LWE3ZGMtMzYyMWUyY2JiNTA52AIF4AIB;sid=6c7fa7deee361680673c0e9f77011cba;sig=v1GjJjPAEv"));
+        list.add(new Hotel(R.drawable.khachsan2,R.drawable.tym,R.drawable.stars2,"The Chi Novel Hostel ","320.000đ","3000 lượt đánh giá"," Tọa lạc tại một vị trí thuận tiện ở trung tâm thành phố Hà Nội, The Chi Novel Hostel có phòng nghỉ gắn máy điều hòa, xe đạp cho khách sử dụng miễn phí, WiFi miễn phí và quầy bar.","Quận Hoàng Kiếm,Hà Nội","https://www.booking.com/hotel/vn/the-chi-novel-hostel.vi.html?label=gen173nr-1FCAMYAij0ATisA0gqWARo9AGIAQGYASq4ARfIAQzYAQHoAQH4AQKIAgGoAgO4At_p5IwGwAIB0gIkY2U0ZTA2MTgtOWY5Ny00MTA3LWE3ZGMtMzYyMWUyY2JiNTA52AIF4AIB;sid=6c7fa7deee361680673c0e9f77011cba;sig=v1GjJjPAEv"));
+        list.add(new Hotel(R.drawable.khachsan3,R.drawable.tym,R.drawable.stars2,"Blue Hanoi Inn Hotel  ","400.000đ","2400 lượt đánh giá","Sap Hotel By Connek provides chic and modern rooms with free WiFi in Hanoi. Featuring a 24-hour front desk, the hotel has its own restaurant, tour desk and spa for guests to relax.","https://www.booking.com/hotel/vn/essence-palace.vi.html?label=gen173nr-1FCAMYAij0ATisA0gqWARo9AGIAQGYASq4ARfIAQzYAQHoAQH4AQKIAgGoAgO4At_p5IwGwAIB0gIkY2U0ZTA2MTgtOWY5Ny00MTA3LWE3ZGMtMzYyMWUyY2JiNTA52AIF4AIB;sid=6c7fa7deee361680673c0e9f77011cba;sig=v1GjJjPAEv"));
+        list.add(new Hotel(R.drawable.khachsan4,R.drawable.tym,R.drawable.stars2,"Little Charm Hanoi Hostel - Homestay","300.000đ","3024 lượt đánh giá","Tọa lạc tại Khu Phố Cổ của thành phố Hà Nội, Blue Hanoi Inn Hotel cung cấp các phòng rộng rãi với TV màn hình phẳng cùng Wi-Fi miễn phí.","Quận Hoàng Kiếm,Hà Nội","https://www.booking.com/hotel/vn/travelmate-hanoi-hanoi.vi.html?label=gen173nr-1FCAMYAij0ATisA0gqWARo9AGIAQGYASq4ARfIAQzYAQHoAQH4AQKIAgGoAgO4At_p5IwGwAIB0gIkY2U0ZTA2MTgtOWY5Ny00MTA3LWE3ZGMtMzYyMWUyY2JiNTA52AIF4AIB;sid=6c7fa7deee361680673c0e9f77011cba;sig=v1GjJjPAEv"));
+        return list;
     }
 
     private void setDataRecySuggestPlace() {
@@ -71,11 +115,10 @@ public class TravelFragment extends Fragment {
 
     private List<TopItem> getListTop() {
         List<TopItem>list = new ArrayList<>();
-        list.add(new TopItem(R.drawable.hanoi,R.drawable.tym,"Hà Nội","Hồ Hoàn Kiếm là hồ nước ngọt nhân tạo nằm giữa thủ đô Hà Nội. Hồ rộng tới 12ha với chiều dài 700m, rộng 200m và sâu hơn 1m. Giữa hồ có tháp rùa, trên hồ có đền Ngọc Sơn,\n" +
-                "xung quanh là cầu Thê Húc, tháp Bút và đền Bà Kiệu."));
-        list.add(new TopItem(R.drawable.dalat_dulich,R.drawable.tym,"Đà Lạt","Đà Lạt hiện nay là thành phố nổi tiếng về du lịch bậc nhất của Việt Nam. Ai cũng đã từng nghe và biết về thành phố ngàn hoa mộng mơ."));
-        list.add(new TopItem(R.drawable.vungtau,R.drawable.tym,"Vũng Tàu","Vũng Tàu là một thành phố thuộc tỉnh Bà Rịa – Vũng Tàu, ở vùng Đông Nam Bộ, Việt Nam. Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ"));
-        list.add(new TopItem(R.drawable.danang,R.drawable.tym,"Đà Nẵng","Đà Nẵng là một thành phố trực thuộc trung ương, nằm trong vùng Duyên hải Nam Trung Bộ Việt Nam, là thành phố trung tâm và lớn nhất khu vực miền Trung - Tây Nguyên."));
+        list.add(new TopItem(R.drawable.hanoi,R.drawable.tym,"Hà Nội","Hà Nội là thủ đô, thành phố trực thuộc trung ương và cũng là một đô thị loại đặc biệt của Việt Nam. Hà Nội nằm về phía tây bắc của trung tâm vùng đồng bằng châu thổ sông Hồng, với địa hình bao gồm vùng đồng bằng trung tâm và vùng đồi núi ở phía bắc và phía tây thành phố. Với diện tích 3.358,6 km2 và dân số 8,05 triệu người (2019), Hà Nội là thành phố có diện tích lớn nhất Việt Nam, đồng thời cũng là thành phố đông dân thứ hai và có mật độ dân số cao thứ hai trong 63 đơn vị hành chính cấp tỉnh của Việt Nam, nhưng phân bố dân số không đồng đều. Hà Nội có 30 đơn vị hành chính cấp huyện, gồm 12 quận, 17 huyện và 1 thị xã.","https://www.google.com/maps/place/H%C3%A0+N%E1%BB%99i,+Ho%C3%A0n+Ki%E1%BA%BFm,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0227387,105.8194541,14z/data=!3m1!4b1!4m5!3m4!1s0x3135ab9bd9861ca1:0xe7887f7b72ca17a9!8m2!3d21.0277644!4d105.8341598?hl=vi-VN"));
+        list.add(new TopItem(R.drawable.dalat_dulich,R.drawable.tym,"Đà Lạt","Đà Lạt là thành phố tỉnh lỵ của tỉnh Lâm Đồng, nằm trên cao nguyên Lâm Viên, thuộc vùng Tây Nguyên, Việt Nam. Từ xa xưa, vùng đất này vốn là địa bàn cư trú của những cư dân người Lạch, người Chil và người Srê thuộc dân tộc Cơ Ho. Cuối thế kỷ 19, khi tìm kiếm một địa điểm để xây dựng trạm nghỉ dưỡng dành cho người Pháp ở Đông Dương, Toàn quyền Paul Doumer đã quyết định chọn cao nguyên Lâm Viên theo đề nghị của bác sĩ Alexandre Yersin, người từng thám hiểm tới nơi đây vào năm 1893. Trong nửa đầu thế kỷ 20, từ một địa điểm hoang vu, người Pháp đã quy hoạch và xây dựng lên một thành phố xinh đẹp với những biệt thự, công sở, khách sạn và trường học, một trung tâm du lịch và giáo dục của Đông Dương khi đó. Trải qua những khoảng thời gian thăng trầm của hai cuộc chiến tranh cùng giai đoạn khó khăn những thập niên 1970–1980, Đà Lạt ngày nay là một thành phố khá đông dân, đô thị loại I trực thuộc tỉnh, giữ vai trò trung tâm chính trị, kinh tế và văn hóa quan trọng của tỉnh Lâm Đồng và vùng Tây Nguyên, hướng đến là thành phố trực thuộc Trung ương vào năm 2030.","https://www.google.com/maps/place/Tp.+%C4%90%C3%A0+L%E1%BA%A1t,+L%C3%A2m+%C4%90%E1%BB%93ng,+Vi%E1%BB%87t+Nam/@11.9039022,108.3806821,12z/data=!3m1!4b1!4m5!3m4!1s0x317112fef20988b1:0xad5f228b672bf930!8m2!3d11.9404192!4d108.4583132?hl=vi-VN"));
+        list.add(new TopItem(R.drawable.vungtau,R.drawable.tym,"Vũng Tàu","Vũng Tàu là một thành phố thuộc tỉnh Bà Rịa – Vũng Tàu, ở vùng Đông Nam Bộ, Việt Nam. Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ. Sở hữu nhiều bãi biển đẹp và cơ sở hạ tầng được đầu tư hoàn chỉnh, Vũng Tàu là một địa điểm du lịch nổi tiếng tại miền Nam. Ngoài ra, thành phố còn là khu vực hậu cần của ngành công nghiệp dầu khí Việt Nam. Từ ngày 2 tháng 5 năm 2012, tỉnh lỵ của tỉnh Bà Rịa – Vũng Tàu được chuyển đến thành phố Bà Rịa.[5] Thành phố Vũng Tàu được công nhận là đô thị loại I trực thuộc tỉnh đầu tiên của cả Nam Bộ.[2]","https://www.google.com/maps/place/V%C5%A9ng+T%C3%A0u,+B%C3%A0+R%E1%BB%8Ba+-+V%C5%A9ng+T%C3%A0u,+Vi%E1%BB%87t+Nam/@10.403331,107.0530101,12z/data=!3m1!4b1!4m5!3m4!1s0x31756fd4554f0cf5:0xb24fd23bf641fa40!8m2!3d10.4113797!4d107.136224?hl=vi-VN"));
+        list.add(new TopItem(R.drawable.danang,R.drawable.tym,"Đà Nẵng","Đà Nẵng là một thành phố trực thuộc trung ương, nằm trong vùng Duyên hải Nam Trung Bộ Việt Nam, là thành phố trung tâm và lớn nhất khu vực miền Trung - Tây Nguyên Thành phố Đà Nẵng là thành phố tổng hợp đa ngành, đa lĩnh vực; trung tâm chính trị - kinh tế - xã hội với vai trò là trung tâm công nghiệp, tài chính, du lịch, dịch vụ, văn hóa, giáo dục - đào tạo, y tế chất lượng cao, khoa học - công nghệ, khởi nghiệp, đổi mới sáng tạo của khu vực Miền Trung - Tây Nguyên và cả nước; trung tâm tổ chức các sự kiện tầm khu vực và quốc tế. Thành phố Đà Nẵng đóng vai trò hạt nhân, quan trọng trong Vùng kinh tế trọng điểm miền Trung, đồng thời cũng là một trong 5 thành phố trực thuộc Trung ương ở Việt Nam, đô thị loại I, trung tâm cấp quốc gia, cùng với Hải Phòng và Cần Thơ.","https://www.google.com/maps/place/%C4%90%C3%A0+N%E1%BA%B5ng,+H%E1%BA%A3i+Ch%C3%A2u,+%C4%90%C3%A0+N%E1%BA%B5ng,+Vi%E1%BB%87t+Nam/@16.0471659,108.1716865,13z/data=!3m1!4b1!4m5!3m4!1s0x314219c792252a13:0xfc14e3a044436487!8m2!3d16.0544068!4d108.2021667?hl=vi-VN"));
         return list;
     }
 

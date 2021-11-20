@@ -42,7 +42,11 @@
     <string name="textDesDaNang">Đà Nẵng là một thành phố trực thuộc trung ương, nằm trong vùng Duyên hải Nam Trung Bộ Việt Nam, là thành phố trung tâm và lớn nhất khu vực miền Trung - Tây Nguyên.</string>
     <string name="top_review">Top review</string>
     <string name="suggest_place">Suggest Place</string>
-   <string name="hotel">Khách sạn</string>
+    <string name="hotel">Khách sạn</string>
     <string name="restaurant">Nhà hàng</string>
+    <string name="web"><u>Truy cập web</u></string>
+    <string name="call"><u>Gọi</u></string>
+    <string name="email_Under"><u>Email</u></string>
     <string name="more"><u>Xem thêm</u></string>
+    <string name="read_more"><u>Đọc thêm</u></string>
 </resources>

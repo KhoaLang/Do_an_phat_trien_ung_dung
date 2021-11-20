@@ -1,10 +1,24 @@
 package com.example.landview.Restaurant;
 
-public class Restaurant {
+import java.io.Serializable;
+
+public class Restaurant implements Serializable {
     private int mBackground,mIcon,mRate;
-    private String mName,mPrice,numberRate,mIntro,mAddress;
+    private String mName,mPrice,numberRate,mIntro,mAddress,mLink;
 
     public Restaurant() {
+    }
+
+    public Restaurant(int mBackground, int mIcon, int mRate, String mName, String mPrice, String numberRate, String mIntro, String mAddress, String mLink) {
+        this.mBackground = mBackground;
+        this.mIcon = mIcon;
+        this.mRate = mRate;
+        this.mName = mName;
+        this.mPrice = mPrice;
+        this.numberRate = numberRate;
+        this.mIntro = mIntro;
+        this.mAddress = mAddress;
+        this.mLink = mLink;
     }
 
     public Restaurant(int mBackground, int mIcon, int mRate, String mName, String mPrice, String numberRate, String mIntro, String mAddress) {
@@ -16,6 +30,14 @@ public class Restaurant {
         this.numberRate = numberRate;
         this.mIntro = mIntro;
         this.mAddress = mAddress;
+    }
+
+    public String getmLink() {
+        return mLink;
+    }
+
+    public void setmLink(String mLink) {
+        this.mLink = mLink;
     }
 
     public int getmBackground() {

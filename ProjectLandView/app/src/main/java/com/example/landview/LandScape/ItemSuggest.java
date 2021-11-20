@@ -1,28 +1,28 @@
-package com.example.landview.Topreview;
+package com.example.landview.LandScape;
 
 import java.io.Serializable;
 
-public class TopItem implements Serializable {
+public class ItemSuggest implements Serializable {
     private int background;
     private int icon;
-    private String name,textDescription;
+    private String name,description;
 
-    public TopItem() {
+    public ItemSuggest() {
     }
 
-    public String getTextDescription() {
-        return textDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTextDescription(String textDescription) {
-        this.textDescription = textDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public TopItem(int background, int icon, String name, String des) {
+    public ItemSuggest(int background, int icon, String name, String description) {
         this.background = background;
         this.icon = icon;
         this.name = name;
-        this.textDescription = des;
+        this.description = description;
     }
 
     public int getBackground() {

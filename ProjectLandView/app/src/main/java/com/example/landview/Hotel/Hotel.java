@@ -1,8 +1,10 @@
 package com.example.landview.Hotel;
 
-public class Hotel {
+import java.io.Serializable;
+
+public class Hotel implements Serializable {
     private int mBackground,mIcon,mRate;
-    private String mName,mPrice,numberRate,mIntro,mAddress;
+    private String mName,mPrice,numberRate,mIntro,mAddress,mLink;
 
     public Hotel() {
     }
@@ -16,6 +18,26 @@ public class Hotel {
         this.numberRate = numberRate;
         this.mIntro = mIntro;
         this.mAddress = mAddress;
+    }
+
+    public Hotel(int mBackground, int mIcon, int mRate, String mName, String mPrice, String numberRate, String mIntro, String mAddress, String mLink) {
+        this.mBackground = mBackground;
+        this.mIcon = mIcon;
+        this.mRate = mRate;
+        this.mName = mName;
+        this.mPrice = mPrice;
+        this.numberRate = numberRate;
+        this.mIntro = mIntro;
+        this.mAddress = mAddress;
+        this.mLink = mLink;
+    }
+
+    public String getmLink() {
+        return mLink;
+    }
+
+    public void setmLink(String mLink) {
+        this.mLink = mLink;
     }
 
     public int getmBackground() {
