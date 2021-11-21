@@ -8,9 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Plan"
-        android:fontFamily="@font/scheherazade_bold"
+        android:fontFamily="@font/lato_bold"
+        android:textStyle="bold"
         android:textSize="30sp"
-        android:textColor="@color/black"
+        android:textColor="@color/primary_color"
         android:gravity="center_horizontal"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,8 +30,8 @@
             android:layout_height="match_parent"
             android:id="@+id/edtPlanName"
             android:hint="@string/planName"
-            android:fontFamily="@font/scheherazader"
-            android:textSize="20sp"
+            android:fontFamily="@font/lato_regular"
+            android:textSize="15sp"
             android:paddingStart="10dp"
             android:background="@drawable/custom_editext"
             />
@@ -52,8 +53,8 @@
             android:layout_height="match_parent"
             android:id="@+id/edtDes"
             android:hint="@string/hintSearch"
-            android:fontFamily="@font/scheherazader"
-            android:textSize="20sp"
+            android:fontFamily="@font/lato_regular"
+            android:textSize="15sp"
             android:paddingStart="10dp"
             android:background="@drawable/custom_editext"
             />
@@ -74,8 +75,8 @@
             android:layout_height="150dp"
             android:id="@+id/edtDescription"
             android:hint="@string/planDescription"
-            android:fontFamily="@font/scheherazader"
-            android:textSize="20sp"
+            android:fontFamily="@font/lato_regular"
+            android:textSize="15sp"
             android:paddingStart="10dp"
             android:inputType="text|textMultiLine"
             android:background="@drawable/custom_edittext_textarea"
@@ -128,7 +129,8 @@
         android:textColor="@color/white"
         android:textSize="23sp"
         android:textAllCaps="false"
-        android:fontFamily="@font/scheherazade_bold"
+        android:fontFamily="@font/lato_bold"
+        android:textStyle="bold"
         />
 
 

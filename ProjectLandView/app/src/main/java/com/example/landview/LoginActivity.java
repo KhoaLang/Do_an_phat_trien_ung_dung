@@ -84,8 +84,6 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MODE_LOGIN", MODE_PRIVATE);
         //lấy ra
         editTextemailLogin.setText(sharedPreferences.getString("Email", ""));
-        editTextpassLogin.setText(sharedPreferences.getString("Password", ""));
-
         //thay đổi label action bar
 //        getSupportActionBar().setTitle("Login");
 
@@ -228,11 +226,13 @@ public class LoginActivity extends AppCompatActivity {
 //            Toast.makeText(this,"Login succesfull",Toast.LENGTH_LONG).show();
 //            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 //            startActivity(intent);
-//            ///SHAREREFERENCES
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            editor.putString("Email",textEmail);
-//            editor.putString("Password",textPass);
-//            editor.apply();
+            ///SHAREREFERENCES
+            String textEmail = editTextemailLogin.getText().toString();
+            String textPass = editTextpassLogin.getText().toString();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("Email",textEmail);
+            editor.putString("Password",textPass);
+            editor.apply();
 //        }
         if (TextUtils.isEmpty(email)) {
             editTextemailLogin.setError("Email section can't be empty");
