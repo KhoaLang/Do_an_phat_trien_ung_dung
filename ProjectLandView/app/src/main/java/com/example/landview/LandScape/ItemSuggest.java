@@ -1,17 +1,28 @@
-package com.example.landview.suggestPlace;
+package com.example.landview.LandScape;
 
-public class ItemSuggest {
+import java.io.Serializable;
+
+public class ItemSuggest implements Serializable {
     private int background;
     private int icon;
-    private String name;
+    private String name,description;
 
     public ItemSuggest() {
     }
 
-    public ItemSuggest(int background, int icon, String name) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ItemSuggest(int background, int icon, String name, String description) {
         this.background = background;
         this.icon = icon;
         this.name = name;
+        this.description = description;
     }
 
     public int getBackground() {

@@ -65,7 +65,8 @@
                                 android:background="@drawable/custom_editext"
                                 android:hint="@string/hintSearch"
                                 android:textSize="15sp"
-                                android:fontFamily="@font/scheherazader"
+
+                                android:fontFamily="@font/lato_regular"
                                 android:paddingStart="50dp"
                                 />
                             <ImageView
@@ -94,12 +95,13 @@
                                 android:orientation="vertical">
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
-                                    android:layout_height="190dp"
+                                    android:layout_height="500dp"
                                     app:cardCornerRadius="10dp"
-                                    android:layout_marginTop="15dp">
+                                    android:layout_marginTop="10dp">
                                     <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="190dp">
+                                        android:layout_height="match_parent">
+
                                         <androidx.viewpager2.widget.ViewPager2
                                             android:id="@+id/viewPager2"
                                             android:layout_width="match_parent"
@@ -124,7 +126,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/What_want"
-                                        android:fontFamily="@font/scheherazade_bold"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textStyle="bold"
                                         android:textColor="@color/black"
                                         android:textSize="23sp"
                                         />
@@ -149,7 +152,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/news"
-                                        android:fontFamily="@font/scheherazade_bold"
+                                        android:fontFamily="@font/lato_bold"
+                                        android:textStyle="bold"
                                         android:textColor="@color/black"
                                         android:textSize="23sp"
                                         />

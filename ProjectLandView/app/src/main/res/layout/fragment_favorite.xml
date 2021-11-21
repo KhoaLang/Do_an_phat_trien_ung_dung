@@ -20,13 +20,14 @@
             android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:src="@drawable/cry_people" />
+            android:src="@mipmap/cry_people" />
 
         <TextView
             android:id="@+id/txtEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_regular"
             android:gravity="center_horizontal"
             android:text="@string/emptyFavorite"
             android:textSize="20dp" />
@@ -41,6 +42,7 @@
             android:padding="10dp"
             android:text="GO"
             android:textSize="18dp"
+            android:fontFamily="@font/lato_regular"
             android:textColor="@color/sky_blue" />
     </LinearLayout>
 

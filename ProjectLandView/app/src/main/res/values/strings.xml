@@ -21,12 +21,12 @@
     <string name="FragmentHome">Home</string>
     <string name="fragmentTravel">Travel</string>
     <string name="fragmentFavorite">Favorite</string>
-    <string name="emptyFavorite">look like you did not add any favourite place yet</string>
+    <string name="emptyFavorite">Look like you did not add any favourite place yet</string>
     <string name="fragmentUser">User</string>
     <string name="hintSearch">Search Destination</string>
     <string name="planName">Name your plan</string>
     <string name="planDescription">Description (optional)</string>
-    <string name="What_want">What do you want</string>
+    <string name="What_want">What do you want?</string>
     <string name="news">News</string>
     <string name="Plan">Plan your trip</string>
     <string name="search">Search</string>
@@ -35,11 +35,18 @@
     <string name="hoguom_address">Phường Hoàng Trống,Quận Hoàn Kiếm,Hà Nội</string>
     <string name="hoguom_address_detail">Địa chỉ: phường Hoàng Trống,quận Hoàng Kiếm,Hà Nội</string>
     <string name="bienbaitrac">Biển Bãi Trước</string>
-    <string name="textDes">Hồ Hoàn Kiếm là hồ nước ngọt nhân tạo nằm giữa thủ đô Hà Nội. Hồ rộng tới 12ha với chiều dài 700m, rộng 200m và sâu hơn 1m. Giữa hồ có tháp rùa, trên hồ có đền Ngọc Sơn,
+    <string name="textDesHaNoi">Hồ Hoàn Kiếm là hồ nước ngọt nhân tạo nằm giữa thủ đô Hà Nội. Hồ rộng tới 12ha với chiều dài 700m, rộng 200m và sâu hơn 1m. Giữa hồ có tháp rùa, trên hồ có đền Ngọc Sơn,
         xung quanh là cầu Thê Húc, tháp Bút và đền Bà Kiệu.</string>
+    <string name="textDesDaLat">Đà Lạt hiện nay là thành phố nổi tiếng về du lịch bậc nhất của Việt Nam. Ai cũng đã từng nghe và biết về thành phố ngàn hoa mộng mơ.</string>
+    <string name="textDesVungTau">Vũng Tàu là một thành phố thuộc tỉnh Bà Rịa – Vũng Tàu, ở vùng Đông Nam Bộ, Việt Nam. Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ</string>
+    <string name="textDesDaNang">Đà Nẵng là một thành phố trực thuộc trung ương, nằm trong vùng Duyên hải Nam Trung Bộ Việt Nam, là thành phố trung tâm và lớn nhất khu vực miền Trung - Tây Nguyên.</string>
     <string name="top_review">Top review</string>
     <string name="suggest_place">Suggest Place</string>
-   <string name="hotel">Khách sạn</string>
+    <string name="hotel">Khách sạn</string>
     <string name="restaurant">Nhà hàng</string>
+    <string name="web"><u>Truy cập web</u></string>
+    <string name="call"><u>Gọi</u></string>
+    <string name="email_Under"><u>Email</u></string>
     <string name="more"><u>Xem thêm</u></string>
+    <string name="read_more"><u>Đọc thêm</u></string>
 </resources>
