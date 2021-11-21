@@ -85,8 +85,6 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),LinearLayoutManager.HORIZONTAL,false);
         rcv.setLayoutManager(linearLayoutManager);
 
-
-
         return view;
     }
 
