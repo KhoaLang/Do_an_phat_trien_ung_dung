@@ -1,30 +1,48 @@
 package com.example.landview;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.landview.Area.Area;
 import com.example.landview.Area.TopItem;
 import com.example.landview.Area.TopItemAdapter;
+import com.example.landview.Area.TravelFragmentAreaAdapter;
 import com.example.landview.Hotel.Hotel;
 import com.example.landview.LandScape.ItemSuggest;
 import com.example.landview.LandScape.ItemSuggestAdapter;
 import com.example.landview.Restaurant.Restaurant;
 import com.example.landview.TravelHotel.TravelHotelAdapter;
 import com.example.landview.TravelRestaurant.TravelRestaurantAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TravelFragment extends Fragment {
+    private static final String TAG = "TravelFragment";
+
     ImageView iconNotify,iconsetting,iconSearch;
     EditText edtSerch;
     RecyclerView recTopReview,recSuggest,recvHotel,recvRestaurant;
@@ -32,6 +50,14 @@ public class TravelFragment extends Fragment {
     ItemSuggestAdapter itemSuggestAdapter;
     private TravelHotelAdapter travelHotelAdapter;
     private TravelRestaurantAdapter travelRestaurantAdapter;
+
+    private ArrayList<Area> areas;
+    private TravelFragmentAreaAdapter areaAdapter;
+
+
+    // Firestore
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,19 +68,82 @@ public class TravelFragment extends Fragment {
         iconsetting = view.findViewById(R.id.imgSetting);
         iconSearch = view.findViewById(R.id.inconSearch);
         edtSerch = view.findViewById(R.id.edtSearch);
+
         recTopReview = view.findViewById(R.id.recvTopreview);
+
         recSuggest = view.findViewById(R.id.recvSuggets);
         recvHotel = view.findViewById(R.id.recvTophotel);
         recvRestaurant = view.findViewById(R.id.recvTopRestaurant);
         ///sét dữ liệu vào recycleview Top review
-        setDataRecyTopReview();
+       // setDataRecyTopReview();
         //sét dữ liệu vào recycleview Suggest Place
         setDataRecySuggestPlace();
         //sét dữ liệu vào recycle view Top Hotel
         setDataRecyTopHotel();
         //sét dữ liệu vào recycle view Top Restaurant
         setDataRecyTopRestaurant();
+
+
+        recTopReview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        areas = new ArrayList<>();
+
+        // Lấy dữ liệu area từ database
+        db.collection("areas").limit(10).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document : task.getResult()){
+                        // Tạo từng area object
+                        Area area = document.toObject(Area.class);
+                        GeoPoint geoPoint = document.getGeoPoint("geopoint");
+                        area.setLatitude(geoPoint.getLatitude());
+                        area.setLongitude(geoPoint.getLongitude());
+                        Log.d(TAG, "Area: " + area.toString());
+                        areas.add(area);
+                    }
+                    // bind ArrayList<Area> areas vào adapter
+                    areaAdapter = new TravelFragmentAreaAdapter(getContext(), areas);
+                    // Set item click listener cho adapter
+                    areaAdapter.setRecyclerViewItemClickListener(new TravelFragmentAreaAdapter.AreaInterface() {
+                        // click vào cả cái area
+                        @Override
+                        public void itemClick(int position) {
+                            Intent intent = new Intent(getContext(), DetailArea.class);
+                            intent.putExtra("area", areas.get(position));
+                            startActivity(intent);
+                        }
+                        // click vào nút like
+                        @Override
+                        public void likeClick(int position, ImageView view) {
+                                checkLike(position, view); //
+                        }
+                    });
+                    recTopReview.setAdapter(areaAdapter);
+                } else {
+
+                }
+            }
+        });
+
         return view;
+    }
+
+    private void checkLike(int position, ImageView view){
+        Area area = areas.get(position);
+        String userId = mAuth.getCurrentUser().getUid();
+        ArrayList<String> likes = area.getLikes();
+        DocumentReference areaRef = db.collection("areas").document(area.getId());
+        DocumentReference userRef = db.collection("users").document(userId);
+        if(likes.contains(userId)){
+            likes.remove(userId);
+            db.collection("areas").document(area.getId()).update("likes", FieldValue.arrayRemove(userId));
+            userRef.update("likes", FieldValue.arrayRemove(areaRef));
+        } else if (likes.isEmpty() || !likes.contains(userId)){
+            likes.add(userId);
+            db.collection("areas").document(area.getId()).update("likes", FieldValue.arrayUnion(userId));
+            userRef.update("likes", FieldValue.arrayUnion(areaRef));
+        }
+        areaAdapter.notifyDataSetChanged();
     }
 
     private void setDataRecyTopRestaurant() {

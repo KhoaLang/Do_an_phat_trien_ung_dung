@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
-    private EditText editTextUsername,editTextEmail,editTextPass,editTextTypePass;
+    private EditText editTextUsername, editTextEmail, editTextPass, editTextTypePass;
     private CheckBox checkBoxPolicy;
     private Button buttonCreate;
     private FirebaseAuth mAuth;
@@ -59,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkData()){
+                if (checkData()) {
                     String email = editTextEmail.getText().toString().trim();
                     String pass = editTextPass.getText().toString().trim();
                     String username = editTextUsername.getText().toString().trim();
@@ -75,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
 
                     //bring user datas to firestore
                     String uid = mAuth.getCurrentUser().getUid();
@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Sign Up completed", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                     startActivity(intent);
-                }else{
+                } else {
                     Toast.makeText(SignUpActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
@@ -113,31 +113,31 @@ public class SignUpActivity extends AppCompatActivity {
 //            startActivity(intent);
 //            finish();
 //        }
-        if(TextUtils.isEmpty(textUser)){
+        if (TextUtils.isEmpty(textUser)) {
             editTextUsername.setError("Username section can't be empty");
             editTextUsername.requestFocus();
             return false;
-        }else if(TextUtils.isEmpty(textEmail)){
+        } else if (TextUtils.isEmpty(textEmail)) {
             editTextEmail.setError("Email section can't be empty");
             editTextEmail.requestFocus();
             return false;
-        }else if(!checkValidEmail()) {
+        } else if (!checkValidEmail()) {
             editTextEmail.setError("Wrong email pattern!!");
             editTextEmail.requestFocus();
             return false;
-        }else if(TextUtils.isEmpty(textPass)){
+        } else if (TextUtils.isEmpty(textPass)) {
             editTextPass.setError("Password section can't be empty");
             editTextPass.requestFocus();
             return false;
-        }else if(TextUtils.isEmpty(textTypePass)){
+        } else if (TextUtils.isEmpty(textTypePass)) {
             editTextPass.setError("Password section can't be empty");
             editTextPass.requestFocus();
             return false;
-        }else if(!checkPassword()) {
+        } else if (!checkPassword()) {
             editTextTypePass.setError("Password doesn't match!!");
             editTextTypePass.requestFocus();
             return false;
-        }else if(!isCheck) {
+        } else if (!isCheck) {
             Toast.makeText(SignUpActivity.this, "You have to accept our policies create an account!", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -147,8 +147,7 @@ public class SignUpActivity extends AppCompatActivity {
     private boolean checkPassword() {
         String textPass = editTextPass.getText().toString();
         String textTypePass = editTextTypePass.getText().toString();
-        if(textPass.equals(textTypePass))
-        {
+        if (textPass.equals(textTypePass)) {
             return true;
         }
         return false;
@@ -156,15 +155,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean checkValidEmail() {
         String textEmail = editTextEmail.getText().toString();
-        String emailPattern ="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        if(textEmail.matches(emailPattern))
-        {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if (textEmail.matches(emailPattern)) {
             return true;
         }
         return false;
     }
 
-    private void addingDataToFireStore(String username, String email, String userId){
+    private void addingDataToFireStore(String username, String email, String userId) {
         db = FirebaseFirestore.getInstance();
 
         //empty list contain liked plac
@@ -176,15 +174,14 @@ public class SignUpActivity extends AppCompatActivity {
         user.put("email", email);
         user.put("username", username);
 
-        db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("users").document(userId).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(SignUpActivity.this, "Success create user in FireStore", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(SignUpActivity.this, "Fail to create user in FireStore", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful())
+                    Toast.makeText(SignUpActivity.this, "Success create user in FireStore", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(SignUpActivity.this, "Fail to create user in FireStore", Toast.LENGTH_SHORT);
+                }
             }
         });
     }

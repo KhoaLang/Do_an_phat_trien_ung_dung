@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.landview.Area.Area;
 import com.example.landview.Area.TopItem;
 
 public class DetailArea extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class DetailArea extends AppCompatActivity {
     private LinearLayout layout,btnSeemap;
     private Bundle bundle;
     private TopItem item;
+    private Area area;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +27,21 @@ public class DetailArea extends AppCompatActivity {
         //ánh xạ view
         initUI();
         //nhận dữ liệu và sét sự kiện từ bundel Top ItemAdapter
-        bundle = getIntent().getExtras();
-        if(bundle == null)
-        {
-            return;
-        }
-        item = (TopItem) bundle.get("topItem");
-        txtName.setText(item.getName());
-        txtDesCription.setText(item.getTextDescription());
+//        bundle = getIntent().getExtras();
+//        if(bundle == null)
+//        {
+//            return;
+//        }
+//        item = (TopItem) bundle.get("area");
+//        txtName.setText(item.getName());
+//        txtDesCription.setText(item.getTextDescription());
         //sử lí sự kiện readmore
+
+        Intent intent = getIntent();
+        area = (Area) intent.getSerializableExtra("area");
+        txtName.setText(area.getAreaName());
+        txtDesCription.setText(area.getDescription());
+
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

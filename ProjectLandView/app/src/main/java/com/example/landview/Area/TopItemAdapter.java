@@ -17,11 +17,13 @@ import com.example.landview.DetailArea;
 import com.example.landview.R;
 import com.example.landview.LandScapeDetail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopItemAdapter extends RecyclerView.Adapter<TopItemAdapter.TopItemViewholder>{
     Context mcontext;
     List<TopItem>topItemList;
+    ArrayList<Area> areas;
 
     public TopItemAdapter(Context mcontext, List<TopItem> topItemList) {
         this.mcontext = mcontext;

@@ -13,17 +13,25 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.landview.Area.Area;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
     //    private ActionBar actionBar;
     private BottomNavigationView bottomNavigationView;
-    
+    private static final String TAG = "MainActivity";
+   // private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 //        actionBar = getSupportActionBar();
         //đánh dấu mặc định
 //        actionBar.setTitle("Home");
+
+
 
 
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
