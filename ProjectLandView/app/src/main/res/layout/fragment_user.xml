@@ -33,7 +33,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/userName"
-                        android:text="Nguyễn Đức Tín"
                         android:textSize="25sp"
                         android:textColor="@color/black"
                         android:fontFamily="@font/lato_bold"/>
@@ -59,11 +58,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Change Password"
-                android:id="@+id/txtChange"
+                android:id="@+id/btnChange"
                 android:layout_marginTop="15dp"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/lato_regular"
+                android:backgroundTint="@color/white"
                 android:paddingStart="10dp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -73,11 +73,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Log out"
-                android:id="@+id/txtLogout"
+                android:id="@+id/btnLogout"
                 android:layout_marginTop="15dp"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/lato_regular"
+                android:backgroundTint="@color/white"
                 android:paddingStart="10dp"/>
             <TextView
                 android:layout_width="match_parent"

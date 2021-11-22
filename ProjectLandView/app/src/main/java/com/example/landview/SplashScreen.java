@@ -9,17 +9,20 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashScreen extends AppCompatActivity {
     Timer timer;
+    FirebaseAuth mAuth;
     @Override
-    protected void onPostCreate( Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_splash_screen);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.hide();
+        mAuth = FirebaseAuth.getInstance();
         ShowStartDialog();
     }
 
@@ -61,4 +64,14 @@ public class SplashScreen extends AppCompatActivity {
         });
         alertDialog.show();
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            startActivity(new Intent(SplashScreen.this, MainActivity.class));
+        }
+    }
+
 }
