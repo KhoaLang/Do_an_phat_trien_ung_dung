@@ -5,99 +5,116 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginTop="20dp"
+
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="90dp">
+                    android:layout_height="90dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="20dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/title"
-                                android:layout_gravity="start"/>
+                                android:layout_gravity="start"
+                                android:src="@drawable/title" />
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="50dp"
                                 android:layout_weight="1"
                                 android:gravity="end"
                                 android:orientation="horizontal">
+
                                 <ImageView
+                                    android:id="@+id/imgNotifycations"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/imgNotifycations"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginEnd="10dp"
-                                    android:src="@drawable/icon_notify"/>
+                                    android:src="@drawable/icon_notify" />
+
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_height="wrap_content"
                                     android:id="@+id/imgSetting"
-                                    android:src="@drawable/icon_setting"/>
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/icon_setting" />
                             </LinearLayout>
 
                         </LinearLayout>
+
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
                                 android:background="@drawable/custom_editext"
-                                android:hint="@string/hintSearch"
-                                android:textSize="15sp"
-
                                 android:fontFamily="@font/lato_regular"
+                                android:hint="@string/hintSearch"
+
                                 android:paddingStart="50dp"
-                                />
+                                android:textSize="15sp" />
+
                             <ImageView
+                                android:id="@+id/inconSearch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/inconSearch"
-                                android:src="@drawable/icon_search"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginStart="10dp"/>
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/icon_search" />
                         </FrameLayout>
                     </LinearLayout>
                 </FrameLayout>
+
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <ScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
-                                    android:layout_height="500dp"
-                                    app:cardCornerRadius="10dp"
-                                    android:layout_marginTop="10dp">
+                                    android:layout_height="610dp"
+                                    android:layout_marginTop="10dp"
+                                    app:cardCornerRadius="10dp">
+
                                     <RelativeLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent">
@@ -111,61 +128,67 @@
                                             android:id="@+id/indicator3"
                                             android:layout_width="wrap_content"
                                             android:layout_height="20dp"
-                                            android:layout_centerHorizontal="true"
                                             android:layout_alignParentBottom="true"
-                                            app:ci_drawable="@drawable/custom_indicator"
-                                            />
+                                            android:layout_centerHorizontal="true"
+                                            app:ci_drawable="@drawable/custom_indicator" />
                                     </RelativeLayout>
                                 </androidx.cardview.widget.CardView>
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="280dp"
+                                    android:layout_marginTop="15dp"
                                     android:orientation="vertical"
-                                    android:layout_marginTop="15dp">
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp" >
+
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/What_want"
                                         android:fontFamily="@font/lato_bold"
-                                        android:textStyle="bold"
+                                        android:text="@string/What_want"
                                         android:textColor="@color/black"
                                         android:textSize="23sp"
-                                        />
+                                        android:textStyle="bold" />
+
                                     <GridView
+                                        android:id="@+id/gridView"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_marginTop="15dp"
-                                        android:numColumns="2"
-                                        android:layout_marginStart="15dp"
                                         android:layout_gravity="center"
-                                        android:gravity="center"
+                                        android:layout_marginStart="15dp"
+                                        android:layout_marginTop="15dp"
                                         android:layout_marginEnd="15dp"
-                                        android:id="@+id/gridView"
-                                        />
+                                        android:gravity="center"
+                                        android:numColumns="2" />
                                 </LinearLayout>
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="15dp"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp" >
+
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/news"
                                         android:fontFamily="@font/lato_bold"
-                                        android:textStyle="bold"
+                                        android:text="@string/news"
                                         android:textColor="@color/black"
                                         android:textSize="23sp"
-                                        />
+                                        android:textStyle="bold" />
+
                                     <androidx.recyclerview.widget.RecyclerView
-                                        android:background="@color/white"
+                                        android:id="@+id/recycleview"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/recycleview"
-                                        android:layout_marginTop="10dp"
                                         android:layout_gravity="center"
                                         android:layout_marginStart="15dp"
-                                        android:layout_marginEnd="15dp"/>
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginEnd="15dp"
+                                        android:background="@color/white" />
                                 </LinearLayout>
                             </LinearLayout>
                         </ScrollView>

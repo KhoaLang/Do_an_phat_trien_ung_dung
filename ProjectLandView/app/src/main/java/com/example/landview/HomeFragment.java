@@ -156,9 +156,9 @@ public class HomeFragment extends Fragment {
 
     private List<Slider> getList() {
         List<Slider>list= new ArrayList<>();
-        list.add(new Slider(R.drawable.image_slider));
-        list.add(new Slider(R.drawable.dalat));
-        list.add(new Slider(R.drawable.picture_slider));
+        list.add(new Slider(R.drawable.img_slider_1));
+        list.add(new Slider(R.drawable.img_slider_2));
+        list.add(new Slider(R.drawable.img_slider_3));
         return list;
     }
 }
