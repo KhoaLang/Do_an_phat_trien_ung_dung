@@ -56,8 +56,8 @@ public class TravelFragment extends Fragment {
 
 
     // Firestore
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db;
+    FirebaseAuth mAuth;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,6 +74,9 @@ public class TravelFragment extends Fragment {
         recSuggest = view.findViewById(R.id.recvSuggets);
         recvHotel = view.findViewById(R.id.recvTophotel);
         recvRestaurant = view.findViewById(R.id.recvTopRestaurant);
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         ///sét dữ liệu vào recycleview Top review
        // setDataRecyTopReview();
         //sét dữ liệu vào recycleview Suggest Place
