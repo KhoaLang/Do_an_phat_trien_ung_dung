@@ -31,7 +31,7 @@ public class FavoriteFragment extends Fragment {
     RecyclerView favoriteRecycler;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
-    LinearLayout cryGirlImg;
+    LinearLayout emptyList;
     Button goBtn;
 
     @Override
@@ -40,7 +40,7 @@ public class FavoriteFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_favorite,container,false);
         goBtn = view.findViewById(R.id.goBtn);
-        cryGirlImg = view.findViewById(R.id.cryGirlImg);
+        emptyList = view.findViewById(R.id.emptyList);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -51,7 +51,7 @@ public class FavoriteFragment extends Fragment {
                 if (document.exists()) {
                     List<String> group = (List<String>) document.get("likes");
                     if(group.size() > 0){
-                        cryGirlImg.setVisibility(View.INVISIBLE);
+                        emptyList.setVisibility(View.INVISIBLE);
                     }
                 } else {
 
@@ -70,7 +70,6 @@ public class FavoriteFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
 
         return view;
     }

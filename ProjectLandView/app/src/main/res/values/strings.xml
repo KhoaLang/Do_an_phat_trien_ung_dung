@@ -49,4 +49,10 @@
     <string name="email_Under"><u>Email</u></string>
     <string name="more"><u>Xem thêm</u></string>
     <string name="read_more"><u>Đọc thêm</u></string>
+    <string name="terms_of_services_1">Please read these Terms of Service <b>(Terms", "Terms of Service")</b> carefully before using <b>thehttp://www.landv.com</b> website (the "Service") operated by <b>LandV, Inc.</b>(<b>us</b>, <b>we</b>, or <b>our</b>).</string>
+    <string name="terms_of_services_2">Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</string>
+    <string name="terms_of_services_3">By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</string>
+    <string name="terms_of_services_4">Termination clause for websites that do not have accounts. If your website or mobile app allows users to register and have an account.</string>
+    <string name="terms_of_services_5">We may terminate or suspend access to our Service immediately, without prior notice or liability. for any reason whatsoever, including without limitation if you breach the Terms.</string>
+    <string name="terms_of_services_6">All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</string>
 </resources>

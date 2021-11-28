@@ -27,7 +27,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class UserFragment extends Fragment {
     private ImageView imguser;
-    private TextView txtName,txtInformation, btnLogout, btnChangePass;
+    private TextView txtName,txtInformation;
+    private Button btnLogout, btnChangePass, btnPolicy;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     @Override
@@ -40,7 +41,7 @@ public class UserFragment extends Fragment {
         txtInformation = view.findViewById(R.id.inforUser);
         btnChangePass = view.findViewById(R.id.btnChange);
         btnLogout = view.findViewById(R.id.btnLogout);
-
+        btnPolicy = view.findViewById(R.id.btnPolicy);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -60,6 +61,14 @@ public class UserFragment extends Fragment {
                 startActivity(new Intent(getContext(), SplashScreen.class));
             }
         });
+
+        btnPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), TermsOfServices.class));
+            }
+        });
+
         return view;
     }
 
