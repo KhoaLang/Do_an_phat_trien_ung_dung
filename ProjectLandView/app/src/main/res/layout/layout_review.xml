@@ -16,7 +16,7 @@
             android:hint="@string/search"
             android:backgroundTint="@color/white"
             android:textSize="15sp"
-            android:fontFamily="@font/scheherazader"
+            android:fontFamily="@font/lato_regular"
             android:paddingStart="50dp"
             />
         <ImageView
@@ -33,7 +33,8 @@
         android:text="@string/recent"
         android:textSize="25sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/scheherazade_bold"
+        android:fontFamily="@font/lato_regular"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"
         />
     <androidx.recyclerview.widget.RecyclerView
