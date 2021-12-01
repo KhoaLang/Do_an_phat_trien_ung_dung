@@ -34,7 +34,7 @@ public class DetailHoguom extends AppCompatActivity {
         mtablayout = findViewById(R.id.tablayout);
         mviewpager = findViewById(R.id.viewPager2);
         img = findViewById(R.id.imgView);
-        img.setImageResource(itemReview.getImg());
+//        img.setImageResource(itemReview.getImg());
         viewPagerAdapter = new ViewPagerAdapter(this);
         mviewpager.setAdapter(viewPagerAdapter);
         new TabLayoutMediator(mtablayout,mviewpager,(tab, position) ->{

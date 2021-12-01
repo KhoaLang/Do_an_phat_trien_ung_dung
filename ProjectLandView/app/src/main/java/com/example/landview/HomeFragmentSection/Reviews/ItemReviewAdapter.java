@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.HomeFragmentSection.DetailReview.DetailHoguom;
 import com.example.landview.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +42,8 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
         {
             return;
         }
-        holder.imgName.setImageResource(itemReview.getImg());
+//        holder.imgName.setImageResource(itemReview.getImg());
+        Picasso.get().load(itemReview.getImg()).placeholder(R.drawable.destination).into(holder.imgName);
         holder.name.setText(itemReview.getName());
         holder.imgRate.setImageResource(itemReview.getRateImg());
         holder.nameAddress.setText(itemReview.getAddress());

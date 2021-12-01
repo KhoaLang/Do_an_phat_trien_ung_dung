@@ -3,7 +3,7 @@ package com.example.landview.HomeFragmentSection.Reviews;
 import java.io.Serializable;
 
 public class ItemReview implements Serializable {
-    private int Img;
+    private String Img;
     private String name;
     private int rateImg;
     private String address;
@@ -11,18 +11,18 @@ public class ItemReview implements Serializable {
     public ItemReview() {
     }
 
-    public ItemReview(int img, String name, int rateImg, String address) {
+    public ItemReview(String img, String name, int rateImg, String address) {
         Img = img;
         this.name = name;
         this.rateImg = rateImg;
         this.address = address;
     }
 
-    public int getImg() {
+    public String getImg() {
         return Img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         Img = img;
     }
 
