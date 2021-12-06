@@ -13,8 +13,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.landview.WeatherActivity.WeatherAdapter;
-import com.example.landview.WeatherActivity.WeatherModel;
+import com.example.landview.WeatherAdapter;
+import com.example.landview.WeatherModels;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,13 +28,13 @@ import java.util.List;
 public class Weathernext extends AppCompatActivity {
     private String city;
     private ListView lv;
-    private WeatherModel weatherModel;
+    private WeatherModels weatherModel;
     private WeatherAdapter weatherAdapter;
-    private List<WeatherModel>weatherList;
+    private List<WeatherModels>weatherList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather_next);
+        setContentView(R.layout.layout_activity_weather_next);
 
         //
         lv = findViewById(R.id.lvWeathers);
@@ -76,7 +76,7 @@ public class Weathernext extends AppCompatActivity {
                                 String urlIcon = "http://openweathermap.org/img/wn/"+icon+".png";
 
                                 //add list
-                                weatherList.add(new WeatherModel(currentDay,temp,description,urlIcon));
+                                weatherList.add(new WeatherModels(currentDay,temp,description,urlIcon));
 
                             }
                             weatherAdapter = new WeatherAdapter(getApplicationContext(),R.layout.layout_weather_next_item,weatherList);

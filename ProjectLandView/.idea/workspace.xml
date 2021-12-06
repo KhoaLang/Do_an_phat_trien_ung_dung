@@ -9,13 +9,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2afbeaaf-c4b1-41f3-994a-567d66a62f2e" name="Default Changelist" comment="" />
+    <list default="true" id="7825312d-2235-4104-a94e-93a66c17f77d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[0f99a7a2]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -28,15 +28,7 @@
       </list>
     </option>
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="21pLbZFIN3jyA7m6nORz70EA3GQ" />
+  <component name="ProjectId" id="21u5ZLCpkHXQzHicDlYFWfzalDg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,14 +38,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
-    <property name="last_opened_file_path" value="E:/Nguyễn Đức Tín-19522350" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\res\drawable-v24" />
+      <recent name="C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\res\layout" />
+      <recent name="C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\res\drawable-v24" />
     </key>
-    <key name="android.template.-2006732496">
+    <key name="android.template.-827075636">
       <recent name="com.example.landview" />
     </key>
   </component>
@@ -120,11 +112,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2afbeaaf-c4b1-41f3-994a-567d66a62f2e" name="Default Changelist" comment="" />
-      <created>1638633153794</created>
+      <changelist id="7825312d-2235-4104-a94e-93a66c17f77d" name="Default Changelist" comment="" />
+      <created>1638778185973</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1638633153794</updated>
+      <updated>1638778185973</updated>
     </task>
     <servers />
   </component>

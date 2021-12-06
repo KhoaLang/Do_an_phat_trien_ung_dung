@@ -23,16 +23,14 @@ com/example/landview/DetailArea.java
  com.example.landview.DetailArea
  com.example.landview.DetailArea$1
  com.example.landview.DetailArea$2
-com/example/landview/Weather.java
- com.example.landview.Weather
- com.example.landview.Weather$1
- com.example.landview.Weather$2
- com.example.landview.Weather$3
- com.example.landview.Weather$4
-com/example/landview/Weathernext.java
- com.example.landview.Weathernext
- com.example.landview.Weathernext$1
- com.example.landview.Weathernext$2
+ com.example.landview.DetailArea$3
+ com.example.landview.DetailArea$4
+com/example/landview/HotelResDetail.java
+ com.example.landview.HotelResDetail
+ com.example.landview.HotelResDetail$1
+ com.example.landview.HotelResDetail$2
+com/example/landview/HomeFragmentSection/DetailReview/ReviewFragment/ReviewFragment.java
+ com.example.landview.HomeFragmentSection.DetailReview.ReviewFragment.ReviewFragment
 com/example/landview/Restaurant/ResAdapter.java
  com.example.landview.Restaurant.ResAdapter
  com.example.landview.Restaurant.ResAdapter$ViewHolder
@@ -53,6 +51,8 @@ com/example/landview/LoginActivity.java
 com/example/landview/HomeFragmentSection/News/NewItemAdapter.java
  com.example.landview.HomeFragmentSection.News.NewItemAdapter
  com.example.landview.HomeFragmentSection.News.NewItemAdapter$NewViewholder
+com/example/landview/WeatherModels.java
+ com.example.landview.WeatherModels
 com/example/landview/HomeFragmentSection/Reviews/ItemReview.java
  com.example.landview.HomeFragmentSection.Reviews.ItemReview
 com/example/landview/LauncherActivity.java
@@ -63,6 +63,8 @@ com/example/landview/HomeFragmentSection/Slider/Slider.java
  com.example.landview.HomeFragmentSection.Slider.Slider
 com/example/landview/Restaurant/Restaurant.java
  com.example.landview.Restaurant.Restaurant
+com/example/landview/WeatherAdapter.java
+ com.example.landview.WeatherAdapter
 com/example/landview/ItemRes.java
  com.example.landview.ItemRes
 com/example/landview/Area/TravelFragmentAreaAdapter.java
@@ -71,6 +73,9 @@ com/example/landview/Area/TravelFragmentAreaAdapter.java
  com.example.landview.Area.TravelFragmentAreaAdapter$ViewHolder
  com.example.landview.Area.TravelFragmentAreaAdapter$ViewHolder$1
  com.example.landview.Area.TravelFragmentAreaAdapter$ViewHolder$2
+com/example/landview/chung/SliderAdapter.java
+ com.example.landview.chung.SliderAdapter
+ com.example.landview.chung.SliderAdapter$ViewHolder
 com/example/landview/TravelHotel/TravelHotelAdapter.java
  com.example.landview.TravelHotel.TravelHotelAdapter
  com.example.landview.TravelHotel.TravelHotelAdapter$1
@@ -92,8 +97,6 @@ com/example/landview/Area/TopItemAdapter.java
  com.example.landview.Area.TopItemAdapter
  com.example.landview.Area.TopItemAdapter$1
  com.example.landview.Area.TopItemAdapter$TopItemViewholder
-com/example/landview/WeatherActivity/WeatherAdapter.java
- com.example.landview.WeatherActivity.WeatherAdapter
 com/example/landview/HotelDetail.java
  com.example.landview.HotelDetail
  com.example.landview.HotelDetail$1
@@ -161,8 +164,6 @@ com/example/landview/HomeFragmentSection/trips/Trips.java
  com.example.landview.HomeFragmentSection.trips.Trips$1$2$1
 com/example/landview/HomeFragmentSection/News/NewItem.java
  com.example.landview.HomeFragmentSection.News.NewItem
-com/example/landview/WeatherActivity/WeatherModel.java
- com.example.landview.WeatherActivity.WeatherModel
 com/example/landview/Area/Area.java
  com.example.landview.Area.Area
 com/example/landview/ItemHotel.java
@@ -175,9 +176,13 @@ com/example/landview/Utils/StringUtils.java
  com.example.landview.Utils.StringUtils
 com/example/landview/HomeFragmentSection/DetailReview/ImageFragment/Image.java
  com.example.landview.HomeFragmentSection.DetailReview.ImageFragment.Image
-com/example/landview/HomeFragmentSection/DetailReview/ReviewFragment/ReviewFragment.java
- com.example.landview.HomeFragmentSection.DetailReview.ReviewFragment.ReviewFragment
-com/example/landview/HotelResDetail.java
- com.example.landview.HotelResDetail
- com.example.landview.HotelResDetail$1
- com.example.landview.HotelResDetail$2
+com/example/landview/Weather.java
+ com.example.landview.Weather
+ com.example.landview.Weather$1
+ com.example.landview.Weather$2
+ com.example.landview.Weather$3
+ com.example.landview.Weather$4
+com/example/landview/Weathernext.java
+ com.example.landview.Weathernext
+ com.example.landview.Weathernext$1
+ com.example.landview.Weathernext$2

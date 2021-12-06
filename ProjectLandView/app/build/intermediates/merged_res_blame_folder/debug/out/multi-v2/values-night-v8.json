@@ -1,27 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Asus\\Desktop\\Moblie\\ProjectLandView\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\Asus\\Desktop\\pJapp\\ProjectLandView\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\Asus\\Desktop\\Moblie\\ProjectLandView\\app\\src\\main\\res\\values-night\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "102",
-                        "endLines": "16",
-                        "endColumns": "12",
-                        "endOffsets": "930"
-                    },
-                    "to": {
-                        "startLines": "9",
-                        "startColumns": "4",
-                        "startOffsets": "732",
-                        "endLines": "23",
-                        "endColumns": "12",
-                        "endOffsets": "1544"
-                    }
-                },
                 {
                     "source": "C:\\Users\\Asus\\.gradle\\caches\\transforms-3\\8a7a06036e0c4f4e613a8bbc02ac21f5\\transformed\\material-1.4.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
@@ -37,6 +18,25 @@
                         "startOffsets": "1549,1637,1761,1863,1965,2081,2183,2297,2425,2541,2663,2799,2919,3053,3173,3285,3500,3624,3754,3876,4014,4148,4264",
                         "endColumns": "87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,123,129,121,137,133,115,119",
                         "endOffsets": "1632,1756,1858,1960,2076,2178,2292,2420,2536,2658,2794,2914,3048,3168,3280,3406,3619,3749,3871,4009,4143,4259,4379"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Asus\\Desktop\\pJapp\\ProjectLandView\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "102",
+                        "endLines": "16",
+                        "endColumns": "12",
+                        "endOffsets": "930"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "732",
+                        "endLines": "23",
+                        "endColumns": "12",
+                        "endOffsets": "1544"
                     }
                 },
                 {

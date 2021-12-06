@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Asus\.gradle\caches\transforms-3\4b4fc57f74db156e3dabbfc44920a33f\transformed\jetified-picasso-2.71828\AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Asus\.gradle\caches\transforms-3\690d4e3d4c08c9e780ec64aa6aeca3b0\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Asus\.gradle\caches\transforms-3\8a7a06036e0c4f4e613a8bbc02ac21f5\transformed\material-1.4.0\AndroidManifest.xml:17:1-24:12
@@ -66,33 +66,25 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Asus\.gradle\cac
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Asus\.gradle\caches\transforms-3\f33bcb2f5c49a496470aa54ba8b02aa6\transformed\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Asus\.gradle\caches\transforms-3\97c9b5d86fced5e6f7a4cbd2f94853b9\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\Asus\.gradle\caches\transforms-3\0d32d35274e9316f6cb3cc28abf26edd\transformed\jetified-grpc-android-1.41.0\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
 	package
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:3:5-35
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:3:5-35
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-97:12
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:1-96:12
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:2:11-69
-uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:5:5-67
-MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Asus\.gradle\caches\transforms-3\bc92e791c177c44f8433e6c0958e860f\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Asus\.gradle\caches\transforms-3\bc92e791c177c44f8433e6c0958e860f\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Asus\.gradle\caches\transforms-3\d1716f973584b4b2af17a35d695ea6c1\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:14:5-67
-MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Asus\.gradle\caches\transforms-3\d1716f973584b4b2af17a35d695ea6c1\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:14:5-67
-	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:5:22-64
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:7:5-95:19
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:5:5-94:19
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Asus\.gradle\caches\transforms-3\4b4fc57f74db156e3dabbfc44920a33f\transformed\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Asus\.gradle\caches\transforms-3\4b4fc57f74db156e3dabbfc44920a33f\transformed\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Asus\.gradle\caches\transforms-3\690d4e3d4c08c9e780ec64aa6aeca3b0\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:22:5-38:19
@@ -126,121 +118,121 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\As
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] C:\Users\Asus\.gradle\caches\transforms-3\4b18baa9266eba5441dc9be7b537a834\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:9:9-35
 	android:roundIcon
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:10:9-54
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:8:9-54
 	android:icon
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:7:9-43
 	android:allowBackup
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:12:9-46
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:10:9-46
 activity#com.example.landview.Weathernext
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:13:9-15:39
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:11:9-13:39
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:15:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:13:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:14:13-40
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:12:13-40
 activity#com.example.landview.TermsOfServices
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:16:9-18:39
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:15:9-17:39
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:18:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:17:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:17:13-44
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:16:13-44
 activity#com.example.landview.DetailArea
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:19:9-21:39
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:18:9-20:39
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:21:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:20:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:20:13-39
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:19:13-39
 activity#com.example.landview.HotelResDetail
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:22:9-24:39
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:21:9-23:39
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:24:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:23:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:23:13-43
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:22:13-43
 activity#com.example.landview.LauncherActivity
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:25:9-27:39
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:24:9-26:39
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:27:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:26:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:26:13-45
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:25:13-45
 activity#com.example.landview.SignUpActivity
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:28:9-34:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:27:9-33:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:30:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:29:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:29:13-43
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:28:13-43
 activity#com.example.landview.LoginActivity
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:35:9-41:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:34:9-40:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:37:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:36:13-42
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:35:13-42
 activity#com.example.landview.ForgotPassActivity
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:42:9-48:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:41:9-47:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:44:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:43:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:43:13-47
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:42:13-47
 activity#com.example.landview.HomeFragmentSection.trips.Trips
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:49:9-55:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:48:9-54:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:51:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:50:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:50:13-60
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:49:13-60
 activity#com.example.landview.HomeFragmentSection.Reviews.Review
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:56:9-62:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:55:9-61:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:58:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:57:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:57:13-63
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:56:13-63
 activity#com.example.landview.Weather
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:63:9-69:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:62:9-68:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:65:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:64:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:64:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:63:13-36
 activity#com.example.landview.Promotion
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:70:9-76:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:69:9-75:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:72:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:71:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:71:13-38
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:70:13-38
 activity#com.example.landview.HomeFragmentSection.DetailReview.DetailHoguom
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:77:9-83:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:76:9-82:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:79:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:78:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:78:13-74
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:77:13-74
 activity#com.example.landview.LandScapeDetail
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:84:9-53
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:83:9-53
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:84:19-50
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:83:19-50
 activity#com.example.landview.MainActivity
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:85:9-50
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:84:9-50
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:85:19-47
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:84:19-47
 activity#com.example.landview.SplashScreen
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:86:9-94:20
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:85:9-93:20
 	android:exported
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:88:13-36
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:87:13-36
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:87:13-41
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:86:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:89:13-93:29
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:88:13-92:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:90:17-69
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:89:17-69
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:90:25-66
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:89:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:92:17-77
+ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:91:17-77
 	android:name
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml:92:27-74
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml:91:27-74
 uses-sdk
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Asus\.gradle\caches\transforms-3\4b4fc57f74db156e3dabbfc44920a33f\transformed\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
 MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Asus\.gradle\caches\transforms-3\4b4fc57f74db156e3dabbfc44920a33f\transformed\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Asus\.gradle\caches\transforms-3\690d4e3d4c08c9e780ec64aa6aeca3b0\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:20:5-44
@@ -365,16 +357,16 @@ MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Asu
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Asus\.gradle\caches\transforms-3\97c9b5d86fced5e6f7a4cbd2f94853b9\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\Asus\.gradle\caches\transforms-3\0d32d35274e9316f6cb3cc28abf26edd\transformed\jetified-grpc-android-1.41.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\Asus\.gradle\caches\transforms-3\0d32d35274e9316f6cb3cc28abf26edd\transformed\jetified-grpc-android-1.41.0\AndroidManifest.xml:7:5-9:41
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Asus\Desktop\Moblie\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Asus\Desktop\pJapp\ProjectLandView\app\src\main\AndroidManifest.xml
 provider#com.squareup.picasso.PicassoProvider
 ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Asus\.gradle\caches\transforms-3\4b4fc57f74db156e3dabbfc44920a33f\transformed\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
 	android:authorities
@@ -403,6 +395,12 @@ ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Asus\.gra
 		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Asus\.gradle\caches\transforms-3\690d4e3d4c08c9e780ec64aa6aeca3b0\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Asus\.gradle\caches\transforms-3\690d4e3d4c08c9e780ec64aa6aeca3b0\transformed\jetified-play-services-auth-19.2.0\AndroidManifest.xml:34:13-89
+uses-permission#android.permission.INTERNET
+ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Asus\.gradle\caches\transforms-3\bc92e791c177c44f8433e6c0958e860f\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Asus\.gradle\caches\transforms-3\d1716f973584b4b2af17a35d695ea6c1\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Asus\.gradle\caches\transforms-3\d1716f973584b4b2af17a35d695ea6c1\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:14:5-67
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Asus\.gradle\caches\transforms-3\bc92e791c177c44f8433e6c0958e860f\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Asus\.gradle\caches\transforms-3\bc92e791c177c44f8433e6c0958e860f\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Asus\.gradle\caches\transforms-3\d1716f973584b4b2af17a35d695ea6c1\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:13:5-79

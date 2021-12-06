@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Asus\\Desktop\\Moblie\\ProjectLandView\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fi\\values-fi.xml",
+            "outputFile": "C:\\Users\\Asus\\Desktop\\pJapp\\ProjectLandView\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fi\\values-fi.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Asus\\.gradle\\caches\\transforms-3\\8af45b3c4bfca56d649743056fa4aec9\\transformed\\jetified-play-services-basement-17.5.0\\res\\values-fi\\values.xml",

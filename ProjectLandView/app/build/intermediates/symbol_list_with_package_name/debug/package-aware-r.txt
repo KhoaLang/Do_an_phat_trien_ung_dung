@@ -1822,10 +1822,7 @@ drawable arrow_icon
 drawable avd_hide_password
 drawable avd_show_password
 drawable badinh_langbac
-drawable bg_weather
 drawable bg_weather1
-drawable bg_weather3
-drawable bg_weather4
 drawable bg_weather5
 drawable bienlonghai
 drawable bientrac
@@ -2287,6 +2284,7 @@ id ignore
 id ignoreRequest
 id image
 id imageLogo
+id images_count_tv
 id imgCrying
 id imgDes
 id imgDestination
@@ -2630,7 +2628,7 @@ id view_transition
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
-id viewpager
+id viewpager2
 id visible
 id visible_removing_fragment_view_tag
 id web
@@ -2715,7 +2713,6 @@ layout abc_tooltip
 layout activity_hotel_detail
 layout activity_main
 layout activity_terms_of_services
-layout activity_weather_next
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -2742,6 +2739,7 @@ layout fragment_overview
 layout fragment_review
 layout fragment_travel
 layout fragment_user
+layout layout_activity_weather_next
 layout layout_custom_dialog_user
 layout layout_detail_area
 layout layout_forgot_password
