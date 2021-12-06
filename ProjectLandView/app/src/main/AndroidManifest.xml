@@ -8,8 +8,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Landview">
-
-        <!--.RestaurantDetal-->
+        <activity
+            android:name=".Weathernext"
+            android:exported="true" />
+        <!-- .RestaurantDetal -->
         <activity
             android:name=".TermsOfServices"
             android:exported="true" />
