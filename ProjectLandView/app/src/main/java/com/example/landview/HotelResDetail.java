@@ -71,32 +71,32 @@ public class HotelResDetail extends AppCompatActivity {
     private void GotoWebPageHotel() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(item1.getmLink()));
+       // intent.setData(Uri.parse(item1.getmLink()));
         startActivity(intent);
     }
     private void GotoWebPageRes() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(item2.getmLink()));
+      //  intent.setData(Uri.parse(item2.getmLink()));
         startActivity(intent);
     }
     private void setDataFromBundelHotel() {
-        background.setImageResource(item1.getmBackground());
+        /*background.setImageResource(item1.getmBackground());
         imgrate.setImageResource(item1.getmRate());
         name.setText(item1.getmName());
         numberRate.setText(item1.getNumberRate());
         price.setText(item1.getmPrice());
         description.setText(item1.getmIntro());
-        address.setText(item1.getmAddress());
+        address.setText(item1.getmAddress());*/
     }
     private void setDataFromBundelRestaurant() {
-        background.setImageResource(item2.getmBackground());
+       /* background.setImageResource(item2.getmBackground());
         imgrate.setImageResource(item2.getmRate());
         name.setText(item2.getmName());
         numberRate.setText(item2.getNumberRate());
         price.setText(item2.getmPrice());
         description.setText(item2.getmIntro());
-        address.setText(item2.getmAddress());
+        address.setText(item2.getmAddress());*/
     }
     private void InitUI() {
         background = findViewById(R.id.imgView);

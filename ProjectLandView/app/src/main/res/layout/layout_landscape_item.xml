@@ -3,57 +3,53 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginEnd="16dp"
+    android:layout_marginEnd="10dp"
     android:orientation="vertical">
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="170dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="20dp">
         <FrameLayout
-            android:layout_width="216dp"
-            android:layout_height="208dp"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/iv_hotel_item_image"
+                android:id="@+id/iv_landscape_item_image"
                 android:src="@drawable/khachsan1"
-                android:scaleType="centerCrop"/>
+                android:scaleType="fitXY"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_hotel_item_tym"
+                android:id="@+id/iv_landscape_item_tym"
                 android:src="@drawable/tym"
                 android:layout_gravity="right"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"/>
         </FrameLayout>
-
-
+    </androidx.cardview.widget.CardView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_hotel_item_name"
-        android:text="Tên khách sạn"
-        android:maxLines="2"
+        android:id="@+id/tv_landscape_item_name"
+        android:text="Tên địa danh"
         android:textSize="18sp"
-        android:fontFamily="@font/lato_bold"
         android:textColor="@color/black"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
         >
         <RatingBar
-            android:id="@+id/rb_hotel_item_rate"
+            android:id="@+id/rb_landscape_item_rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:stepSize="0.5"
             android:numStars="5"
-            android:rating="5"
-            />
-
+            android:stepSize="0.5" />
         <TextView
-            android:id="@+id/tv_hotel_item_total_rate"
+            android:id="@+id/tv_landscape_item_total_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -65,12 +61,5 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_hotel_item_price"
-        android:text="10.000.000đ"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:fontFamily="@font/lato_bold"/>
+
 </LinearLayout>

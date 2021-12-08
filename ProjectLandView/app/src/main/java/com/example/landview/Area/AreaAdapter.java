@@ -1,7 +1,6 @@
 package com.example.landview.Area;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,23 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class TravelFragmentAreaAdapter extends RecyclerView.Adapter<TravelFragmentAreaAdapter.ViewHolder> {
+public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
     private static final String TAG = "FragmentAreaAdapter";
     private ArrayList<Area> areas;
     private Context context;
-    private AreaInterface listener;
+    private AreaClick listener;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    public void setRecyclerViewItemClickListener(AreaInterface listener){
+    public void setAreaClick(AreaClick listener){
         this.listener = listener;
     }
-    public TravelFragmentAreaAdapter(Context context, ArrayList<Area> areas) {
+    public AreaAdapter(Context context, ArrayList<Area> areas) {
         this.context = context;
         this.areas = areas;
     }
@@ -45,22 +42,16 @@ public class TravelFragmentAreaAdapter extends RecyclerView.Adapter<TravelFragme
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Area area = areas.get(position);
-        Picasso.get().load(area.getImages().get(0)).into(holder.areaIv);
+        Picasso.get().load(area.getImages().get(0)).fit().into(holder.areaIv);
         holder.areaText.setText(area.getAreaName());
-        ArrayList<String> likeList = area.getLikes();
         holder.areaLike.setImageResource(R.drawable.tym);
-        String userId = mAuth.getCurrentUser().getUid();
-        Log.d(TAG, "onBindViewHolder: " + userId);
-        if(likeList.contains(userId)){
+        if(area.getLikes().contains(mAuth.getUid())){
             holder.areaLike.setImageResource(R.drawable.ic_red_tym_24);
-        } else {
-            holder.areaLike.setImageResource(R.drawable.tym);
         }
     }
 
     @Override
     public int getItemCount() {
-        if(areas == null) return 0;
         return areas.size();
     }
 
@@ -68,8 +59,8 @@ public class TravelFragmentAreaAdapter extends RecyclerView.Adapter<TravelFragme
         private ImageView areaIv;
         private TextView areaText;
         private ImageView areaLike;
-        private AreaInterface listener;
-        public ViewHolder(@NonNull View itemView, AreaInterface listener) {
+        private AreaClick listener;
+        public ViewHolder(@NonNull View itemView, AreaClick listener) {
             super(itemView);
             areaIv = itemView.findViewById(R.id.imgTop);
             areaText = itemView.findViewById(R.id.textTop);
@@ -85,14 +76,14 @@ public class TravelFragmentAreaAdapter extends RecyclerView.Adapter<TravelFragme
             areaLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.likeClick(getBindingAdapterPosition(), (ImageView) view);
+                    listener.likeClick(getBindingAdapterPosition());
                 }
             });
         }
     }
 
-    public interface AreaInterface{
+    public interface AreaClick {
         void itemClick(int position);
-        void likeClick(int position, ImageView view);
+        void likeClick(int position);
     }
 }

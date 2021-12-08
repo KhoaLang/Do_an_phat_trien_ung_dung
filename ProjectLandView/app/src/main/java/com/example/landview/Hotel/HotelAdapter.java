@@ -5,71 +5,115 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder>{
 
-    private Context mcontext;
-    private List<Hotel>hotelList;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    public HotelAdapter(Context mcontext, List<Hotel> hotelList) {
-        this.mcontext = mcontext;
-        this.hotelList = hotelList;
+    private Context context;
+    private ArrayList<Hotel> hotels;
+    private HotelClick listener;
+
+    public HotelAdapter(Context context, ArrayList<Hotel> hotels) {
+        this.context = context;
+        this.hotels = hotels;
     }
+
+    public void setHotelClick(HotelClick listener){
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_hotel,parent,false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_hotel_item,parent,false);
+        return new ViewHolder(view, listener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Hotel item = hotelList.get(position);
-        if(item == null)
-        {
-            return;
+        Hotel hotel = hotels.get(position);
+        holder.tvHotelName.setText(hotel.getName());
+        Picasso.get()
+                .load(hotel.getImages().get(0))
+                .fit()
+                .into(holder.ivHotelImage);
+
+
+        holder.ivHotelTym.setImageResource(R.drawable.tym);
+        if(hotel.getLikesList().contains(mAuth.getUid())){
+            holder.ivHotelTym.setImageResource(R.drawable.ic_red_tym_24);
         }
-        holder.imgBackground.setImageResource(item.getmBackground());
-        holder.imgIcon.setImageResource(item.getmIcon());
-        holder.txtName.setText(item.getmName());
-        holder.imgRate.setImageResource(item.getmRate());
-        holder.txtPrice.setText(item.getmPrice());
-        holder.txtNumberRate.setText(item.getNumberRate());
-        holder.txtIntro.setText(item.getmIntro());
-        holder.txtAddress.setText(item.getmAddress());
+        if(hotel.getTotalRate() > 0){
+            holder.ratingBar.setRating(hotel.getRating());
+            holder.tvTotalRate.setText(String.valueOf(hotel.getTotalRate()));
+        } else { // trường
+            holder.ratingBar.setRating(5f);
+            holder.tvTotalRate.setText("0");
+        }
+
+        if(hotel.getPrice() == 0 ) holder.tvHotelPrice.setText("1.000.000 đ");
+        else {
+            String price = String.valueOf(hotel.getPrice());
+            holder.tvHotelPrice.setText(price);
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        if(hotelList!=null)
-        {
-            return hotelList.size();
-        }
-        return 0;
+        return hotels.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imgBackground,imgIcon,imgRate;
-        private TextView txtName,txtPrice,txtNumberRate,txtIntro,txtAddress;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imgBackground = itemView.findViewById(R.id.imgHotel);
-            imgIcon = itemView.findViewById(R.id.iconHoteltym);
-            txtName = itemView.findViewById(R.id.txtNamehotel);
-            imgRate = itemView.findViewById(R.id.imgrateHotel);
-            txtPrice = itemView.findViewById(R.id.txtPriceHotel);
-            txtNumberRate = itemView.findViewById(R.id.txtNumberate);
-            txtIntro = itemView.findViewById(R.id.txtIntro);
-            txtAddress = itemView.findViewById(R.id.txtAddress);
+        private TextView tvHotelName;
+        private ImageView ivHotelImage;
+        private ImageView ivHotelTym;
+        private RatingBar ratingBar;
+        private TextView tvTotalRate;
+        private TextView tvHotelPrice;
+        private HotelClick listener;
+        public ViewHolder(@NonNull View view, HotelClick listener) {
+            super(view);
+            tvHotelName = view.findViewById(R.id.tv_hotel_item_name);
+            ivHotelImage = view.findViewById(R.id.iv_hotel_item_image);
+            ivHotelTym = view.findViewById(R.id.iv_hotel_item_tym);
+            ratingBar = view.findViewById(R.id.rb_hotel_item_rate);
+            tvTotalRate = view.findViewById(R.id.tv_hotel_item_total_rate);
+            tvHotelPrice = view.findViewById(R.id.tv_hotel_item_price);
+            this.listener = listener;
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.itemClick(getBindingAdapterPosition());
+                }
+            });
+
+            ivHotelTym.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.likeClick(getBindingAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface HotelClick{
+        void itemClick(int position);
+        void likeClick(int position);
     }
 }

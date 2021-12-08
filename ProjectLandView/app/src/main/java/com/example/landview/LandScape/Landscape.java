@@ -1,12 +1,11 @@
-package com.example.landview.Restaurant;
-
+package com.example.landview.LandScape;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Restaurant implements Serializable {
-
+public class Landscape implements Serializable {
     private String address;
     private String areaId;
+    private String description;
     private String geohash;
     private double latitude;
     private double longitude;
@@ -15,18 +14,19 @@ public class Restaurant implements Serializable {
     private ArrayList<String> likesList;
     private String name;
     private String type;
-
     private float rating;
     private int totalRate;
 
-    public Restaurant() {
+    public Landscape(){
+
     }
 
-    public Restaurant(String address, String areaId, String geohash, double latitude, double longitude,
-                      String id, ArrayList<String> images, ArrayList<String> likesList, String name,
-                      String type, float rating, int totalRate) {
+    public Landscape(String address, String areaId, String description, String geohash, double latitude,
+                     double longitude, String id, ArrayList<String> images, ArrayList<String> likesList,
+                     String name, String type, int totalRate) {
         this.address = address;
         this.areaId = areaId;
+        this.description = description;
         this.geohash = geohash;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -35,20 +35,22 @@ public class Restaurant implements Serializable {
         this.likesList = likesList;
         this.name = name;
         this.type = type;
-        this.rating = rating;
         this.totalRate = totalRate;
     }
 
-    /******************************************************************************************************************/
+    /**************************************************************************************************************************/
 
-    // getter
-
+    // Getter
     public String getAddress() {
         return address;
     }
 
     public String getAreaId() {
         return areaId;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getGeohash() {
@@ -91,15 +93,20 @@ public class Restaurant implements Serializable {
         return totalRate;
     }
 
-    /******************************************************************************************************************/
+    /**************************************************************************************************************************/
 
-    // setter
+    // Setter
+
     public void setAddress(String address) {
         this.address = address;
     }
 
     public void setAreaId(String areaId) {
         this.areaId = areaId;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setGeohash(String geohash) {
@@ -142,12 +149,17 @@ public class Restaurant implements Serializable {
         this.totalRate = totalRate;
     }
 
+    /**************************************************************************************************************************/
+
+    // toString
+
 
     @Override
     public String toString() {
-        return "Restaurant{" +
+        return "Landscape{" +
                 "address='" + address + '\'' +
                 ", areaId='" + areaId + '\'' +
+                ", description='" + description + '\'' +
                 ", geohash='" + geohash + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +

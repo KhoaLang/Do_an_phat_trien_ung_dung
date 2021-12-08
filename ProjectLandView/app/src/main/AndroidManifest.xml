@@ -9,9 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Landview">
         <activity
-            android:name=".Weathernext"
+            android:name=".RestaurantDetail"
             android:exported="true" />
-        <!-- .RestaurantDetal -->
+        <activity
+            android:name=".Weathernext"
+            android:exported="true" /> <!-- .RestaurantDetal -->
         <activity
             android:name=".TermsOfServices"
             android:exported="true" />
@@ -20,6 +22,9 @@
             android:exported="true" />
         <activity
             android:name=".HotelResDetail"
+            android:exported="true" />
+        <activity
+            android:name=".HotelDetail"
             android:exported="true" />
         <activity
             android:name=".LauncherActivity"

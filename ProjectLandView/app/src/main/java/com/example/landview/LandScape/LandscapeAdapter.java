@@ -1,4 +1,4 @@
-package com.example.landview.Restaurant;
+package com.example.landview.LandScape;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,84 +11,89 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.landview.Hotel.Hotel;
-import com.example.landview.Hotel.HotelAdapter;
 import com.example.landview.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ResAdapter extends RecyclerView.Adapter<ResAdapter.ViewHolder> {
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+public class LandscapeAdapter extends RecyclerView.Adapter<LandscapeAdapter.ViewHolder> {
+
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     private Context context;
-    private ArrayList<Restaurant> restaurants;
-    private RestaurantClick listener;
+    private ArrayList<Landscape> landscapes;
+    private LandscapeClick listener;
 
-    public void setRestaurantClick(RestaurantClick listener){
+    public void setLandscapeClick(LandscapeClick listener){
         this.listener = listener;
     }
 
-    public ResAdapter(Context context, ArrayList<Restaurant> restaurants) {
+    public LandscapeAdapter(Context context, ArrayList<Landscape> landscapes) {
         this.context = context;
-        this.restaurants = restaurants;
+        this.landscapes = landscapes;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_restaurant_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_landscape_item, parent, false);
         return new ViewHolder(view, listener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Restaurant restaurant = restaurants.get(position);
-        holder.tvName.setText(restaurant.getName());
+        Landscape landscape = landscapes.get(position);
+
+        holder.tvName.setText(landscape.getName());
+
+        // load ảnh thứ 1 trong danh sách ảnh
         Picasso.get()
-                .load(restaurant.getImages().get(0))
+                .load(landscape.getImages().get(0))
                 .fit()
                 .into(holder.ivImage);
 
+        // Cập nhật like hay unlike
         holder.ivTym.setImageResource(R.drawable.tym);
-        if(restaurant.getLikesList().contains(mAuth.getUid())){
+        if(landscape.getLikesList().contains(mAuth.getUid())) {
             holder.ivTym.setImageResource(R.drawable.ic_red_tym_24);
         }
 
-        if(restaurant.getTotalRate() > 0) {
-            // set Rating
-            holder.ratingBar.setRating(restaurant.getRating());
-            // set total Rate
-            holder.tvTotalRate.setText(String.valueOf(restaurant.getTotalRate()));
+
+        // Cập nhật rating và total rate
+        if(landscape.getTotalRate() > 0){
+            holder.ratingBar.setRating(landscape.getRating());
+            holder.tvTotalRate.setText(String.valueOf(landscape.getTotalRate()));
         } else {
             holder.ratingBar.setRating(5f);
             holder.tvTotalRate.setText("0");
         }
 
+
     }
 
     @Override
     public int getItemCount() {
-       return restaurants.size();
+        return landscapes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        // R.layout.layout_landscape_item
         private ImageView ivImage;
         private TextView tvName;
         private ImageView ivTym;
         private RatingBar ratingBar;
         private TextView tvTotalRate;
-        private RestaurantClick listener;
-        public ViewHolder(@NonNull View view, RestaurantClick listener) {
+        private LandscapeClick listener;
+        public ViewHolder(@NonNull View view, LandscapeClick listener) {
             super(view);
-            ivImage = view.findViewById(R.id.iv_res_item_image);
-            tvName = view.findViewById(R.id.tv_res_item_name);
-            ivTym = view.findViewById(R.id.iv_res_item_tym);
-            ratingBar = view.findViewById(R.id.rb_res_item_rate);
-            tvTotalRate = view.findViewById(R.id.tv_res_item_total_rate);
+            ivImage = view.findViewById(R.id.iv_landscape_item_image);
+            tvName = view.findViewById(R.id.tv_landscape_item_name);
+            ivTym = view.findViewById(R.id.iv_landscape_item_tym);
+            ratingBar = view.findViewById(R.id.rb_landscape_item_rating);
+            tvTotalRate = view.findViewById(R.id.tv_landscape_item_total_rate);
             this.listener = listener;
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -104,8 +109,7 @@ public class ResAdapter extends RecyclerView.Adapter<ResAdapter.ViewHolder> {
             });
         }
     }
-
-    public interface RestaurantClick{
+    public interface LandscapeClick{
         void itemClick(int position);
         void likeClick(int position);
     }
