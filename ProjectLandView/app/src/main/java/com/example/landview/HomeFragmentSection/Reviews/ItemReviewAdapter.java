@@ -11,12 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.HomeFragmentSection.DetailReview.DetailHoguom;
 import com.example.landview.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.ReviewViewholder>{
@@ -66,6 +68,25 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
             return mlist.size();
         }
         return 0;
+    }
+
+    public void updateItem(List<ItemReview> itemReviewArrayList){
+        mlist.clear();
+        mlist.addAll(itemReviewArrayList);
+        notifyDataSetChanged();
+    }
+
+    public void removeAllItem(){
+        mlist.removeAll(mlist);
+        notifyDataSetChanged();
+    }
+
+    public void replaceNewList(List<ItemReview> itemReviewArrayList){
+        // clear old list
+        mlist.clear();
+        mlist.addAll(itemReviewArrayList);
+        // notify adapter
+        notifyDataSetChanged();
     }
 
     public class ReviewViewholder extends RecyclerView.ViewHolder{
