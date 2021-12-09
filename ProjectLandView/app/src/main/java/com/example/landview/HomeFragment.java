@@ -139,8 +139,8 @@ public class HomeFragment extends Fragment {
     private void addListitems() {
         itemServiceAdapter = new ItemServiceAdapter(this.getContext(),R.layout.layout_service_item_home_fragment);
         itemServiceAdapter.add(new ItemService(R.color.tripColor,R.drawable.icon_trips,"Trips"));
-        itemServiceAdapter.add(new ItemService(R.color.reviewColor,R.drawable.icon_rate,"Review"));
-        itemServiceAdapter.add(new ItemService(R.color.weatherColor,R.drawable.icon_weather,"Weather"));
+        itemServiceAdapter.add(new ItemService(R.color.reviewColor,R.drawable.img_search_yellow,"Search"));
+        itemServiceAdapter.add(new ItemService(R.color.weatherColor,R.drawable.img_weather_purple,"Weather"));
         itemServiceAdapter.add(new ItemService(R.color.promotionColor,R.drawable.icon_pro,"Promotions"));
         gridView.setAdapter(itemServiceAdapter);
     }
