@@ -18,6 +18,8 @@
             android:textSize="15sp"
             android:fontFamily="@font/lato_regular"
             android:paddingStart="50dp"
+            android:maxLines="1"
+            android:inputType="text"
             />
 
         <ImageView
