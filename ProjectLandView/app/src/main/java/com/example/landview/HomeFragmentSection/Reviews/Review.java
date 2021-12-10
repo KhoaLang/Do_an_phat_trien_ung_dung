@@ -3,6 +3,8 @@ package com.example.landview.HomeFragmentSection.Reviews;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,19 +53,17 @@ public class Review extends AppCompatActivity {
 
         //đổ dữ liệu vào recycleview
         list = getlistItemReviews();
-        itemReviewAdapter = new ItemReviewAdapter(this,list);
+        itemReviewAdapter = new ItemReviewAdapter(this, list);
         recyclerView.setAdapter(itemReviewAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        //adapter thứ 2 sau khi search
+        //Hàm bắt các sự kiện search
         searchActivity();
-    }
 
+    }
     //Hàm này lấy vài landscape để show trưng
     private List<ItemReview> getlistItemReviews() {
-//        List<ItemReview>list2 = new ArrayList<>();
-
         db.collection("landscapes").whereEqualTo("landscapeName", "vinh ha long").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -121,47 +121,29 @@ public class Review extends AppCompatActivity {
         iconSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                List<ItemReview> newList = new ArrayList<>();
-//                newList = filter(edtSearch.getText().toString());
                 list.clear();
                 list.addAll(filter(edtSearch.getText().toString()));
                 itemReviewAdapter.notifyDataSetChanged();
-//                itemReviewAdapter.replaceNewList(newList);
-//                itemReviewAdapterAfterSearch = new ItemReviewAdapter(Review.this, list);
-//                recyclerView.setAdapter(itemReviewAdapterAfterSearch, false);
+            }
+        });
+
+        edtSearch.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if((keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (keyEvent.getAction() == KeyEvent.ACTION_DOWN)){
+                    list.clear();
+                    list.addAll(filter(edtSearch.getText().toString()));
+                    itemReviewAdapter.notifyDataSetChanged();
+                    return true;
+                }
+                return false;
             }
         });
     }
 
     private List<ItemReview> filter(String s){
-//        List<ItemReview> list2 = new ArrayList<>();
         String queryText = s.toLowerCase();
-//        db.collection("areas").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if(task.isSuccessful()){
-//                    for(QueryDocumentSnapshot document: task.getResult()){
-//                        List<String> imagesList = (List<String>) document.get("images");
-//                        ItemReview ir = new ItemReview(imagesList.get(0), document.get("areaName").toString(),
-//                                R.drawable.stars, document.get("address").toString());
-//                        list.add(ir);
-//                    }
-//                }
-//            }
-//        });
-//        db.collection("hotels").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if(task.isSuccessful()){
-//                    for(QueryDocumentSnapshot document: task.getResult()){
-//                        List<String> imagesList = (List<String>) document.get("images");
-//                        ItemReview ir = new ItemReview(imagesList.get(0), document.get("name").toString(),
-//                                R.drawable.stars, document.get("address").toString());
-//                        list.add(ir);
-//                    }
-//                }
-//            }
-//        });
+
         db.collection("landscapes").whereLessThanOrEqualTo("landscapeName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -175,6 +157,33 @@ public class Review extends AppCompatActivity {
                 }
             }
         });
+        db.collection("areas").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document: task.getResult()){
+                        List<String> imagesList = (List<String>) document.get("images");
+                        ItemReview ir = new ItemReview(imagesList.get(0), document.get("areaName").toString(),
+                                R.drawable.stars, document.get("address").toString());
+                        list.add(ir);
+                    }
+                }
+            }
+        });
+//        db.collection("hotels").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        List<String> imagesList = (List<String>) document.get("images");
+//                        ItemReview ir = new ItemReview(imagesList.get(0), document.get("name").toString(),
+//                                R.drawable.stars, document.get("address").toString());
+//                        list.add(ir);
+//                    }
+//                }
+//            }
+//        });
+
 //        db.collection("restaurants").whereLessThanOrEqualTo("restaurantName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 //            @Override
 //            public void onComplete(@NonNull Task<QuerySnapshot> task) {
