@@ -1,6 +1,8 @@
 package com.example.landview.HomeFragmentSection.News;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.landview.NewsWeb;
 import com.example.landview.R;
 
 import java.util.List;
@@ -40,6 +43,16 @@ public class NewItemAdapter extends RecyclerView.Adapter<NewItemAdapter.NewViewh
         }
         holder.image.setImageResource(item.getImageNews());
         holder.text.setText(item.getTextNews());
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               String linkItem = item.getLinkNews();
+                Intent intent = new Intent(context, NewsWeb.class);
+                intent.putExtra("link",linkItem);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

@@ -9,6 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Landview">
         <activity
+            android:name=".NewsWeb"
+            android:exported="true" />
+        <activity
+            android:name=".News"
+            android:exported="true" />
+        <activity
             android:name=".RestaurantDetail"
             android:exported="true" />
         <activity
