@@ -345,11 +345,11 @@ public class TravelFragment extends Fragment {
 
         if(likesList.contains(userId)){
             hotelRef.update("likesList", FieldValue.arrayRemove(userId));
-            userRef.update("likesList", FieldValue.arrayRemove(hotelRef));
+            userRef.update("likes", FieldValue.arrayRemove(hotelRef));
             likesList.remove(userId);
         } else {
             hotelRef.update("likesList", FieldValue.arrayUnion(userId));
-            userRef.update("likesList", FieldValue.arrayUnion(hotelRef));
+            userRef.update("likes", FieldValue.arrayUnion(hotelRef));
             likesList.add(userId);
         }
         hotelAdapter.notifyItemChanged(position);
