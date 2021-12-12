@@ -67,7 +67,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder>{
         if(hotel.getPrice() == 0 ) holder.tvHotelPrice.setText("1.000.000 đ");
         else {
             String price = String.valueOf(hotel.getPrice());
-            holder.tvHotelPrice.setText(price);
+            holder.tvHotelPrice.setText(price +"VNĐ");
         }
 
 

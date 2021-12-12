@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Landview">
         <activity
+            android:name=".Comment.WriteCommentActivity"
+            android:exported="true" />
+        <activity
             android:name=".NewsWeb"
             android:exported="true" />
         <activity

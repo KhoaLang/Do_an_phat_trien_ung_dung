@@ -5,6 +5,12 @@ import java.util.ArrayList;
 
 public class Hotel implements Serializable {
 
+    /*
+     *  Còn thiếu cái description đó
+     *
+     *
+     * */
+
     private String address;
     private String areaId;
     private String geohash;

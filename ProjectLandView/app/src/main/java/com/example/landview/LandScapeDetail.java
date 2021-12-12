@@ -15,14 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.landview.Comment.CommentFragment;
+import com.example.landview.ExpandableTextView.ExpandableTextView;
 import com.example.landview.LandScape.Landscape;
+import com.example.landview.Rating.RatingFragment;
 import com.example.landview.chung.SliderAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 public class LandScapeDetail extends AppCompatActivity {
 
@@ -30,25 +34,29 @@ public class LandScapeDetail extends AppCompatActivity {
 
     private boolean isExpand = false;
     private Landscape landscape;
-    private TextView tvLandscapeDescription;
+    private TextView tvDescription;
     private TextView tvName;
     private ViewPager2 viewPager2;
     private TextView tvImageCount;
+    private TextView tvAddress;
 
     private RatingBar ratingBar;
     private TextView tvTotalRates;
 
+    private ExpandableTextView etvDescription;
 
     private SliderAdapter sliderAdapter;
     private Handler sliderHandler = new Handler();
 
     private void initUI() {
-        tvLandscapeDescription = findViewById(R.id.tv_landscape_description);
         tvName = findViewById(R.id.tv_landscape_name);
+        tvAddress = findViewById(R.id.tv_landscape_address);
         viewPager2 = findViewById(R.id.vp2_landscape);
         tvImageCount = findViewById(R.id.tv_landscape_image_count);
         ratingBar = findViewById(R.id.rb_landscape);
         tvTotalRates = findViewById(R.id.tv_landscape_total_rate);
+        etvDescription = findViewById(R.id.etv_landscape_description);
+
     }
 
     // Lấy Landscape object từ activity trc đó đã gọi
@@ -69,30 +77,23 @@ public class LandScapeDetail extends AppCompatActivity {
         initUI();
 
         tvName.setText(landscape.getName());
-        tvLandscapeDescription.setText(landscape.getDescription());
-        tvLandscapeDescription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isExpand) {
-                    isExpand = true;
-                    tvLandscapeDescription.setLines(tvLandscapeDescription.getLineCount());
-                } else {
-                    isExpand = false;
-                    tvLandscapeDescription.setLines(3);
-                }
-            }
-        });
+
+        etvDescription.setText(landscape.getDescription());
+        tvAddress.setText(landscape.getAddress());
 
         tvImageCount.setText(1+"/"+landscape.getImages());
         sliderAdapter = new SliderAdapter(landscape.getImages());
         setUpViewPager2(sliderAdapter);
 
         getRating();
+        createRatingFragment();
+        createCommentFragment();
 
     }
 
-    private void setUpViewPager2(SliderAdapter sliderAdapter){
 
+    /***************** Xử lý ảnh tự động trượt **********************************************/
+    private void setUpViewPager2(SliderAdapter sliderAdapter){
         viewPager2.setAdapter(sliderAdapter);
         viewPager2.setClipChildren(false);
         viewPager2.setClipToPadding(false);
@@ -116,20 +117,21 @@ public class LandScapeDetail extends AppCompatActivity {
         }
     };
 
+    /*******************************************************************************************************/
+
+
+    /********************************* Xử lý lấy rating ****************************************************/
+
     private void getRating(){
         db.collection("landscapes")
-                .document(landscape.getId()).collection("review")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .document(landscape.getId()).collection("review").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    QuerySnapshot querySnapshot = task.getResult();
-                    if(querySnapshot.size() ==0){
+            public void onEvent(@Nullable QuerySnapshot querySnapshot, @Nullable FirebaseFirestoreException error) {
+                if(error == null){
+                    if(querySnapshot.size() == 0){
                         ratingBar.setRating(5f);
                         tvTotalRates.setText("0 đánh giá");
-                    }
-                    else {
+                    } else {
                         float rate = 0;
                         int count =0;
                         for(DocumentSnapshot document : querySnapshot){
@@ -141,9 +143,36 @@ public class LandScapeDetail extends AppCompatActivity {
                         tvTotalRates.setText(String.valueOf(count) + " đánh giá");
                     }
                 }
+
+                if(error != null){
+                    ratingBar.setRating(5f);
+                    tvTotalRates.setText("0 đánh giá");
+                }
             }
         });
     }
 
+    /**********************************************************************************************/
+
+
+
+    private void createRatingFragment(){
+        // Tạo fragment object và truyền vào 2 tham số
+        RatingFragment ratingFragment = RatingFragment.newInstance(landscape.getType(), landscape.getId());
+        // Gọi fragment
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fcv_rating, ratingFragment)
+                .commit();
+    }
+
+    private void createCommentFragment(){
+        // Tạo fragment object và truyền vào 2 tham số
+        CommentFragment commentFragment = CommentFragment.newInstance(landscape.getType(), landscape.getId());
+        // Gọi fragment
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fcv_comment, commentFragment)
+                .commit();
+    }
 
 }
