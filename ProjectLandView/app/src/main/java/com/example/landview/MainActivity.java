@@ -18,11 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.landview.AppUser.AppUser;
 import com.example.landview.Area.Area;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,7 +34,14 @@ public class MainActivity extends AppCompatActivity {
     //    private ActionBar actionBar;
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
-   // private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // Firebase
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    // Khởi tạo singleton AppUser
+    private AppUser appUser = AppUser.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //ánh xạ
         bottomNavigationView = findViewById(R.id.bottomNav);
+
+        //
+        createAppUser();
+
 //        actionBar = getSupportActionBar();
         //đánh dấu mặc định
 //        actionBar.setTitle("Home");
@@ -154,5 +168,23 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
         }
 
+    }
+
+    private void createAppUser(){
+        db.collection("users").document(mAuth.getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document = task.getResult();
+                            if(document.exists() && document != null){
+                                appUser.setUserName(document.getString("username"));
+                                appUser.setUID(mAuth.getUid());
+                                appUser.setAvatar(document.getString("avatar"));
+                            }
+                        }
+                    }
+                });
     }
 }

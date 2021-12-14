@@ -147,6 +147,8 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
     }
 
+    private static final String DEFAULT_AVATAR = "https://firebasestorage.googleapis.com/v0/b/landscape-review.appspot.com/o/avatar%2Favatar-default.jpg?alt=media&token=0b53e7e2-0ecc-4767-b310-cc960226d7c7";
+
     private void addingDataToFireStore(String username, String email, String userId) {
         db = FirebaseFirestore.getInstance();
 
@@ -154,7 +156,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         Map<String, Object> user = new HashMap<>();
         user.put("UID", userId);
-        user.put("avatar", "");
+        user.put("avatar", DEFAULT_AVATAR);
         user.put("likes", Arrays.asList());
         user.put("email", email);
         user.put("username", username);

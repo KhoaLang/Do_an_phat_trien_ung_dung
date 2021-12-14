@@ -12,6 +12,9 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
+            android:name=".Comment.WriteCommentActivity"
+            android:exported="true" />
+        <activity
             android:name=".NewsWeb"
             android:exported="true" />
         <activity

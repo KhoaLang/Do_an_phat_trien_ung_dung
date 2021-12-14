@@ -1,6 +1,7 @@
 package com.example.landview;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,12 +19,16 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.landview.Comment.CommentFragment;
 import com.example.landview.Hotel.Hotel;
+import com.example.landview.Rating.RatingFragment;
 import com.example.landview.chung.SliderAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -83,7 +88,9 @@ public class HotelDetail extends AppCompatActivity {
 
         tvName.setText(hotel.getName());
         tvAddress.setText(hotel.getAddress());
-        tvPrice.setText("1.0000.000 VNĐ");
+        tvPrice.setText(String.valueOf(hotel.getPrice()) + " VNĐ");
+
+
         tvDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,12 +107,18 @@ public class HotelDetail extends AppCompatActivity {
 
         getRating();
 
+        // Review
 
+        createCommentFragment();
 
+        createRatingFragment();
 
 
     }
 
+    /***************** Xử lý ảnh tự động trượt **********************************************/
+
+    // Setup Viewpager2
     private void setUpViewPager2(SliderAdapter sliderAdapter){
         viewPager2.setAdapter(sliderAdapter);
         viewPager2.setClipChildren(false);
@@ -129,36 +142,59 @@ public class HotelDetail extends AppCompatActivity {
             viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
         }
     };
+    /*******************************************************************************************************/
 
 
-    private void getRating() {
-        db.collection("landscapes")
+    /********************************* Xử lý lấy rating ****************************************************/
+
+    private void getRating(){
+        db.collection("hotels")
                 .document(hotel.getId()).collection("review")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            QuerySnapshot querySnapshot = task.getResult();
-                            if(querySnapshot.size() ==0){
+                    public void onEvent(@Nullable QuerySnapshot querySnapshot, @Nullable FirebaseFirestoreException error) {
+                        if(error == null){ // không có lỗi
+                            if(querySnapshot.size() == 0){ // nếu ko có review nào thì cho 5 sao
                                 ratingBar.setRating(5f);
                                 tvTotalRate.setText("0 đánh giá");
-                            }
-                            else {
-                                float rate = 0;
-                                int count =0;
+                            } else { // Nếu có review
+                                float rate = 0; // tổng rating
+                                int count =0; // số lượng rating
                                 for(DocumentSnapshot document : querySnapshot){
                                     double rating = document.getDouble("rating");
                                     rate += rating;
                                     count ++;
                                 }
-                                ratingBar.setRating(rate/count);
+                                ratingBar.setRating(rate/count); // Tính toán trung bình rating = rate/count
                                 tvTotalRate.setText(String.valueOf(count) + " đánh giá");
                             }
+                        } else { // Trường hợp có lỗi
+                            ratingBar.setRating(5f);
+                            tvTotalRate.setText("0 đánh giá");
                         }
                     }
                 });
+    }
+    /**********************************************************************************************/
 
+
+
+    private void createCommentFragment(){
+        // Tạo fragment object và truyền vào 2 tham số
+        CommentFragment commentFragment = CommentFragment.newInstance(hotel.getType(), hotel.getId());
+        // Gọi fragment
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fcv_comment, commentFragment)
+                .commit();
+    }
+
+    private void createRatingFragment() {
+        RatingFragment ratingFragment = RatingFragment.newInstance(hotel.getType(), hotel.getId());
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fcv_rating, ratingFragment)
+                .commit();
     }
 
   /*  private void gotoListHotel() {
