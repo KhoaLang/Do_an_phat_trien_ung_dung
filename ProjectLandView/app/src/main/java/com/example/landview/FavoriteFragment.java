@@ -14,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.landview.HomeFragmentSection.Reviews.ItemReview;
 import com.example.landview.HomeFragmentSection.Reviews.ItemReviewAdapter;
+import com.example.landview.HomeFragmentSection.Reviews.Review;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +39,7 @@ public class FavoriteFragment extends Fragment {
     FirebaseFirestore db;
     FirebaseAuth mAuth;
     LinearLayout emptyList;
+    EditText edt;
     Button goBtn;
     ItemReviewAdapter favAdapter;
     List<ItemReview> list;
@@ -51,8 +54,16 @@ public class FavoriteFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         favoriteRecyclerView = view.findViewById(R.id.recvFav);
+        edt = view.findViewById(R.id.edtSearch);
         list = new ArrayList<>();
-
+        //Chuyển ->
+        edt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Review.class);
+                getContext().startActivity(intent);
+            }
+        });
         //kiểm tra user có thích chỗ nào chưa
         db.collection("users").document(getCurrentUserId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
