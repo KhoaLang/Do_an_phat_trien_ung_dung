@@ -69,6 +69,12 @@ public class UserFragment extends Fragment {
             }
         });
 
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ChangePassword.class));
+            }
+        });
         return view;
     }
 

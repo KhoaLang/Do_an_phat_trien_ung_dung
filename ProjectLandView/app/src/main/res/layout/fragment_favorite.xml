@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="invisible"
+        >
         <ImageView
             android:id="@+id/imgCrying"
             android:layout_width="200dp"
@@ -72,75 +73,88 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"/>
         </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your favorite place to go."
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Area"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lato_bold"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/fv_Topreview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"/>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Area"-->
+<!--                    android:textSize="23sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:fontFamily="@font/lato_bold"/>-->
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/fv_Topreview"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="15dp"/>-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Landscape"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lato_bold"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/fv_recvSuggets"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Top Hotel"
-                    android:textSize="23sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recvTophotel"
-                    android:layout_marginTop="15dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Top Restaurant"
-                    android:textSize="23sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:textStyle="bold"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recvTopRestaurant"
-                    android:layout_marginTop="15dp"
-                    />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:text="Landscape"-->
+<!--                    android:textSize="23sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:fontFamily="@font/lato_bold"/>-->
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/fv_recvSuggets"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="15dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Top Hotel"-->
+<!--                    android:textSize="23sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:fontFamily="@font/lato_bold"-->
+<!--                    android:textStyle="bold"-->
+<!--                    />-->
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/recvTophotel"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Top Restaurant"-->
+<!--                    android:textSize="23sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:fontFamily="@font/lato_bold"-->
+<!--                    android:textStyle="bold"-->
+<!--                    />-->
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/recvTopRestaurant"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recvFav"/>
         </ScrollView>
     </LinearLayout>
 </RelativeLayout>

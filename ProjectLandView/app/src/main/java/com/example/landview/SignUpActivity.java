@@ -97,22 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
         String textPass = editTextPass.getText().toString();
         String textTypePass = editTextTypePass.getText().toString();
         Boolean isCheck = checkBoxPolicy.isChecked();
-//        if(textUser == null || textEmail==null||textPass==null||textTypePass==null||isCheck==false)
-//        {
-//           Toast.makeText(this,"Please enter full information",Toast.LENGTH_LONG).show();
-//        }
-//        if(!checkValidEmail()||!checkPassword())
-//        {
-//            Toast.makeText(this,"Invalid Email or Password!Type Again",Toast.LENGTH_LONG).show();
-//        }
-//        else
-//        {
-//           Toast.makeText(this,"Sign up successful",Toast.LENGTH_LONG).show();
-//           //chuyển đến Main Activity
-//            Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+
         if (TextUtils.isEmpty(textUser)) {
             editTextUsername.setError("Username section can't be empty");
             editTextUsername.requestFocus();
@@ -165,7 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void addingDataToFireStore(String username, String email, String userId) {
         db = FirebaseFirestore.getInstance();
 
-        //empty list contain liked plac
+        //empty list contain liked place
 
         Map<String, Object> user = new HashMap<>();
         user.put("UID", userId);
@@ -178,9 +163,11 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful())
-                    Toast.makeText(SignUpActivity.this, "Success create user in FireStore", Toast.LENGTH_SHORT).show();
+                    Log.d("SignUP", "Success create user in FireStore");
+//                    Toast.makeText(SignUpActivity.this, "Success create user in FireStore", Toast.LENGTH_SHORT).show();
                 else {
-                    Toast.makeText(SignUpActivity.this, "Fail to create user in FireStore", Toast.LENGTH_SHORT);
+                    Log.d("SignUP", "Fail to create user in FireStore");
+//                    Toast.makeText(SignUpActivity.this, "Fail to create user in FireStore", Toast.LENGTH_SHORT);
                 }
             }
         });

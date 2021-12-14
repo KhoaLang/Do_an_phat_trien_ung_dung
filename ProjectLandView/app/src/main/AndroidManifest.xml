@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Landview">
         <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
             android:name=".NewsWeb"
             android:exported="true" />
         <activity
