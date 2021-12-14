@@ -7,11 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -34,6 +38,7 @@ public class HomeFragment extends Fragment {
     private ImageView imgNotify,imgSetting;
     private ViewPager2 viewPager2;
     private CircleIndicator3 circleIndicator3;
+    private EditText editOnchange;
     private TextView txtseemore;
     SliderAdapter sliderAdapter;
     List<Slider>list;
@@ -66,6 +71,17 @@ public class HomeFragment extends Fragment {
         gridView = view.findViewById(R.id.gridView);
         rcv = view.findViewById(R.id.recycleview);
         txtseemore = view.findViewById(R.id.txtReadmore);
+        editOnchange = view.findViewById(R.id.frameLayout);
+
+        editOnchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),Review.class);
+                getContext().startActivity(intent);
+            }
+        });
+
+
         //đổ dữ liệu slider
         addSlider();
         //auto run slider
