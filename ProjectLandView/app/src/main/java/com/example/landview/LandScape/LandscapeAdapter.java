@@ -50,6 +50,7 @@ public class LandscapeAdapter extends RecyclerView.Adapter<LandscapeAdapter.View
         // load ảnh thứ 1 trong danh sách ảnh
         Picasso.get()
                 .load(landscape.getImages().get(0))
+                .placeholder(R.drawable.destination)
                 .fit()
                 .into(holder.ivImage);
 

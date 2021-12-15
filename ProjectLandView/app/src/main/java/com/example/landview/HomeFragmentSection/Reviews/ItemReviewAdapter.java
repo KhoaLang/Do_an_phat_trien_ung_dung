@@ -22,8 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.ReviewViewholder>{
-    Context mcontext;
-    List<ItemReview>mlist;
+    private Context mcontext;
+    private List<ItemReview> mlist;
+    private ItemReviewClick listener;
+
+    public void setItemReviewClick(ItemReviewClick listener){this.listener=listener;}
 
     public ItemReviewAdapter(Context mcontext, List<ItemReview> mlist) {
         this.mcontext = mcontext;
@@ -34,7 +37,7 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
     @Override
     public ReviewViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_review_item,parent,false);
-        return new ReviewViewholder(view);
+        return new ReviewViewholder(view, listener);
     }
 
     @Override
@@ -50,16 +53,16 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
         holder.imgRate.setImageResource(itemReview.getRateImg());
         holder.nameAddress.setText(itemReview.getAddress());
         //sự kiện chuyển sang màn hình điện thoại
-        holder.relativeLayout.setOnClickListener(view -> onGotoDetail(itemReview));
+//        holder.relativeLayout.setOnClickListener(view -> onGotoDetail(itemReview));
     }
 
-    private void onGotoDetail(ItemReview itemReview) {
-        Intent intent = new Intent(mcontext,DetailHoguom.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object_ItemReview",itemReview);
-        intent.putExtras(bundle);
-        mcontext.startActivity(intent);
-    }
+//    private void onGotoDetail(ItemReview itemReview) {
+//        Intent intent = new Intent(mcontext,DetailHoguom.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("object_ItemReview",itemReview);
+//        intent.putExtras(bundle);
+//        mcontext.startActivity(intent);
+//    }
 
     @Override
     public int getItemCount() {
@@ -89,17 +92,29 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.Re
         notifyDataSetChanged();
     }
 
-    public class ReviewViewholder extends RecyclerView.ViewHolder{
-        ImageView imgName,imgRate;
-        TextView name,nameAddress;
-        RelativeLayout relativeLayout;
-        public ReviewViewholder(@NonNull View itemView) {
+    public static class ReviewViewholder extends RecyclerView.ViewHolder{
+        private ImageView imgName,imgRate;
+        private TextView name,nameAddress;
+        private RelativeLayout relativeLayout;
+        private ItemReviewClick listener;
+        public ReviewViewholder(@NonNull View itemView, ItemReviewClick listener) {
             super(itemView);
             relativeLayout = itemView.findViewById(R.id.relativeLayout);
             imgName = itemView.findViewById(R.id.imgItemReview);
             name = itemView.findViewById(R.id.txtName);
             imgRate = itemView.findViewById(R.id.imgrate);
             nameAddress = itemView.findViewById(R.id.txtAddress);
+            this.listener = listener;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.itemClick(getBindingAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface ItemReviewClick {
+        void itemClick(int position);
     }
 }

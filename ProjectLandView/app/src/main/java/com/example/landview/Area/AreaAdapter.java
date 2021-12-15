@@ -42,7 +42,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Area area = areas.get(position);
-        Picasso.get().load(area.getImages().get(0)).fit().into(holder.areaIv);
+        Picasso.get().load(area.getImages().get(0)).placeholder(R.drawable.destination).fit().into(holder.areaIv);
         holder.areaText.setText(area.getAreaName());
         holder.areaLike.setImageResource(R.drawable.tym);
         if(area.getLikes().contains(mAuth.getUid())){

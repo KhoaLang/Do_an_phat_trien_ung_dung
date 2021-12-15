@@ -48,6 +48,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder>{
         holder.tvHotelName.setText(hotel.getName());
         Picasso.get()
                 .load(hotel.getImages().get(0))
+                .placeholder(R.drawable.destination)
                 .fit()
                 .into(holder.ivHotelImage);
 
