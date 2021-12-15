@@ -49,6 +49,7 @@ public class ResAdapter extends RecyclerView.Adapter<ResAdapter.ViewHolder> {
         holder.tvName.setText(restaurant.getName());
         Picasso.get()
                 .load(restaurant.getImages().get(0))
+                .placeholder(R.drawable.destination)
                 .fit()
                 .into(holder.ivImage);
 

@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         //đổ dữ liệu slider
         addSlider();
         //auto run slider

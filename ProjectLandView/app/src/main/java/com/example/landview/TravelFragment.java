@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 
 import com.example.landview.Area.Area;
 import com.example.landview.Area.AreaAdapter;
+import com.example.landview.HomeFragmentSection.Reviews.Review;
 import com.example.landview.Hotel.Hotel;
 import com.example.landview.Hotel.HotelAdapter;
 import com.example.landview.LandScape.Landscape;
@@ -40,7 +42,7 @@ public class TravelFragment extends Fragment {
     private static final String TAG = "TravelFragment";
 
     ImageView iconNotify,iconsetting,iconSearch;
-    EditText edtSerch;
+    EditText edtSearch;
 
 
     // Dành cho area
@@ -76,7 +78,7 @@ public class TravelFragment extends Fragment {
         iconNotify = view.findViewById(R.id.imgNotifycations);
         iconsetting = view.findViewById(R.id.imgSetting);
         iconSearch = view.findViewById(R.id.inconSearch);
-        edtSerch = view.findViewById(R.id.edtSearch);
+        edtSearch = view.findViewById(R.id.edtSearch);
 
         // Init các recycler view
         rcvArea = view.findViewById(R.id.rcv_area);
@@ -109,6 +111,14 @@ public class TravelFragment extends Fragment {
         restaurants = new ArrayList<>();
         getResData();
 
+
+        //thêm listener cho thanh search bar
+        edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getContext().startActivity(new Intent(getContext(), Review.class));
+            }
+        });
 
         return view;
     }

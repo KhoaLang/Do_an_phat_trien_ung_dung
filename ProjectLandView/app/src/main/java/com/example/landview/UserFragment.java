@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.landview.UserFragmentSection.UserPlansActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class UserFragment extends Fragment {
     private ImageView imguser;
     private TextView txtName,txtInformation;
-    private Button btnLogout, btnChangePass, btnPolicy;
+    private Button btnLogout, btnChangePass, btnPolicy, btnPlan;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     @Override
@@ -42,10 +43,13 @@ public class UserFragment extends Fragment {
         btnChangePass = view.findViewById(R.id.btnChange);
         btnLogout = view.findViewById(R.id.btnLogout);
         btnPolicy = view.findViewById(R.id.btnPolicy);
+        btnPlan = view.findViewById(R.id.btnPlan);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
+        //Lấy username từ firestore
         takeUserName();
+
         //sét sự kiện ảnh
         imguser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +77,12 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), ChangePassword.class));
+            }
+        });
+        btnPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getContext().startActivity(new Intent(getContext(), UserPlansActivity.class));
             }
         });
         return view;
