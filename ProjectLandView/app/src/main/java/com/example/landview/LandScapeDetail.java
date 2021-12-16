@@ -18,6 +18,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.landview.Comment.CommentFragment;
 import com.example.landview.ExpandableTextView.ExpandableTextView;
 import com.example.landview.LandScape.Landscape;
+import com.example.landview.Map.NearbyAndMapFragment;
 import com.example.landview.Rating.RatingFragment;
 import com.example.landview.chung.SliderAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -88,8 +89,20 @@ public class LandScapeDetail extends AppCompatActivity {
         getRating();
         createRatingFragment();
         createCommentFragment();
+        createMapFragment();
 
     }
+
+    private void createMapFragment(){
+        NearbyAndMapFragment nearbyAndMapFragment = NearbyAndMapFragment
+                .newInstance(landscape.getLatitude(), landscape.getLongitude());
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fcv_map, nearbyAndMapFragment)
+                .commit();
+    }
+
 
 
     /***************** Xử lý ảnh tự động trượt **********************************************/

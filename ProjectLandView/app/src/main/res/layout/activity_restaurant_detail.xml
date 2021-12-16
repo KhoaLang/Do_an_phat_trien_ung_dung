@@ -11,16 +11,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--
-                android:id="@+id/vp2_landscape"
-                android:id="@+id/tv_landscape_image_count"
-               android:id="@+id/tv_landscape_name"
-               android:id="@+id/rb_landscape"
-               android:id="@+id/tv_landscape_total_rate"
-                android:id="@+id/tv_landscape_description"
-               -->
 
-            <!--Ảnh và image count text view-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
@@ -183,6 +174,22 @@
                         />
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bản đồ"
+                    android:textSize="24dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_bold"
+                    />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fcv_map"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="232dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"

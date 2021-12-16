@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.landview.Comment.CommentFragment;
+import com.example.landview.Map.NearbyAndMapFragment;
 import com.example.landview.Rating.RatingFragment;
 import com.example.landview.Restaurant.Restaurant;
 import com.example.landview.chung.SliderAdapter;
@@ -66,6 +67,18 @@ public class RestaurantDetail extends AppCompatActivity {
         createCommentFragment();
 
         createRatingFragment();
+
+        createMapFragment();
+    }
+
+    private void createMapFragment(){
+        NearbyAndMapFragment nearbyAndMapFragment = NearbyAndMapFragment
+                .newInstance(restaurant.getLatitude(), restaurant.getLongitude());
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fcv_map, nearbyAndMapFragment)
+                .commit();
     }
 
 

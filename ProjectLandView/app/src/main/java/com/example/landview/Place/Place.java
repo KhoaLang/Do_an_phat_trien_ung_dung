@@ -1,14 +1,15 @@
 package com.example.landview.Place;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Place {
+public class Place implements Serializable {
 
     private String address;
     private String areaId;
     private String id;
     private ArrayList<String> images;
-    //private ArrayList<String> likesList;
+    // private ArrayList<String> likesList;
     private String areaName;
     private String name;
     private String type;
@@ -25,11 +26,9 @@ public class Place {
     public Place() {
     }
 
-    /******************************************************************************************************************/
-
     public Place(String address, String areaId, String id, ArrayList<String> images, String areaName,
-                 String name, String type, float rating, int totalRate, String path,
-                 double latitude, double longitude, String geohash) {
+                 String name, String type, float rating, int totalRate, double latitude, double longitude,
+                 String geohash, String path) {
         this.address = address;
         this.areaId = areaId;
         this.id = id;
@@ -39,11 +38,13 @@ public class Place {
         this.type = type;
         this.rating = rating;
         this.totalRate = totalRate;
-        this.path = path;
         this.latitude = latitude;
         this.longitude = longitude;
         this.geohash = geohash;
+        this.path = path;
     }
+
+    /******************************************************************************************************************/
 
     public String getAddress() {
         return address;
@@ -63,10 +64,6 @@ public class Place {
 
     public String getName() {
         return name;
-    }
-
-    public String getAreaName() {
-        return areaName;
     }
 
     public String getType() {
@@ -97,6 +94,10 @@ public class Place {
         return geohash;
     }
 
+    public String getAreaName() {
+        return areaName;
+    }
+
     /*******************************************************************************************************/
 
     public void setAddress(String address) {
@@ -115,9 +116,6 @@ public class Place {
         this.images = images;
     }
 
-    public void setAreaName(String areaName) {
-        this.areaName = areaName;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -149,6 +147,10 @@ public class Place {
 
     public void setGeohash(String geohash) {
         this.geohash = geohash;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
     }
 
     @Override
