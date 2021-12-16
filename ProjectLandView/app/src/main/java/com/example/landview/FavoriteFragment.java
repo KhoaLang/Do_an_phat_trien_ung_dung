@@ -114,6 +114,7 @@ public class FavoriteFragment extends Fragment {
         return view;
     }
 
+    /****************************************Lấy các DocumentReferent*********************************************/
     private void getFavoriteList(){
         db.collection("users")
                 .document(getCurrentUserId())
@@ -150,6 +151,10 @@ public class FavoriteFragment extends Fragment {
             }
         });
     }
+
+    /************************************************************************************************/
+
+    /****************************** Lấy DocumentSnapshot ********************************************/
 
     private void getFavoritePlace(List<DocumentReference> group){
 
@@ -188,6 +193,11 @@ public class FavoriteFragment extends Fragment {
             });
         }
     }
+
+    /************************************************************************************************/
+
+
+    /************************************** Lấy rating ******************************************/
 
     private void getRating(Place place){
         String type = place.getType();
@@ -235,6 +245,11 @@ public class FavoriteFragment extends Fragment {
 
     }
 
+    /************************************************************************************************/
+
+
+    // Favorite Item click
+
     private FavoriteItemAdapter.FavoriteItemClick favoriteItemClickListener = new FavoriteItemAdapter.FavoriteItemClick() {
 
         // Khi người dùng click vào item
@@ -264,11 +279,12 @@ public class FavoriteFragment extends Fragment {
         // Khi người dùng click vào tym
         @Override
         public void unlikeClick(int position) {
-
             Place place = placeList.get(position);
             unlikePlace(place, position);
         }
     };
+
+    /*************************** UNLIKE **********************************************88******************/
 
     private void unlikePlace(Place place, int position){
         // Lấy userId, và placeId
@@ -292,7 +308,6 @@ public class FavoriteFragment extends Fragment {
             case "restaurant":
                 placeRef = resColl.document(placeId);
                 break;
-
                 //  Trường hợp người quản trị data base cố tình thêm 1 type khác trên database
             default:
                 Toast.makeText(getContext(), "Lỗi không thể unlike", Toast.LENGTH_SHORT).show();
@@ -322,6 +337,10 @@ public class FavoriteFragment extends Fragment {
             emptyList.setVisibility(View.VISIBLE);
         }
     }
+
+    /************************************************************************************************/
+
+    /*************************** startDetail Activity ***************************************************************/
 
     private void startAreaDetail(String id){
         areaColl.document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -415,6 +434,9 @@ public class FavoriteFragment extends Fragment {
             }
         });
     }
+
+    /************************************************************************************************/
+
 
 
     private void loadFragment(Fragment fragment){
