@@ -75,13 +75,11 @@ public class FavoriteFragment extends Fragment {
 
         lnlFavContainer = view.findViewById(R.id.lnl_fav_container);
         favoriteRecyclerView = view.findViewById(R.id.recvFav);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_favorite,container,false);
 
         initUi(view);
@@ -109,9 +107,7 @@ public class FavoriteFragment extends Fragment {
         //setup 1 recycler view cho favorite fragment
        getFavoriteList();
 
-
-
-        return view;
+       return view;
     }
 
     /****************************************Lấy các DocumentReferent*********************************************/
@@ -158,7 +154,7 @@ public class FavoriteFragment extends Fragment {
 
     private void getFavoritePlace(List<DocumentReference> group){
 
-        favAdapter = new FavoriteItemAdapter(getContext(), placeList);
+        favAdapter = new FavoriteItemAdapter(getContext(), placeList, 1);
         favAdapter.setFavoriteItemCLick(favoriteItemClickListener);
         favoriteRecyclerView.setAdapter(favAdapter);
 

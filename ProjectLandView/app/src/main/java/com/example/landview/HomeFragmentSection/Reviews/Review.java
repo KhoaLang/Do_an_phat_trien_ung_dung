@@ -10,27 +10,38 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.Area.Area;
 import com.example.landview.DetailArea;
+import com.example.landview.Favorite.FavoriteItemAdapter;
 import com.example.landview.Hotel.Hotel;
 import com.example.landview.HotelDetail;
 import com.example.landview.LandScape.Landscape;
 import com.example.landview.LandScapeDetail;
+import com.example.landview.Place.Place;
 import com.example.landview.R;
 import com.example.landview.Restaurant.Restaurant;
 import com.example.landview.RestaurantDetail;
 import com.example.landview.Utils.StringUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -45,12 +56,19 @@ import java.util.Locale;
 public class Review extends AppCompatActivity {
     EditText edtSearch;
     ImageView iconSearch;
-    ItemReviewAdapter itemReviewAdapter;
-    ItemReviewAdapter itemReviewAdapterAfterSearch;
     RecyclerView recyclerView;
     List<ItemReview> list;
 
-    FirebaseFirestore db;
+    FavoriteItemAdapter adapter;
+    ArrayList<Place> placeList;
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference areaColl = db.collection("areas");
+    private CollectionReference landscapeColl = db.collection("landscapes");
+    private CollectionReference hotelColl = db.collection("hotels");
+    private CollectionReference resColl = db.collection("restaurants");
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,76 +77,43 @@ public class Review extends AppCompatActivity {
         edtSearch = findViewById(R.id.edtSearch);
         iconSearch = findViewById(R.id.iconSearch);
         recyclerView = findViewById(R.id.recvSearch);
+
         list = new ArrayList<>();
 
+        mAuth = FirebaseAuth.getInstance();
 
-        db = FirebaseFirestore.getInstance();
+        placeList = new ArrayList<>();
+
+        placeList = getlistItemReviews();
 
         //đổ dữ liệu vào recycleview
-        list = getlistItemReviews();
-        itemReviewAdapter = new ItemReviewAdapter(this, list);
-        itemReviewAdapter.setItemReviewClick(itemReviewClickListener);
-        recyclerView.setAdapter(itemReviewAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new FavoriteItemAdapter(Review.this, placeList, 2);
+        adapter.setFavoriteItemCLick(favoriteItemClickListener);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(Review.this, LinearLayoutManager.VERTICAL, false));
+
 
         //Hàm bắt các sự kiện search
         searchActivity();
-
     }
     //Hàm này lấy vài landscape để show trưng
-    private List<ItemReview> getlistItemReviews() {
-        db.collection("landscapes").whereEqualTo("landscapeName", "vinh ha long").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    private ArrayList<Place> getlistItemReviews() {
+        db.collection("landscapes").limit(10).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot dc : task.getResult()){
-                        List<String> imagesList = (List<String>) dc.get("images");
-                        list.add(new ItemReview(imagesList.get(0), "Vịnh Hạ Long", R.drawable.stars,
-                                dc.get("address").toString(), dc.get("type").toString(), dc.get("landscapeName").toString()));
+                        Place placeTemp = dc.toObject(Place.class);
+                        placeTemp.setPath(dc.getReference().getPath());
+                        placeList.add(placeTemp);
+
+                        getRating(placeTemp);
                     }
-                }
+                }else{}
             }
         });
 
-        db.collection("landscapes").whereEqualTo("landscapeName", "ghenh bang").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot dc : task.getResult()){
-                        List<String> imagesList = (List<String>) dc.get("images");
-                        list.add(new ItemReview(imagesList.get(0), "Ghềnh Bàng", R.drawable.stars,
-                                dc.get("address").toString(), dc.get("type").toString(), dc.get("landscapeName").toString()));
-                    }
-                }
-            }
-        });
-        db.collection("landscapes").whereEqualTo("landscapeName", "hoang thanh thang long").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot dc : task.getResult()){
-                        List<String> imagesList = (List<String>) dc.get("images");
-                        list.add(new ItemReview(imagesList.get(0), "Hoàng thành Thăng Long", R.drawable.stars,
-                                dc.get("address").toString(), dc.get("type").toString(), dc.get("landscapeName").toString()));
-                    }
-                }
-            }
-        });
-
-        db.collection("landscapes").whereEqualTo("landscapeName", "nha hat lon ha noi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot dc : task.getResult()){
-                        List<String> imagesList = (List<String>) dc.get("images");
-                        list.add(new ItemReview(imagesList.get(0), "Nhà hát lớn Hà Nội",
-                                R.drawable.stars, dc.get("address").toString(), dc.get("type").toString(), dc.get("landscapeName").toString()));
-                    }
-                }
-            }
-        });
-        return list;
+        return placeList;
     }
 
 
@@ -138,9 +123,9 @@ public class Review extends AppCompatActivity {
         iconSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                list.clear();
-                list.addAll(filter(edtSearch.getText().toString()));
-                itemReviewAdapter.notifyDataSetChanged();
+                placeList.clear();
+                placeList.addAll(filter(edtSearch.getText().toString()));
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -148,9 +133,9 @@ public class Review extends AppCompatActivity {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if((keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (keyEvent.getAction() == KeyEvent.ACTION_DOWN)){
-                    list.clear();
-                    list.addAll(filter(edtSearch.getText().toString()));
-                    itemReviewAdapter.notifyDataSetChanged();
+                    placeList.clear();
+                    placeList.addAll(filter(edtSearch.getText().toString()));
+                    adapter.notifyDataSetChanged();
                     return true;
                 }
                 return false;
@@ -158,7 +143,7 @@ public class Review extends AppCompatActivity {
         });
     }
 
-    private List<ItemReview> filter(String s){
+    private ArrayList<Place> filter(String s){
         String queryText = StringUtils.removeAccent(s.toLowerCase()); //removeAccent để chuyển chuỗi tiếng việt có dấu về không dấu
 
         //Query bằng condition EQUAL trước, add vào đầu danh sách
@@ -168,11 +153,11 @@ public class Review extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document: task.getResult()){
                         if(document.exists()){
-                            List<String> imagesList = (List<String>) document.get("images");
-                            ItemReview ir = new ItemReview(imagesList.get(0), document.get("name").toString(),
-                                    R.drawable.stars, document.get("address").toString(), document.get("type").toString(),
-                                    document.get("landscapeName").toString());
-                            list.add(ir);
+                            Place placeTemp = document.toObject(Place.class);
+                            placeTemp.setPath(document.getReference().getPath());
+                            placeList.add(placeTemp);
+
+                            getRating(placeTemp);
                         }else{}
                     }
                 }
@@ -184,11 +169,11 @@ public class Review extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document: task.getResult()){
                         if(document.exists()) {
-                            List<String> imagesList = (List<String>) document.get("images");
-                            ItemReview ir = new ItemReview(imagesList.get(0), document.get("areaName").toString(),
-                                    R.drawable.stars, document.get("address").toString(), document.get("type").toString(),
-                                    document.get("name").toString());
-                            list.add(ir);
+                            Place placeTemp = document.toObject(Place.class);
+                            placeTemp.setPath(document.getReference().getPath());
+                            placeList.add(placeTemp);
+
+                            getRating(placeTemp);
                         }else{}
                     }
                 }
@@ -202,12 +187,13 @@ public class Review extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document: task.getResult()){
-                        List<String> imagesList = (List<String>) document.get("images");
-                        ItemReview ir = new ItemReview(imagesList.get(0), document.get("name").toString(),
-                                R.drawable.stars, document.get("address").toString(), document.get("type").toString(),
-                                document.get("landscapeName").toString());
-                        if(listItemDuplicateCheck(ir)){ //check duplicate
-                            list.add(ir);
+                        Place placeTemp = document.toObject(Place.class);
+                        placeTemp.setPath(document.getReference().getPath());
+
+                        if(listItemDuplicateCheck(placeTemp)){ //check duplicate
+                            placeList.add(placeTemp);
+
+                            getRating(placeTemp);
                         }else{}
                     }
                 }
@@ -218,135 +204,177 @@ public class Review extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document: task.getResult()){
-                        List<String> imagesList = (List<String>) document.get("images");
-                        ItemReview ir = new ItemReview(imagesList.get(0), document.get("areaName").toString(),
-                                R.drawable.stars, document.get("address").toString(), document.get("type").toString(),
-                                document.get("name").toString());
-                        if(listItemDuplicateCheck(ir)){ //check duplicate
-                            list.add(ir);
+                        Place placeTemp = document.toObject(Place.class);
+                        placeTemp.setPath(document.getReference().getPath());
+                        if(listItemDuplicateCheck(placeTemp)){ //check duplicate
+                            placeList.add(placeTemp);
+
+                            getRating(placeTemp);
                         }else{}
                     }
                 }
             }
         });
-        return list;
+        return placeList;
     }
 
     //Hàm này sẽ kiểm tra xem trong list có trùng phần tử hay không
     //do thực hiện 2 lần query bằng 2 condition khác nhau cho mỗi Collection
     //trường hợp condition equal to nếu đã thêm vào list thì kiểu gì condition less than or equal to cũng sẽ thêm lại phần tử đó vào list
-    private boolean listItemDuplicateCheck(ItemReview itemReview){
-        for(ItemReview temp: list){
-            if(itemReview.getName().equals(temp.getName()) && itemReview.getImg().equals(temp.getImg())){
+    private boolean listItemDuplicateCheck(Place temp){
+        for(Place placeTemp: placeList){
+            if(placeTemp.getPath().equals(temp.getPath())){
                 return false;
             }
         }
        return true;
     }
 
-    private ItemReviewAdapter.ItemReviewClick itemReviewClickListener = new ItemReviewAdapter.ItemReviewClick() {
+    private FavoriteItemAdapter.FavoriteItemClick favoriteItemClickListener = new FavoriteItemAdapter.FavoriteItemClick() {
         @Override
         public void itemClick(int position) {
-            switch (list.get(position).getType()){
+            Place temp = placeList.get(position);
+            switch (temp.getType()){
                 case "area":
-                    List<Area> areaList = new ArrayList<>();
-                    db.collection("areas").whereEqualTo("name", list.get(position).getQueryName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()){
-                                for(DocumentSnapshot documentSnapshot: task.getResult()){
-                                    Area area = documentSnapshot.toObject(Area.class);
-                                    GeoPoint geoPoint = documentSnapshot.getGeoPoint("geopoint");
+                    areaColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document = task.getResult();
+                            if(document.exists() && document != null){
+                                //
+                                Area area = document.toObject(Area.class);
+                                GeoPoint geoPoint = document.getGeoPoint("geopoint");
 
-                                    area.setLatitude(geoPoint.getLatitude());
-                                    area.setLongitude(geoPoint.getLongitude());
-                                    areaList.add(area);
-                                    Intent intent = new Intent(Review.this, DetailArea.class);
-                                    intent.putExtra("area", areaList.get(0));
-                                    startActivity(intent);
-                                    break;
-                                }
+                                area.setLatitude(geoPoint.getLatitude());
+                                area.setLongitude(geoPoint.getLongitude());
 
+                                Intent intent = new Intent(Review.this, DetailArea.class);
+                                intent.putExtra("area", area);
+                                startActivity(intent);
                             }
                         }
-                    });
+                    }
+                });
 
                     break;
                 case "landscape":
-                    List<Landscape> landList = new ArrayList<>();
-                    db.collection("landscapes").whereEqualTo("landscapeName", list.get(position).getQueryName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    landscapeColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if(task.isSuccessful()){
-                                for(DocumentSnapshot documentSnapshot: task.getResult()){
-                                    Landscape landscape = documentSnapshot.toObject(Landscape.class);
+                                DocumentSnapshot document = task.getResult();
+                                if(document.exists() && document != null){
+                                    Landscape landscape = document.toObject(Landscape.class);
+                                    GeoPoint geoPoint = document.getGeoPoint("geopoint");
 
-                                    GeoPoint geoPoint = documentSnapshot.getGeoPoint("geopoint");
                                     landscape.setLatitude(geoPoint.getLatitude());
                                     landscape.setLongitude(geoPoint.getLongitude());
 
-                                    landList.add(landscape);
                                     Intent intent = new Intent(Review.this, LandScapeDetail.class);
-                                    intent.putExtra("landscape", landList.get(0));
+                                    intent.putExtra("landscape", landscape);
                                     startActivity(intent);
-                                    break;
                                 }
-
                             }
                         }
                     });
                     break;
                 case "restaurant":
-                    List<Restaurant> restList = new ArrayList<>();
-                    db.collection("restaurants").whereEqualTo("restaurantName", list.get(position).getQueryName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    hotelColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if(task.isSuccessful()){
-                                for(DocumentSnapshot documentSnapshot: task.getResult()){
-                                    Restaurant restaurant = documentSnapshot.toObject(Restaurant.class);
+                                DocumentSnapshot document = task.getResult();
+                                if(document.exists() && document != null){
+                                    Hotel hotel = document.toObject(Hotel.class);
+                                    GeoPoint geoPoint = document.getGeoPoint("geopoint");
 
-                                    GeoPoint geoPoint = documentSnapshot.getGeoPoint("geopoint");
-                                    restaurant.setLatitude(geoPoint.getLatitude());
-                                    restaurant.setLongitude(geoPoint.getLongitude());
+                                    hotel.setLatitude(geoPoint.getLatitude());
+                                    hotel.setLongitude(geoPoint.getLongitude());
 
-                                    restList.add(restaurant);
-                                    Intent intent = new Intent(Review.this, RestaurantDetail.class);
-                                    intent.putExtra("restaurant", restList.get(0));
+                                    Intent intent = new Intent(Review.this, HotelDetail.class);
+                                    intent.putExtra("hotel", hotel);
                                     startActivity(intent);
-                                    break;
                                 }
-
                             }
                         }
                     });
                     break;
                 case "hotel":
-                    List<Hotel> hotelList = new ArrayList<>();
-                    db.collection("hotels").whereEqualTo("name", list.get(position).getQueryName()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    resColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if(task.isSuccessful()){
-                                for(DocumentSnapshot documentSnapshot: task.getResult()){
-                                    Hotel hotel = documentSnapshot.toObject(Hotel.class);
+                                DocumentSnapshot document = task.getResult();
+                                if(document.exists() && document != null){
+                                    Restaurant restaurant = document.toObject(Restaurant.class);
+                                    GeoPoint geoPoint = document.getGeoPoint("geopoint");
 
-                                    GeoPoint geoPoint = documentSnapshot.getGeoPoint("geopoint");
-                                    hotel.setLatitude(geoPoint.getLatitude());
-                                    hotel.setLongitude(geoPoint.getLongitude());
+                                    restaurant.setLatitude(geoPoint.getLatitude());
+                                    restaurant.setLongitude(geoPoint.getLongitude());
 
-                                    hotelList.add(hotel);
-                                    Intent intent = new Intent(Review.this, HotelDetail.class);
-                                    intent.putExtra("hotel", hotelList.get(0));
+                                    Intent intent = new Intent(Review.this, RestaurantDetail.class);
+                                    intent.putExtra("restaurant", restaurant);
                                     startActivity(intent);
-                                    break;
                                 }
-
                             }
                         }
                     });
-
                     break;
             }
 
         }
+
+        @Override
+        public void unlikeClick(int position) { }
     };
+
+    /************************************** Lấy rating ******************************************/
+
+    private void getRating(Place place){
+        String type = place.getType();
+
+        // Ta không lấy rating của area do nó éo có
+        if(!(type.equals("area"))){
+
+            // nhớ cái path ở getFavoritePlace hem
+            db.document(place.getPath())
+                    .collection("review") // Ta truy cập vào collection review
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                QuerySnapshot querySnapshot = task.getResult();
+
+                                // Trường hợp không có ai rating hay comment auto cho 5 sao
+                                if(querySnapshot.size() == 0){
+                                    place.setRating(5f);
+                                    place.setTotalRate(0);
+
+                                } else { // Nếu có nhận xét
+                                    int count =0; // đếm số lượng document
+                                    float rate = 0; // tính tổng các rating
+
+                                    for(DocumentSnapshot document : querySnapshot){
+                                        double rating = document.getDouble("rating");
+                                        rate += rating;
+                                        count++;
+                                    }
+                                    place.setRating(rate/count);
+                                    place.setTotalRate(count);
+                                }
+                            } else {
+                                place.setRating(5f);
+                                place.setTotalRate(0);
+                            }
+
+                            // Thông báo adapter cập nhập lại dữ liệu
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+        }
+
+    }
+
 }
