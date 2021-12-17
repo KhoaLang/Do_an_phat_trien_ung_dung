@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.landview.FavoriteFragment;
 import com.example.landview.Place.Place;
 import com.example.landview.R;
 import com.squareup.picasso.Picasso;
@@ -22,10 +23,12 @@ public class FavoriteItemAdapter extends RecyclerView.Adapter<FavoriteItemAdapte
     private Context context;
     private ArrayList<Place> places;
     private FavoriteItemClick listener;
+    private int whichActivity;
 
-    public FavoriteItemAdapter(Context context, ArrayList<Place> places) {
+    public FavoriteItemAdapter(Context context, ArrayList<Place> places, int whichActivity) {
         this.context = context;
         this.places = places;
+        this.whichActivity = whichActivity;
     }
 
     public void setFavoriteItemCLick(FavoriteItemClick listener){
@@ -60,7 +63,13 @@ public class FavoriteItemAdapter extends RecyclerView.Adapter<FavoriteItemAdapte
                 .fit()
                 .into(holder.ivImage);
 
-
+        //Kiểm tra xem đang ở search hay favorite
+        // define cho nó, nếu là 1 thì là đang ở favorite fragment
+        //nếu bằng 2 thì tức là đang ở search activity
+        if(whichActivity == 2){ //Activity search sẽ ko cần tym nên sẽ cho nó GONE
+            holder.ivTym.setVisibility(View.GONE);
+        }else {
+        }
     }
 
     @Override
@@ -85,6 +94,8 @@ public class FavoriteItemAdapter extends RecyclerView.Adapter<FavoriteItemAdapte
 
             this.ivTym = view.findViewById(R.id.iv_fav_item_tym);
             this.listener = listener;
+
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
