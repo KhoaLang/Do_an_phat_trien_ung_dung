@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.landview.Comment.CommentFragment;
 import com.example.landview.Hotel.Hotel;
+import com.example.landview.Map.NearbyAndMapFragment;
 import com.example.landview.Rating.RatingFragment;
 import com.example.landview.chung.SliderAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -112,8 +113,19 @@ public class HotelDetail extends AppCompatActivity {
         createCommentFragment();
 
         createRatingFragment();
+        createMapFragment();
 
 
+    }
+
+    private void createMapFragment(){
+        NearbyAndMapFragment nearbyAndMapFragment = NearbyAndMapFragment
+                .newInstance(hotel.getLatitude(), hotel.getLongitude());
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fcv_map, nearbyAndMapFragment)
+                .commit();
     }
 
     /***************** Xử lý ảnh tự động trượt **********************************************/
