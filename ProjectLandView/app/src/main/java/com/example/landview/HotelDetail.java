@@ -15,12 +15,14 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.landview.Comment.CommentFragment;
 import com.example.landview.Hotel.Hotel;
+import com.example.landview.Hotel.HotelUtilitiesAdapter;
 import com.example.landview.Map.NearbyAndMapFragment;
 import com.example.landview.Rating.RatingFragment;
 import com.example.landview.chung.SliderAdapter;
@@ -30,6 +32,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -51,6 +54,11 @@ public class HotelDetail extends AppCompatActivity {
     private TextView tvPrice;
     private TextView tvDescription;
     private TextView tvAddress;
+    private RecyclerView utilRecyclerView;
+
+    //Adapter for utilities
+    private HotelUtilitiesAdapter utilAdapter;
+    private List<String> utilList;
 
     private boolean isExpand =false;
 
@@ -62,6 +70,7 @@ public class HotelDetail extends AppCompatActivity {
         tvPrice =findViewById(R.id.tv_hotel_price);
         tvDescription = findViewById(R.id.tv_hotel_description);
         tvAddress = findViewById(R.id.tv_hotel_address);
+        utilRecyclerView = findViewById(R.id.utilitiesRV);
 
         viewPager2 = findViewById(R.id.vp2_hotel);
     }
@@ -91,6 +100,9 @@ public class HotelDetail extends AppCompatActivity {
         tvAddress.setText(hotel.getAddress());
         tvPrice.setText(String.valueOf(hotel.getPrice()) + " VNĐ");
 
+        //utilities list
+        utilList = new ArrayList<>();
+
 
         tvDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +118,8 @@ public class HotelDetail extends AppCompatActivity {
             }
         });
 
+        getUtilities();
+
         getRating();
 
         // Review
@@ -115,6 +129,26 @@ public class HotelDetail extends AppCompatActivity {
         createRatingFragment();
         createMapFragment();
 
+
+    }
+
+    private void getUtilities() {
+        db.collection("hotels").document(hotel.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    utilList = (List<String>) documentSnapshot.get("utilities");
+
+                    //setup recyclerView
+                    utilAdapter = new HotelUtilitiesAdapter(HotelDetail.this, utilList);
+                    utilRecyclerView.setAdapter(utilAdapter);
+                    utilRecyclerView.setLayoutManager(new LinearLayoutManager(HotelDetail.this, LinearLayoutManager.HORIZONTAL,
+                            false));
+                    utilAdapter.notifyDataSetChanged();
+                }
+            }
+        });
 
     }
 
