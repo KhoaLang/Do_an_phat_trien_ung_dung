@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.landview.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HotelUtilitiesAdapter extends RecyclerView.Adapter<HotelUtilitiesAdapter.ViewHolder> {
 
     Context mContext;
-    List<String> list;
+    ArrayList<String> list;
 
-    public HotelUtilitiesAdapter(Context context, List<String> list){
+    public HotelUtilitiesAdapter(Context context, ArrayList<String> list){
         this.mContext = context;
         this.list = list;
     }

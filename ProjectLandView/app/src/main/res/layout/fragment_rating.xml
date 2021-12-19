@@ -7,15 +7,34 @@
     android:orientation="vertical"
     tools:context=".Rating.RatingFragment">
 
-    <RatingBar
-        android:id="@+id/rb_raing"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:isIndicator="true"
-        android:stepSize="0.5"
-        android:rating="5"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <RatingBar
+            android:id="@+id/rb_raing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:stepSize="0.5"
+            android:rating="5"
 
-        />
+            />
+        <TextView
+            android:id="@+id/tv_total_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textSize="32sp"
+            android:fontFamily="@font/lato_bold"
+            android:layout_gravity="top"
+            android:layout_marginLeft="16dp"
+            />
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +58,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:progressDrawable="@drawable/custom_progress_bar" />
+            android:progressDrawable="@drawable/custom_progress_bar_5star" />
         <TextView
             android:id="@+id/tv_5_star_count"
             android:layout_width="wrap_content"
@@ -73,7 +92,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:progressDrawable="@drawable/custom_progress_bar" />
+            android:progressDrawable="@drawable/custom_progress_bar_4star" />
         <TextView
             android:id="@+id/tv_4_star_count"
             android:layout_width="wrap_content"
@@ -109,7 +128,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:progressDrawable="@drawable/custom_progress_bar" />
+            android:progressDrawable="@drawable/custom_progress_bar_3star" />
         <TextView
             android:id="@+id/tv_3_star_count"
             android:layout_width="wrap_content"
@@ -144,7 +163,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:progressDrawable="@drawable/custom_progress_bar" />
+            android:progressDrawable="@drawable/custom_progress_bar_2star" />
         <TextView
             android:id="@+id/tv_2_star_count"
             android:layout_width="wrap_content"
@@ -180,7 +199,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:progressDrawable="@drawable/custom_progress_bar" />
+            android:progressDrawable="@drawable/custom_progress_bar_1star" />
         <TextView
             android:id="@+id/tv_1_star_count"
             android:layout_width="wrap_content"

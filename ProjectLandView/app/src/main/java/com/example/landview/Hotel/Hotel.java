@@ -32,7 +32,7 @@ public class Hotel implements Serializable {
 
     public Hotel(String address, String areaId, String geohash, double latitude, double longitude,
                  String id, ArrayList<String> images, ArrayList<String> likesList, String name,
-                 String type,double price ,float rating, int totalRate) {
+                 String type,double price ,float rating, int totalRate, ArrayList<String> utilities) {
         this.address = address;
         this.areaId = areaId;
         this.geohash = geohash;
@@ -46,6 +46,7 @@ public class Hotel implements Serializable {
         this.price = price;
         this.rating = rating;
         this.totalRate = totalRate;
+        this.utilities = utilities;
     }
 
     /******************************************************************************************************************/
@@ -104,6 +105,10 @@ public class Hotel implements Serializable {
         return totalRate;
     }
 
+    public ArrayList<String> getUtilities() {
+        return utilities;
+    }
+
     /******************************************************************************************************************/
 
     // setter
@@ -159,6 +164,10 @@ public class Hotel implements Serializable {
         this.totalRate = totalRate;
     }
 
+    public void setUtilities(ArrayList<String> utilities) {
+        this.utilities = utilities;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
@@ -175,6 +184,7 @@ public class Hotel implements Serializable {
                 ", price=" + price +
                 ", rating=" + rating +
                 ", totalRate=" + totalRate +
+                ", utilities=" + utilities +
                 '}';
     }
 }

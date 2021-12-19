@@ -18,13 +18,14 @@ public class Restaurant implements Serializable {
 
     private float rating;
     private int totalRate;
+    private ArrayList<String> menu;
 
     public Restaurant() {
     }
 
     public Restaurant(String address, String areaId, String geohash, double latitude, double longitude,
                       String id, ArrayList<String> images, ArrayList<String> likesList, String name,
-                      String type, float rating, int totalRate) {
+                      String type, float rating, int totalRate, ArrayList<String> menu) {
         this.address = address;
         this.areaId = areaId;
         this.geohash = geohash;
@@ -37,6 +38,7 @@ public class Restaurant implements Serializable {
         this.type = type;
         this.rating = rating;
         this.totalRate = totalRate;
+        this.menu = menu;
     }
 
     /******************************************************************************************************************/
@@ -91,6 +93,10 @@ public class Restaurant implements Serializable {
         return totalRate;
     }
 
+    public ArrayList<String> getMenu() {
+        return menu;
+    }
+
     /******************************************************************************************************************/
 
     // setter
@@ -142,6 +148,9 @@ public class Restaurant implements Serializable {
         this.totalRate = totalRate;
     }
 
+    public void setMenu(ArrayList<String> menu) {
+        this.menu = menu;
+    }
 
     @Override
     public String toString() {
