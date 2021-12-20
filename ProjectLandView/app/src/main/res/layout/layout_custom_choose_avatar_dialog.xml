@@ -3,53 +3,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Avatar"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/lato_regular"
-        />
+    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical">
+        android:layout_height="400dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
         <TextView
-            android:id="@+id/tv_see_avatar"
+            android:id="@+id/tv_gallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="See avatar"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
+            android:text="Select from gallery"
+            android:textAlignment="center"
+            android:textSize="28dp"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:fontFamily="@font/lato_regular"
             android:clickable="true"
             android:focusable="true"
             android:background="?android:attr/selectableItemBackground"
             />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
         <TextView
-            android:id="@+id/tv_new_avatar"
+            android:id="@+id/tv_camera"
+            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New avatar"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
+            android:text="Take picture from camera"
+            android:textAlignment="center"
+            android:textSize="28dp"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:fontFamily="@font/lato_regular"
             android:clickable="true"
             android:focusable="true"
             android:background="?android:attr/selectableItemBackground"
             />
+
     </LinearLayout>
+
 
 </LinearLayout>

@@ -102,12 +102,6 @@ public class DetailArea extends AppCompatActivity {
         imagesCountTv.setText((1 + "/" + area.getImages().size()));
         setUpViewPager2(area.getImages());
 
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                processReadmore();
-            }
-        });
         //sử lí sự kiện button xem bản đồ
         btnSeemap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +132,6 @@ public class DetailArea extends AppCompatActivity {
         imagesCountTv = findViewById(R.id.images_count_tv);
         txtName = findViewById(R.id.name);
         etvDescription = findViewById(R.id.etv_description);
-        layout = findViewById(R.id.readmore);
         btnSeemap = findViewById(R.id.btnSeeMap);
     }
 

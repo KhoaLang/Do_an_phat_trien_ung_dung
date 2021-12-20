@@ -117,6 +117,7 @@ public class HotelDetail extends AppCompatActivity {
         sliderAdapter = new SliderAdapter(hotel.getImages());
         setUpViewPager2(sliderAdapter);
 
+        etvDescription.setText(getResources().getText(R.string.lorem_ipsum));
         tvName.setText(hotel.getName());
         tvAddress.setText(hotel.getAddress());
         tvPrice.setText(String.valueOf(hotel.getPrice()) + " VNĐ");
@@ -128,12 +129,8 @@ public class HotelDetail extends AppCompatActivity {
         } else {
             utilList = createDefaultUtilities();
         }
+
         getUtilities();
-
-
-
-
-
 
         getRating();
 
