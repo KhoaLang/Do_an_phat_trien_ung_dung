@@ -36,6 +36,7 @@ import com.example.landview.RestaurantDetail;
 import com.example.landview.Utils.StringUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -44,6 +45,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
@@ -147,27 +149,89 @@ public class Review extends AppCompatActivity {
         String queryText = StringUtils.removeAccent(s.toLowerCase()); //removeAccent để chuyển chuỗi tiếng việt có dấu về không dấu
 
         //Query bằng condition EQUAL trước, add vào đầu danh sách
-        db.collection("landscapes").whereEqualTo("landscapeName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot document: task.getResult()){
-                        if(document.exists()){
-                            Place placeTemp = document.toObject(Place.class);
-                            placeTemp.setPath(document.getReference().getPath());
-                            placeList.add(placeTemp);
+//        db.collection("landscapes").whereEqualTo("landscapeName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        if(document.exists()){
+//                            Place placeTemp = document.toObject(Place.class);
+//                            placeTemp.setPath(document.getReference().getPath());
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
+//        db.collection("areas").whereEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        if(document.exists()) {
+//                            Place placeTemp = document.toObject(Place.class);
+//                            placeTemp.setPath(document.getReference().getPath());
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
+//        db.collection("hotels").whereEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        if(document.exists()) {
+//                            Place placeTemp = document.toObject(Place.class);
+//                            placeTemp.setPath(document.getReference().getPath());
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
+//        db.collection("restaurants").whereEqualTo("restaurantName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        if(document.exists()) {
+//                            Place placeTemp = document.toObject(Place.class);
+//                            placeTemp.setPath(document.getReference().getPath());
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
+        Query query1 = db.collection("landscapes").whereEqualTo("landscapeName", queryText);
+        Query query2 = db.collection("hotels").whereEqualTo("name", queryText);
+        Query query3 = db.collection("areas").whereEqualTo("name", queryText);
+        Query query4 = db.collection("restaurants").whereEqualTo("restaurantName", queryText);
 
-                            getRating(placeTemp);
-                        }else{}
-                    }
-                }
-            }
-        });
-        db.collection("areas").whereEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        List<Task<QuerySnapshot>> taskList = new ArrayList<>();
+
+        taskList.add(query1.get());
+        taskList.add(query2.get());
+        taskList.add(query3.get());
+        taskList.add(query4.get());
+
+        Tasks.whenAllComplete(taskList).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot document: task.getResult()){
+            public void onComplete(@NonNull Task<List<Task<?>>> t) {
+                for(Task<QuerySnapshot> task : taskList){
+                    //Ví dụ: Collection: restaurants/
+                    QuerySnapshot querySnapshot = task.getResult();
+                    for(QueryDocumentSnapshot document: querySnapshot){
                         if(document.exists()) {
                             Place placeTemp = document.toObject(Place.class);
                             placeTemp.setPath(document.getReference().getPath());
@@ -181,29 +245,74 @@ public class Review extends AppCompatActivity {
         });
 
         //sau đó thì mới dùng condition less than or equal to để các trường hợp không gõ hết tên địa danh
-        // thì firebase có thể show ra những trường hợp có liên quan
-        db.collection("landscapes").whereLessThanOrEqualTo("landscapeName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot document: task.getResult()){
-                        Place placeTemp = document.toObject(Place.class);
-                        placeTemp.setPath(document.getReference().getPath());
+        //thì firebase có thể show ra những trường hợp có liên quan
+//        db.collection("landscapes").whereLessThanOrEqualTo("landscapeName", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        Place placeTemp = document.toObject(Place.class);
+//                        placeTemp.setPath(document.getReference().getPath());
+//
+//                        if(listItemDuplicateCheck(placeTemp)){ //check duplicate
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
+//        db.collection("areas").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        Place placeTemp = document.toObject(Place.class);
+//                        placeTemp.setPath(document.getReference().getPath());
+//                        if(listItemDuplicateCheck(placeTemp)){ //check duplicate
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
+//        db.collection("hotels").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(QueryDocumentSnapshot document: task.getResult()){
+//                        Place placeTemp = document.toObject(Place.class);
+//                        placeTemp.setPath(document.getReference().getPath());
+//                        if(listItemDuplicateCheck(placeTemp)){ //check duplicate
+//                            placeList.add(placeTemp);
+//
+//                            getRating(placeTemp);
+//                        }else{}
+//                    }
+//                }
+//            }
+//        });
 
-                        if(listItemDuplicateCheck(placeTemp)){ //check duplicate
-                            placeList.add(placeTemp);
+        Query query5 = db.collection("landscapes").whereLessThanOrEqualTo("landscapeName", queryText);
+        Query query6 = db.collection("areas").whereLessThanOrEqualTo("name", queryText);
+        Query query7 = db.collection("hotels").whereLessThanOrEqualTo("name", queryText);
+        Query query8 = db.collection("restaurants").whereLessThanOrEqualTo("restaurantName", queryText);
 
-                            getRating(placeTemp);
-                        }else{}
-                    }
-                }
-            }
-        });
-        db.collection("areas").whereLessThanOrEqualTo("name", queryText).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        List<Task<QuerySnapshot>> taskList2= new ArrayList<>();
+        taskList2.add(query5.get());
+        taskList2.add(query6.get());
+        taskList2.add(query7.get());
+        taskList2.add(query8.get());
+
+        Tasks.whenAllComplete(taskList2).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot document: task.getResult()){
+            public void onComplete(@NonNull Task<List<Task<?>>> t) {
+                for(Task<QuerySnapshot> task : taskList2){
+                    QuerySnapshot querySnapshot = task.getResult();
+                    for(QueryDocumentSnapshot document: querySnapshot){
                         Place placeTemp = document.toObject(Place.class);
                         placeTemp.setPath(document.getReference().getPath());
                         if(listItemDuplicateCheck(placeTemp)){ //check duplicate
@@ -237,25 +346,25 @@ public class Review extends AppCompatActivity {
             switch (temp.getType()){
                 case "area":
                     areaColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.isSuccessful()){
-                            DocumentSnapshot document = task.getResult();
-                            if(document.exists() && document != null){
-                                //
-                                Area area = document.toObject(Area.class);
-                                GeoPoint geoPoint = document.getGeoPoint("geopoint");
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                DocumentSnapshot document = task.getResult();
+                                if(document.exists() && document != null){
+                                    //
+                                    Area area = document.toObject(Area.class);
+                                    GeoPoint geoPoint = document.getGeoPoint("geopoint");
 
-                                area.setLatitude(geoPoint.getLatitude());
-                                area.setLongitude(geoPoint.getLongitude());
+                                    area.setLatitude(geoPoint.getLatitude());
+                                    area.setLongitude(geoPoint.getLongitude());
 
-                                Intent intent = new Intent(Review.this, DetailArea.class);
-                                intent.putExtra("area", area);
-                                startActivity(intent);
+                                    Intent intent = new Intent(Review.this, DetailArea.class);
+                                    intent.putExtra("area", area);
+                                    startActivity(intent);
+                                }
                             }
                         }
-                    }
-                });
+                    });
 
                     break;
                 case "landscape":
@@ -279,7 +388,7 @@ public class Review extends AppCompatActivity {
                         }
                     });
                     break;
-                case "restaurant":
+                case "hotel":
                     hotelColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -300,7 +409,7 @@ public class Review extends AppCompatActivity {
                         }
                     });
                     break;
-                case "hotel":
+                case "restaurant":
                     resColl.document(temp.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
