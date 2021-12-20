@@ -86,7 +86,7 @@ public class DetailArea extends AppCompatActivity {
         Toolbar myToolBar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("Restaurant");
+        ab.setTitle("Area");
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_white_back_24));
 
