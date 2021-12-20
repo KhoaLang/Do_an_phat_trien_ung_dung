@@ -2,45 +2,48 @@ package com.example.landview;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.landview.Comment.CommentFragment;
+import com.example.landview.ExpandableTextView.ExpandableTextView;
 import com.example.landview.Hotel.Hotel;
 import com.example.landview.Hotel.HotelUtilitiesAdapter;
 import com.example.landview.Map.NearbyAndMapFragment;
 import com.example.landview.Rating.RatingFragment;
 import com.example.landview.chung.SliderAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HotelDetail extends AppCompatActivity {
 
+    private static final String TAG = "HotelDetail";
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private Hotel hotel;
 
     private ViewPager2 viewPager2;
@@ -53,12 +56,22 @@ public class HotelDetail extends AppCompatActivity {
     private TextView tvTotalRate;
     private TextView tvPrice;
     private TextView tvDescription;
+    private ExpandableTextView etvDescription;
     private TextView tvAddress;
     private RecyclerView utilRecyclerView;
 
     //Adapter for utilities
     private HotelUtilitiesAdapter utilAdapter;
-    private List<String> utilList;
+    private ArrayList<String> utilList;
+
+
+    private ArrayList<String> createDefaultUtilities(){
+        ArrayList<String> defaultUtilities = new ArrayList<>();
+        defaultUtilities.add("Máy lạnh");
+        defaultUtilities.add("Khung cảnh đẹp");
+        defaultUtilities.add("Bữa sáng miễn phí");
+        return defaultUtilities;
+    }
 
     private boolean isExpand =false;
 
@@ -68,7 +81,7 @@ public class HotelDetail extends AppCompatActivity {
         ratingBar = findViewById(R.id.rb_hotel);
         tvTotalRate = findViewById(R.id.tv_hotel_total_rate);
         tvPrice =findViewById(R.id.tv_hotel_price);
-        tvDescription = findViewById(R.id.tv_hotel_description);
+        etvDescription = findViewById(R.id.etv_hotel_description);
         tvAddress = findViewById(R.id.tv_hotel_address);
         utilRecyclerView = findViewById(R.id.utilitiesRV);
 
@@ -88,6 +101,14 @@ public class HotelDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_detail);
+
+        Toolbar myToolBar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolBar);
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle("Hotel");
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_white_back_24));
+
         //ánh xạ view
         initUI();
         getHotelData();
@@ -102,23 +123,17 @@ public class HotelDetail extends AppCompatActivity {
 
         //utilities list
         utilList = new ArrayList<>();
-
-
-        tvDescription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isExpand){
-                    isExpand = true;
-                    tvDescription.setLines(tvDescription.getLineCount());
-                } else {
-                    isExpand = false;
-                    tvDescription.setLines(4);
-                }
-
-            }
-        });
-
+        if(!hotel.getUtilities().isEmpty()){
+            utilList = hotel.getUtilities();
+        } else {
+            utilList = createDefaultUtilities();
+        }
         getUtilities();
+
+
+
+
+
 
         getRating();
 
@@ -132,23 +147,74 @@ public class HotelDetail extends AppCompatActivity {
 
     }
 
-    private void getUtilities() {
-        db.collection("hotels").document(hotel.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    utilList = (List<String>) documentSnapshot.get("utilities");
+    /******   MENU ITEM ***/
+    Menu menu;
 
-                    //setup recyclerView
-                    utilAdapter = new HotelUtilitiesAdapter(HotelDetail.this, utilList);
-                    utilRecyclerView.setAdapter(utilAdapter);
-                    utilRecyclerView.setLayoutManager(new LinearLayoutManager(HotelDetail.this, LinearLayoutManager.HORIZONTAL,
-                            false));
-                    utilAdapter.notifyDataSetChanged();
-                }
-            }
-        });
+    private void checkLike(){
+        ArrayList<String> likesList = hotel.getLikesList();
+        String userId = mAuth.getUid();
+        if(likesList.contains(userId)){
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_red_tym_24));
+        } else {
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.tym));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.action_bar_item, menu);
+        checkLike();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_favorite:
+                likeClick();
+                Toast.makeText(HotelDetail.this, "Favorite", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_share:
+                Toast.makeText(HotelDetail.this, "Share", Toast.LENGTH_SHORT).show();
+                break;
+            case  android.R.id.home:
+                this.finish();
+                Toast.makeText(HotelDetail.this, "Home", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+        return  true;
+
+    }
+
+    private void likeClick(){
+        ArrayList<String> likesList = hotel.getLikesList();
+        String userId = mAuth.getUid();
+        DocumentReference hotelRef = db.collection("hotels").document(hotel.getId());
+        DocumentReference userRef = db.collection("users").document(userId);
+
+        if(likesList.contains(userId)){
+            hotelRef.update("likesList", FieldValue.arrayRemove(userId));
+            userRef.update("likes", FieldValue.arrayRemove(hotelRef));
+            likesList.remove(userId);
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.tym));
+        } else {
+            hotelRef.update("likesList", FieldValue.arrayUnion(userId));
+            userRef.update("likes", FieldValue.arrayUnion(hotelRef));
+            likesList.add(userId);
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_red_tym_24));
+        }
+    }
+
+    private void getUtilities() {
+        utilAdapter = new HotelUtilitiesAdapter(HotelDetail.this, utilList);
+        utilRecyclerView.setAdapter(utilAdapter);
+        utilRecyclerView.setLayoutManager(new LinearLayoutManager(HotelDetail.this, LinearLayoutManager.HORIZONTAL,
+                false));
+        utilAdapter.notifyDataSetChanged();
 
     }
 

@@ -69,6 +69,7 @@ public class FavoriteItemAdapter extends RecyclerView.Adapter<FavoriteItemAdapte
         if(whichActivity == 2){ //Activity search sẽ ko cần tym nên sẽ cho nó GONE
             holder.ivTym.setVisibility(View.GONE);
         }else {
+
         }
     }
 

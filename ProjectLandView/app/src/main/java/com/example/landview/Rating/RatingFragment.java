@@ -66,7 +66,7 @@ public class RatingFragment extends Fragment {
     }
 
     private ProgressBar pbVeryGood, pbGood,pbAvg, pbBad, pbVeryBad;
-    private TextView tvFiveStar, tvFourStar, tvThreeStar, tvTwoStar, tvOneStar;
+    private TextView tvFiveStar, tvFourStar, tvThreeStar, tvTwoStar, tvOneStar, tvTotalRate;
     private RatingBar rbRating;
 
     private void initUi(View view){
@@ -81,6 +81,7 @@ public class RatingFragment extends Fragment {
         tvThreeStar = view.findViewById(R.id.tv_3_star_count);
         tvTwoStar = view.findViewById(R.id.tv_2_star_count);
         tvOneStar = view.findViewById(R.id.tv_1_star_count);
+        tvTotalRate = view.findViewById(R.id.tv_total_rate);
 
         rbRating = view.findViewById(R.id.rb_raing);
     }
@@ -127,7 +128,6 @@ public class RatingFragment extends Fragment {
             }
         });
     }
-
 
 
 
@@ -178,6 +178,7 @@ public class RatingFragment extends Fragment {
         tvTwoStar.setText(String.valueOf(twoStars));
         tvOneStar.setText(String.valueOf(oneStars));
 
+        tvTotalRate.setText(String.valueOf(total));
         if(total > 0){
             rbRating.setRating(total_rate/ total);
         } else {

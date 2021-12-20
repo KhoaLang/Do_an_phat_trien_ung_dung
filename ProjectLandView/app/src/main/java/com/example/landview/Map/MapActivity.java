@@ -35,6 +35,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -100,6 +101,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
 
+    private boolean isArea = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +111,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         Intent intent = getIntent();
         placesOnMap = (ArrayList<Place>) intent.getSerializableExtra("places");
+        isArea = intent.getBooleanExtra("isArea", false);
+
+
         if(placesOnMap != null){
             for(Place place : placesOnMap){
                 Log.d(TAG, "MapActivity: " + place.toString());
@@ -216,8 +221,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap map) {
         this.googleMap = map;
         map.setOnMarkerClickListener(this);
-        map.addMarker(new MarkerOptions()
-                .title("Marker1").position(new LatLng(1,1)));
+
+
 
         try {
             boolean success = map.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_json));
@@ -225,6 +230,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         } catch (Exception e){
 
         }
+
+        LatLng currLatLng = null;
 
         for(int i=0 ; i < placesOnMap.size();i++){
             Place place = placesOnMap.get(i);
@@ -244,11 +251,32 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             if(i==0){
                 setRedIcon(placesOnMap.get(0).getType(),marker1);
                 currentMarker = marker1;
-                LatLng latLng = new LatLng(place.getLatitude(), place.getLongitude());
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                currLatLng = new LatLng(place.getLatitude(), place.getLongitude());
+
             } else {
                 setBlueIcon(placesOnMap.get(i).getType(), marker1);
             }
+
+
+        }
+
+        if(isArea){
+            Toast.makeText(MapActivity.this, "isArea is true", Toast.LENGTH_SHORT).show();
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            for(Marker marker : markers){
+                builder.include(marker.getPosition());
+            }
+            LatLngBounds bounds = builder.build();
+            int width = getResources().getDisplayMetrics().widthPixels;
+            int height = getResources().getDisplayMetrics().heightPixels;
+            int padding = (int) (height * 0.10);
+            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
+            map.moveCamera(cu);
+
+        } else {
+            Toast.makeText(MapActivity.this, "isArea is false", Toast.LENGTH_SHORT).show();
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(currLatLng, 17));
+
         }
 
         if(placesOnMap.size() ==0){

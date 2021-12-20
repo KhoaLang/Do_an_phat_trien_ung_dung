@@ -2,32 +2,45 @@ package com.example.landview;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.landview.Comment.CommentFragment;
+import com.example.landview.Hotel.HotelUtilitiesAdapter;
 import com.example.landview.Map.NearbyAndMapFragment;
 import com.example.landview.Rating.RatingFragment;
 import com.example.landview.Restaurant.Restaurant;
 import com.example.landview.chung.SliderAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+
 public class RestaurantDetail extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private Restaurant restaurant;
 
     private ViewPager2 viewPager2;
@@ -42,15 +55,44 @@ public class RestaurantDetail extends AppCompatActivity {
 //    private TextView tvDescription;
     private TextView tvAddress;
 
+    private RecyclerView rcvResMenu;
+    private HotelUtilitiesAdapter resMenuAdapter;
+    private ArrayList<String> menuFood = new ArrayList<>();;
+
+
+    private ArrayList<String> createDefaultMenu(){
+        ArrayList<String> foods = new ArrayList<>();
+        foods.add("Gà chiên nước mắm");
+        foods.add("Cơm chiên");
+        foods.add("Rượu vang");
+        return foods;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
+
+        Toolbar myToolBar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolBar);
+        ActionBar ab = getSupportActionBar();
+        ab.setTitle("Restaurant");
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_white_back_24));
+
         // Lấy dữ liệu từ intent
         getRestaurantData();
         // Khởi tạo view
         initUi();
+
+        menuFood = new ArrayList<>();
+        if(!restaurant.getMenu().isEmpty()){
+            menuFood = restaurant.getMenu();
+        } else {
+            menuFood = createDefaultMenu();
+        }
+        getMenuFood();
+
 
         tvImageCount.setText(1 + "/" + restaurant.getImages().size());
         tvName.setText(restaurant.getName());
@@ -71,6 +113,76 @@ public class RestaurantDetail extends AppCompatActivity {
         createMapFragment();
     }
 
+    Menu menu;
+
+    private void checkLike(){
+        ArrayList<String> likesList = restaurant.getLikesList();
+        String userId = mAuth.getUid();
+        if(likesList.contains(userId)){
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_red_tym_24));
+        } else {
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.tym));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.action_bar_item, menu);
+        checkLike();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_favorite:
+                likeClick();
+                Toast.makeText(RestaurantDetail.this, "Favorite", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_share:
+                Toast.makeText(RestaurantDetail.this, "Share", Toast.LENGTH_SHORT).show();
+                break;
+            case  android.R.id.home:
+                this.finish();
+                Toast.makeText(RestaurantDetail.this, "Home", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+        return  true;
+
+    }
+
+    private void likeClick(){
+        ArrayList<String> likesList = restaurant.getLikesList();
+        String userId = mAuth.getUid();
+        DocumentReference hotelRef = db.collection("restaurants").document(restaurant.getId());
+        DocumentReference userRef = db.collection("users").document(userId);
+
+        if(likesList.contains(userId)){
+            hotelRef.update("likesList", FieldValue.arrayRemove(userId));
+            userRef.update("likes", FieldValue.arrayRemove(hotelRef));
+            likesList.remove(userId);
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.tym));
+        } else {
+            hotelRef.update("likesList", FieldValue.arrayUnion(userId));
+            userRef.update("likes", FieldValue.arrayUnion(hotelRef));
+            likesList.add(userId);
+            menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_red_tym_24));
+        }
+    }
+
+
+    private void getMenuFood(){
+        resMenuAdapter = new HotelUtilitiesAdapter(RestaurantDetail.this, menuFood);
+        rcvResMenu.setAdapter(resMenuAdapter);
+        rcvResMenu.setLayoutManager(new LinearLayoutManager(RestaurantDetail.this, LinearLayoutManager.HORIZONTAL,
+                false));
+        resMenuAdapter.notifyDataSetChanged();
+    }
+
     private void createMapFragment(){
         NearbyAndMapFragment nearbyAndMapFragment = NearbyAndMapFragment
                 .newInstance(restaurant.getLatitude(), restaurant.getLongitude());
@@ -82,6 +194,7 @@ public class RestaurantDetail extends AppCompatActivity {
     }
 
 
+
     // Khởi tạo các Ui
     private void initUi() {
         viewPager2 = findViewById(R.id.vp2_res);
@@ -90,6 +203,8 @@ public class RestaurantDetail extends AppCompatActivity {
         ratingBar = findViewById(R.id.rb_res);
         tvTotalRate = findViewById(R.id.tv_res_total_rate);
         tvAddress = findViewById(R.id.tv_res_address);
+
+        rcvResMenu = findViewById(R.id.rcv_res_menu);
 
     }
 

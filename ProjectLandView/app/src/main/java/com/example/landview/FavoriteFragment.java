@@ -1,5 +1,6 @@
 package com.example.landview;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -67,6 +68,8 @@ public class FavoriteFragment extends Fragment {
 
     private LinearLayout lnlFavContainer;
 
+    ProgressDialog progressDialog;
+
     private void initUi(View view){
         emptyList = view.findViewById(R.id.emptyList);
 
@@ -104,7 +107,14 @@ public class FavoriteFragment extends Fragment {
             }
         });
 
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Wait while loading...");
+        progressDialog.setTitle("Loading");
+        progressDialog.setCancelable(false);
+
         //setup 1 recycler view cho favorite fragment
+        progressDialog.show();
        getFavoriteList();
 
        return view;
@@ -128,7 +138,7 @@ public class FavoriteFragment extends Fragment {
                         List<DocumentReference> group = (List<DocumentReference>) document.get("likes");
 
                         if(group.size() == 0){
-
+                            progressDialog.dismiss();
                             emptyList.setVisibility(View.VISIBLE);
                             lnlFavContainer.setVisibility(View.GONE);
                         } else {
@@ -140,6 +150,7 @@ public class FavoriteFragment extends Fragment {
                         }
                     }
                 } else {
+                    progressDialog.dismiss();
 
                     emptyList.setVisibility(View.VISIBLE);
                     lnlFavContainer.setVisibility(View.GONE);
@@ -163,6 +174,7 @@ public class FavoriteFragment extends Fragment {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if(task.isSuccessful()){
+                        progressDialog.dismiss();
 
                         DocumentSnapshot document = task.getResult();
 
@@ -184,6 +196,8 @@ public class FavoriteFragment extends Fragment {
                             Log.d(TAG, "GetPlace: " + place.toString());
                         }
 
+                    } else {
+                        progressDialog.dismiss();
                     }
                 }
             });
