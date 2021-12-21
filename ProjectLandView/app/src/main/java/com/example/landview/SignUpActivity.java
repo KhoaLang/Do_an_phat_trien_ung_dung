@@ -52,9 +52,6 @@ public class SignUpActivity extends AppCompatActivity {
         //gọi instance của class FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 
-        //thay đổi label action bar
-//        getSupportActionBar().setTitle("Register");
-
         //xử lý sự kiện
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +73,6 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
                     //bring user datas to firestore
                     String uid = mAuth.getCurrentUser().getUid();
                     addingDataToFireStore(username, email, uid);
@@ -97,22 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
         String textPass = editTextPass.getText().toString();
         String textTypePass = editTextTypePass.getText().toString();
         Boolean isCheck = checkBoxPolicy.isChecked();
-//        if(textUser == null || textEmail==null||textPass==null||textTypePass==null||isCheck==false)
-//        {
-//           Toast.makeText(this,"Please enter full information",Toast.LENGTH_LONG).show();
-//        }
-//        if(!checkValidEmail()||!checkPassword())
-//        {
-//            Toast.makeText(this,"Invalid Email or Password!Type Again",Toast.LENGTH_LONG).show();
-//        }
-//        else
-//        {
-//           Toast.makeText(this,"Sign up successful",Toast.LENGTH_LONG).show();
-//           //chuyển đến Main Activity
-//            Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+
         if (TextUtils.isEmpty(textUser)) {
             editTextUsername.setError("Username section can't be empty");
             editTextUsername.requestFocus();
@@ -162,14 +143,15 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
     }
 
+    private static final String DEFAULT_AVATAR = "https://firebasestorage.googleapis.com/v0/b/landscape-review.appspot.com/o/avatar%2Favatar-default.jpg?alt=media&token=0b53e7e2-0ecc-4767-b310-cc960226d7c7";
+
     private void addingDataToFireStore(String username, String email, String userId) {
         db = FirebaseFirestore.getInstance();
 
-        //empty list contain liked plac
-
+        //empty list contain liked place
         Map<String, Object> user = new HashMap<>();
         user.put("UID", userId);
-        user.put("avatar", "");
+        user.put("avatar", DEFAULT_AVATAR);
         user.put("likes", Arrays.asList());
         user.put("email", email);
         user.put("username", username);
@@ -178,9 +160,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful())
-                    Toast.makeText(SignUpActivity.this, "Success create user in FireStore", Toast.LENGTH_SHORT).show();
+                    Log.d("SignUP", "Success create user in FireStore");
                 else {
-                    Toast.makeText(SignUpActivity.this, "Fail to create user in FireStore", Toast.LENGTH_SHORT);
+                    Log.d("SignUP", "Fail to create user in FireStore");
                 }
             }
         });

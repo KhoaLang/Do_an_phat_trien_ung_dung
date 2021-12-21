@@ -84,16 +84,6 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MODE_LOGIN", MODE_PRIVATE);
         //lấy ra
         editTextemailLogin.setText(sharedPreferences.getString("Email", ""));
-        //thay đổi label action bar
-//        getSupportActionBar().setTitle("Login");
-
-        //sét sự kiện button
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                CheckData();
-//            }
-//        });
 
         //sự kiện textview sign up now
         txtSignupnow.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +167,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Bắt exception liên quan mạng
                     catch (FirebaseNetworkException networkException) {
 
-                        Toast.makeText(LoginActivity.this, "Không có kết nối mạng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Network connection is needed", Toast.LENGTH_SHORT).show();
                     }
                     // Bắt exception liên quan xác thực
                     catch (FirebaseAuthException firebaseAuth) {
@@ -188,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             // Sai mật khẩu
                             case "ERROR_WRONG_PASSWORD":
-                                Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Wrong password!!", Toast.LENGTH_SHORT).show();
                                 editTextpassLogin.setError("Wrong password");
                                 editTextpassLogin.requestFocus();
                                 break;
@@ -196,7 +186,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Tài khoản ko tồn tại
                             case "ERROR_USER_NOT_FOUND":
                                 Log.d(TAG, "onComplete: Not found user");
-                                Toast.makeText(LoginActivity.this, "Không tìm thấy tài khoản", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Can't found your account!!", Toast.LENGTH_SHORT).show();
                                 editTextemailLogin.setError("User not found");
                                 editTextemailLogin.requestFocus();
                                 break;
@@ -216,24 +206,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean CheckData(String email, String password) {
-
-//        if(textEmail.length()==0 || textPass.length() ==0)
-//        {
-//            Toast.makeText(this,"Login failed",Toast.LENGTH_LONG).show();
-//        }
-//        else
-//        {
-//            Toast.makeText(this,"Login succesfull",Toast.LENGTH_LONG).show();
-//            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-//            startActivity(intent);
-            ///SHAREREFERENCES
+         //SHAREREFERENCES
             String textEmail = editTextemailLogin.getText().toString();
             String textPass = editTextpassLogin.getText().toString();
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("Email",textEmail);
             editor.putString("Password",textPass);
             editor.apply();
-//        }
         if (TextUtils.isEmpty(email)) {
             editTextemailLogin.setError("Email section can't be empty");
             editTextemailLogin.requestFocus();
@@ -293,10 +272,11 @@ public class LoginActivity extends AppCompatActivity {
                                 throw task.getException();
                             }
                             catch (FirebaseNetworkException networkException){
-                                Toast.makeText(LoginActivity.this, "Lỗi mạng", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Network Error", Toast.LENGTH_SHORT).show();
                             }
                             catch (Exception e){
-                                Toast.makeText(LoginActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(LoginActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Log.d("LOGINACTIVITY", "Error" + e.getMessage());
                             }
                         }
 

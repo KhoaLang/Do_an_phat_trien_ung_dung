@@ -19,13 +19,17 @@
         android:layout_marginTop="15dp"
         android:gravity="center_vertical">
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_see_avatar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="See avatar"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/lato_regular"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
             />
     </LinearLayout>
     <LinearLayout
@@ -34,29 +38,18 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_new_avatar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New avatar"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/lato_regular"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select from device"
-            android:layout_marginStart="10dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/lato_regular"
-            />
-    </LinearLayout>
 </LinearLayout>

@@ -1,117 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".HotelDetail">
-    <ScrollView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        >
+        <include
+            layout="@layout/detail_action_bar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                app:cardCornerRadius="10dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/imgDestination"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="TODO" />
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:id="@+id/nameDestination"
-                android:layout_marginTop="15dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/desHanoi"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                />
-            <android.widget.Button
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_btn_find"
-                android:id="@+id/btnFindPlace"
-                android:backgroundTint="@color/primary_color"
-                android:text="Find place"
-                android:layout_gravity="right"
-                android:textColor="@color/white"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/hotel"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/more"
-                    android:id="@+id/seemore1"
-                    android:gravity="right"
-                    android:textColor="@color/black"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="center_vertical"/>
-            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <!--Ảnh và image count text view-->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/rcvhotel"/>
+                android:layout_height="250dp"
+                >
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="5dp"
+                    >
+                    <TextView
+                        android:id="@+id/tv_hotel_image_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01/20"
+                        android:layout_margin="2dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp2_hotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:gravity="center_vertical"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:paddingHorizontal="16dp">
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/restaurant"
-                    android:layout_weight="1"
-                    android:textSize="20sp"
+                    android:id="@+id/tv_hotel_name"
+                    android:textSize="32sp"
+
+                    android:text="Tên Khách sạn"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/lato_bold"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical">
+                    <RatingBar
+                        android:id="@+id/rb_hotel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stepSize="0.5"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:isIndicator="true"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_hotel_total_rate"
+                        android:textSize="24sp"
+                        android:text="20"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato_regular"
+                        android:layout_marginStart="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/tv_hotel_web"
+                        android:text="@string/web"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato_regular"
+                        />
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_hotel_call"
+                        android:text="@string/call"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato_regular"
+                        />
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_hotel_email"
+                        android:text="@string/email_Under"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato_regular"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_hotel_price"
+                    android:layout_marginTop="8dp"
+                    android:textSize="24sp"
+                    android:text="1.000.0000 VNĐ"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_regular"
+                    android:layout_gravity="right"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnSeePro"
+                    android:background="@drawable/custom_btn_find"
+                    android:backgroundTint="@color/primary_color"
+                    android:text="Xem giảm giá"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/lato_bold"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_btn_find"
+                    android:backgroundTint="@color/primary_color"
+                    android:text="Book now"
+                    android:id="@+id/btnBook"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/lato_bold"
+                    />
+
+                <!--giới thiệu  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giới thiệu"
+                        android:textSize="24sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato_bold"/>
+                    <com.example.landview.ExpandableTextView.ExpandableTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etv_hotel_description"
+                        android:textColor="@color/black"
+                        android:text="@string/lorem_ipsum"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/lato_regular"/>
+                </LinearLayout>
+
+                <!-- địa chỉ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="Đia Chỉ"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_hotel_address"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/lato_bold"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Tiện nghi"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/utilitiesRV"
                     />
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/more"
-                    android:gravity="right"
-                    android:id="@+id/seemore2"
+                    android:text="Bản đồ"
+                    android:textSize="24dp"
+                    android:layout_marginTop="8dp"
                     android:textColor="@color/black"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:fontFamily="@font/lato_bold"
+                    />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fcv_map"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="232dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đánh giá"
+                    android:textSize="24dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_bold"
+                    />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/fcv_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="236dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nhận xét"
+                    android:textSize="24dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato_bold"
+                    />
+                <androidx.fragment.app.FragmentContainerView
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/fcv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
             </LinearLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/rcvRestaurant"/>
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

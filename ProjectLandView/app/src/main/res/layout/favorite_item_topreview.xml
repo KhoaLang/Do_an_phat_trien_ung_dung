@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/iconToptym"
-                android:src="@drawable/tym"
+                android:src="@drawable/heart_shadow"
                 android:layout_gravity="right"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="10dp"/>
