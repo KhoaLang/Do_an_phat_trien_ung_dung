@@ -89,7 +89,7 @@ public class LandScapeDetail extends AppCompatActivity {
         Toolbar myToolBar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("Restaurant");
+        ab.setTitle("Landscape");
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_white_back_24));
 

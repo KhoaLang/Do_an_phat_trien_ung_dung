@@ -41,12 +41,6 @@
                 android:src="@drawable/user"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:src="@drawable/logo_login"
-            />
     </LinearLayout>
     <EditText
         android:layout_width="match_parent"
@@ -124,21 +118,24 @@
             android:layout_height="1dp"
             android:layout_gravity="center_vertical"
             android:background="@color/login_withColor"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="@string/login_with"
-            android:fontFamily="@font/lato_regular"
-            android:textColor="@color/login_withColor"
-            android:textSize="25sp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/white"/>
+            android:background="#FAFAFA"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:text="@string/login_with"
+            android:textColor="@color/login_withColor"
+            android:textSize="25sp" />
     </FrameLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

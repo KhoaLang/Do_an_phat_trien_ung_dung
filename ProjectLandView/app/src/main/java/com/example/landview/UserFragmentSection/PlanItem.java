@@ -8,6 +8,9 @@ public class PlanItem {
     private String dateStart;
     private String dateEnd;
 
+    //Empty Constructor
+    public PlanItem () {}
+
     //Constructor
     public PlanItem(String name, String description, String destination, String id, String dateEnd, String dateStart){
         this.name = name;

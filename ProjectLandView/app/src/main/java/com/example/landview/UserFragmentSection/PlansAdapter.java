@@ -38,7 +38,8 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PlanItem item = list.get(position);
         holder.planName.setText(item.getName());
-        holder.planDes.setText(item.getDescription());
+        holder.planDescrip.setText(item.getDescription());
+        holder.planDesti.setText(item.getDestination());
         String dateRange = item.getDateStart() + " - " + item.getDateEnd();
         holder.planDate.setText(dateRange);
     }
@@ -49,13 +50,14 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView planName, planDes, planDate;
+        TextView planName, planDesti, planDescrip, planDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             planName = itemView.findViewById(R.id.plansNameTV);
-            planDes = itemView.findViewById(R.id.plansDescriptionTV);
+            planDescrip = itemView.findViewById(R.id.plansDescriptionTV);
+            planDesti = itemView.findViewById(R.id.plansDestinationTV);
             planDate = itemView.findViewById(R.id.dateTV);
         }
     }
