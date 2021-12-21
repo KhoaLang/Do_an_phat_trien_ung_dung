@@ -56,8 +56,8 @@
         android:text="date"
         android:textColor="@color/indicator"
         android:textSize="20sp"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintStart_toEndOf="@+id/plansNameTV"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/plansDescriptionTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

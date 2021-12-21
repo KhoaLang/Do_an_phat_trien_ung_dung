@@ -31,19 +31,15 @@ public class UserPlansActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_plans);
 
         //setup cho recycler view
-        plansRV  = findViewById(R.id.plansRV);
+        plansRV = (RecyclerView) findViewById(R.id.plansRV);
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
-
         mAuth = FirebaseAuth.getInstance();
 
-        loadPlans();
-
         //setup Adapter
-        adapter = new PlansAdapter(UserPlansActivity.this, list);
-        plansRV.setAdapter(adapter);
         plansRV.setLayoutManager(new LinearLayoutManager(UserPlansActivity.this, LinearLayoutManager.VERTICAL, false));
-        adapter.notifyDataSetChanged();
+
+        loadPlans();
     }
 
     private void loadPlans() {
@@ -53,13 +49,14 @@ public class UserPlansActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
+                    adapter = new PlansAdapter(UserPlansActivity.this, list);
+                    plansRV.setAdapter(adapter);
                     for(QueryDocumentSnapshot document: task.getResult()){
-                        PlanItem pi = new PlanItem(document.get("name").toString(), document.get("description").toString(),
-                                document.get("destination").toString(), document.get("id").toString(),
-                                document.get("dateEnd").toString(), document.get("dateStart").toString());
+                        PlanItem pi = document.toObject(PlanItem.class);
                         list.add(pi);
                     }
-                }
+                    adapter.notifyDataSetChanged();
+                }else{}
             }
         });
     }

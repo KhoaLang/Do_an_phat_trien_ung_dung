@@ -119,7 +119,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Log.d(TAG, "MapActivity: " + place.toString());
             }
         } else {
-            Toast.makeText(this, "Can't pass object please use perce", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Can't pass object please use perce", Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -261,7 +261,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         if(isArea){
-            Toast.makeText(MapActivity.this, "isArea is true", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MapActivity.this, "isArea is true", Toast.LENGTH_SHORT).show();
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for(Marker marker : markers){
                 builder.include(marker.getPosition());
@@ -274,7 +274,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             map.moveCamera(cu);
 
         } else {
-            Toast.makeText(MapActivity.this, "isArea is false", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MapActivity.this, "isArea is false", Toast.LENGTH_SHORT).show();
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(currLatLng, 17));
 
         }

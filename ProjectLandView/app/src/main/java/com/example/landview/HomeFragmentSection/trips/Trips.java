@@ -2,6 +2,7 @@ package com.example.landview.HomeFragmentSection.trips;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,11 +30,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Trips extends AppCompatActivity  {
+
     EditText edtPlanName, edDes, edtDescription, edDaygo,edDayend;
     Button btnCreatePlan;
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     final String TAG = "Trips";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,38 +60,67 @@ public class Trips extends AppCompatActivity  {
                 String description = edtDescription.getText().toString();
                 String textdaygo = edDaygo.getText().toString();
                 String textdayend = edDayend.getText().toString();
+                if(emptyCheck()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String uid = user.getUid();
 
-                FirebaseUser user = mAuth.getCurrentUser();
-                String uid = user.getUid();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("name", planName);
+                    map.put("description", description);
+                    map.put("destination", textDes);
+                    map.put("dateStart", textdaygo);
+                    map.put("dateEnd", textdayend);
 
-                Map<String, Object> map = new HashMap<>();
-                map.put("name", planName);
-                map.put("description", description);
-                map.put("destination", textDes);
-                map.put("dateStart", textdaygo);
-                map.put("dateEnd", textdayend);
-
-                db.collection("users").document(uid).collection("plan").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        documentReference.update("id", documentReference.getId()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Log.d(TAG, "Succeed to set ID and plan");
-                            }
-                        });
-                        Toast.makeText(Trips.this, "Plan created", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Trips.this, MainActivity.class));
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Trips.this, "Failed to create plan", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
+                    db.collection("users").document(uid).collection("plan").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            documentReference.update("id", documentReference.getId()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Log.d(TAG, "Succeed to set ID and plan");
+                                }
+                            });
+                            Toast.makeText(Trips.this, "Plan created", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Trips.this, MainActivity.class));
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Trips.this, "Failed to create plan", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
+    }
+
+    private boolean emptyCheck(){
+        String name = edtPlanName.getText().toString();
+        String dest = edDes.getText().toString();
+        String descrip = edtDescription.getText().toString();
+        String dateGo = edDaygo.getText().toString();
+        String dateEnd = edDayend.getText().toString();
+        if(TextUtils.isEmpty(name)){
+            edtPlanName.setError("Your plan need to have a name");
+            edtPlanName.requestFocus();
+            return false;
+        }else if(TextUtils.isEmpty(dest)){
+            edDes.setError("You need to have a destination");
+            edDes.requestFocus();
+            return false;
+        }else if(TextUtils.isEmpty(descrip)){
+            edtDescription.setError("Note something for your trip");
+            edtDescription.requestFocus();
+            return false;
+        }else if(TextUtils.isEmpty(dateGo)){
+            edDaygo.setError("when will you go?");
+            edDaygo.requestFocus();
+            return false;
+        }else if(TextUtils.isEmpty(dateEnd)){
+            edDayend.setError("when will the trip end?");
+            edDayend.requestFocus();
+            return false;
+        }
+        return true;
     }
 }
