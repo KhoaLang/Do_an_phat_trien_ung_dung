@@ -41,10 +41,13 @@ public class SplashScreen extends AppCompatActivity {
                     public void run() {
                         Intent intent1 = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         Intent intent = new Intent(SplashScreen.this, LauncherActivity.class);
-                        startActivity(intent);
+                        Intent[] intents = new Intent[2];
+                        intents[0] = intent;
+                        intents[1] = intent1;
+                        startActivities(intents);
                         finish();
                     }
-                },3000);
+                },0);
             }
         });
         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
