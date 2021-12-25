@@ -2,6 +2,7 @@ package com.example.landview;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,29 +46,60 @@ public class Weather extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String textCity = edtCity.getText().toString().trim();
-                checkInput(textCity);
-                getJsonWeather(textCity);
+                if(!checkInput(textCity))
+                {
+                    getJsonWeather(textCity);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Please type city",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //Proccess when press Enter
+        edtCity.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if(keyEvent.getAction()==KeyEvent.ACTION_DOWN)
+                {
+                    switch (i)
+                    {
+                        case KeyEvent.KEYCODE_ENTER:
+                            getJsonWeather(edtCity.getText().toString().trim());
+                            break;
+                    }
 
+                }
+                return false;
             }
         });
         btnNextday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String text = edtCity.getText().toString().trim();
-                checkInput(text);
-                Intent intent = new Intent(getApplicationContext(),Weathernext.class);
-                intent.putExtra("city",text);
-                startActivity(intent);
+
+                if(checkInput(text))
+                {
+                    Toast.makeText(getApplicationContext(),"Please type city",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(getApplicationContext(),Weathernext.class);
+                    intent.putExtra("city",text);
+                    startActivity(intent);
+                }
+
             }
         });
     }
 
-    public void checkInput(String text)
+    public boolean checkInput(String text)
     {
         if(text.length()==0)
         {
-            Toast.makeText(getApplicationContext(),"Please type city",Toast.LENGTH_LONG).show();
+            return true;
         }
+        return false;
     }
     public void getJsonWeather(String city)
     {
