@@ -27,46 +27,18 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void ShowStartDialog() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setIcon(R.drawable.map_location);
-        alertDialog.setTitle("Location Access Permission");
-        alertDialog.setMessage("Access your location to server better!");
-        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
                 timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        Intent intent1 = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        Intent intent = new Intent(SplashScreen.this, LauncherActivity.class);
-                        Intent[] intents = new Intent[2];
-                        intents[0] = intent;
-                        intents[1] = intent1;
-                        startActivities(intents);
-                        finish();
-                    }
-                },0);
-            }
-        });
-        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-                timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
+
                         Intent intent = new Intent(SplashScreen.this, LauncherActivity.class);
                         startActivity(intent);
                         finish();
                     }
                 },3000);
             }
-        });
-        alertDialog.show();
-    }
+
     @Override
     public void onStart() {
         super.onStart();
